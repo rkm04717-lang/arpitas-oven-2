@@ -1281,3 +1281,200 @@ footer p {
   }
 
 }
+/* =========================================
+   ARPITA'S OVEN — LOADING EXPERIENCE
+   ========================================= */
+
+.oven-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--cream);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.7s ease,
+    visibility 0.7s ease;
+}
+
+.oven-loading-inner {
+  width: min(420px, 80%);
+  text-align: center;
+}
+
+
+/* BRAND */
+
+.oven-brand {
+  color: var(--brown);
+
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+
+  line-height: 1.5;
+
+  animation: ovenBrandIn 1s ease both;
+}
+
+.oven-brand span {
+  display: block;
+
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+
+  margin-top: -4px;
+}
+
+
+/* LOADER */
+
+.oven-loader {
+  width: 100%;
+  height: 3px;
+
+  margin: 35px auto 18px;
+
+  overflow: hidden;
+
+  background: var(--cream-dark);
+  border-radius: 20px;
+}
+
+.oven-loader-fill {
+  width: 0;
+  height: 100%;
+
+  background: var(--brown);
+
+  animation: ovenHeat 2.2s ease forwards;
+}
+
+
+/* TEXT */
+
+.oven-loading-text {
+  margin: 0;
+
+  color: var(--brown-soft);
+
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+
+  animation: ovenTextIn 1s ease 0.3s both;
+}
+
+.oven-ding {
+  margin-top: 14px;
+
+  color: var(--brown);
+
+  font-family: var(--serif);
+  font-size: 21px;
+
+  opacity: 0;
+}
+
+
+/* READY */
+
+.oven-loading.oven-ready .oven-loading-text {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.oven-loading.oven-ready .oven-ding {
+  opacity: 1;
+  animation: ovenDing 0.6s ease both;
+}
+
+
+/* HIDE */
+
+.oven-loading.oven-hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes ovenBrandIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes ovenTextIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes ovenHeat {
+
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+
+}
+
+@keyframes ovenDing {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .oven-brand span {
+    font-size: 40px;
+  }
+
+  .oven-loading-inner {
+    width: 82%;
+  }
+
+}
