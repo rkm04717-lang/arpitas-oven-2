@@ -1095,3 +1095,63 @@ footer p {
   }
 
 }
+/* ===== CENTERED PAGE CONTENT ===== */
+
+.page-hero-inner,
+.section-heading,
+.story-layout,
+.values-grid,
+.story-closing,
+.gallery-section,
+.gallery-note,
+.cakes-section {
+  width: min(1120px, 90%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Keep navigation comfortably spaced */
+.site-header {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Give page headings a little breathing room */
+.page-hero-inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Story content */
+.story-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+}
+
+/* Gallery and cake sections */
+.gallery-section,
+.cakes-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 800px) {
+
+  .page-hero-inner,
+  .section-heading,
+  .story-layout,
+  .values-grid,
+  .story-closing,
+  .gallery-section,
+  .gallery-note,
+  .cakes-section {
+    width: 90%;
+  }
+
+  .story-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+}
