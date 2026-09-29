@@ -7,5 +7,13 @@
   "assets": {
     "directory": "./",
     "binding": "ASSETS"
-  }
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "arpitas-oven-db",
+      "database_id": "112e4613-0599-4e45-a9b1-8d8b74d46f07"
+    }
+  ]
 }
