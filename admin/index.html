@@ -23,173 +23,60 @@
       box-sizing: border-box;
     }
 
+
     :root {
+
       --cream: #fff8f1;
       --cream-dark: #f5e9dd;
+
       --brown: #33231e;
       --brown-soft: #6d554c;
+
       --peach: #e9a28f;
+
       --white: #ffffff;
+
       --danger: #b94b4b;
       --success: #47734d;
+
     }
 
+
     body {
+
       margin: 0;
+
       background: var(--cream);
+
       color: var(--brown);
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        sans-serif;
+
     }
+
 
     button,
     input,
     textarea,
     select {
+
       font: inherit;
-    }
 
-    .hidden {
-      display: none !important;
     }
 
 
-    /* =========================
-       LOGIN
-       ========================= */
-
-    .login-page {
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 30px;
-    }
-
-    .login-card {
-      width: min(430px, 100%);
-
-      background: var(--white);
-
-      padding: 42px;
-
-      border-radius: 20px;
-
-      box-shadow:
-        0 20px 60px rgba(51, 35, 30, 0.10);
-    }
-
-    .login-brand {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .login-brand small {
-      display: block;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      letter-spacing: 0.25em;
-    }
-
-    .login-brand h1 {
-      margin: 8px 0 0;
-
-      font-family: Georgia, serif;
-      font-size: 42px;
-      font-weight: 400;
-    }
-
-    .login-brand h1 em {
-      font-style: italic;
-    }
-
-    label {
-      display: block;
-
-      margin-bottom: 8px;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-
-      border: 1px solid #dfd1c5;
-
-      background: #fff;
-
-      color: var(--brown);
-
-      border-radius: 10px;
-
-      padding: 13px 14px;
-
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--brown);
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
-
-    .primary-button {
-      width: 100%;
-
-      border: 0;
-      border-radius: 10px;
-
-      padding: 14px 18px;
-
-      background: var(--brown);
-      color: white;
-
-      cursor: pointer;
-
-      font-weight: 700;
-    }
-
-    .primary-button:hover {
-      opacity: 0.9;
-    }
-
-    .login-error {
-      margin-top: 15px;
-
-      color: var(--danger);
-
-      font-size: 13px;
-      text-align: center;
-    }
-
-
-    /* =========================
-       DASHBOARD
-       ========================= */
-
-    .dashboard {
-      min-height: 100vh;
-    }
+    /* =================================
+       HEADER
+       ================================= */
 
     .admin-header {
+
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 20px;
@@ -198,191 +85,391 @@
 
       background: var(--white);
 
-      border-bottom: 1px solid #eaded4;
+      border-bottom:
+        1px solid #eaded4;
+
     }
+
 
     .admin-title {
-      font-family: Georgia, serif;
+
+      font-family:
+        Georgia,
+        serif;
+
       font-size: 28px;
+
     }
+
 
     .admin-title span {
+
       font-size: 12px;
 
-      font-family: Arial, sans-serif;
+      font-family:
+        Arial,
+        sans-serif;
 
-      color: var(--brown-soft);
+      color:
+        var(--brown-soft);
 
       margin-left: 8px;
+
     }
 
-    .logout-button {
-      border: 1px solid #d9cbc0;
 
-      background: transparent;
-
-      color: var(--brown);
-
-      border-radius: 8px;
-
-      padding: 9px 14px;
-
-      cursor: pointer;
-    }
+    /* =================================
+       CONTENT
+       ================================= */
 
     .dashboard-content {
-      width: min(1100px, 90%);
 
-      margin: 0 auto;
+      width:
+        min(1100px, 90%);
 
-      padding: 50px 0 80px;
+      margin:
+        0 auto;
+
+      padding:
+        50px 0 80px;
+
     }
+
 
     .dashboard-heading {
+
       margin-bottom: 30px;
+
     }
 
-    .dashboard-heading h1 {
-      margin: 0 0 8px;
 
-      font-family: Georgia, serif;
+    .dashboard-heading h1 {
+
+      margin:
+        0 0 8px;
+
+      font-family:
+        Georgia,
+        serif;
 
       font-size: 42px;
 
       font-weight: 400;
+
     }
+
 
     .dashboard-heading p {
+
       margin: 0;
 
-      color: var(--brown-soft);
+      color:
+        var(--brown-soft);
+
     }
 
+
+    /* =================================
+       GRID
+       ================================= */
+
     .admin-grid {
+
       display: grid;
 
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns:
+        1fr 1.4fr;
 
       gap: 30px;
 
       align-items: start;
+
     }
 
+
+    /* =================================
+       PANELS
+       ================================= */
+
     .panel {
-      background: var(--white);
+
+      background:
+        var(--white);
 
       border-radius: 18px;
 
       padding: 28px;
 
       box-shadow:
-        0 12px 40px rgba(51, 35, 30, 0.07);
+        0 12px 40px
+        rgba(51, 35, 30, 0.07);
+
     }
 
+
     .panel h2 {
+
       margin-top: 0;
 
-      font-family: Georgia, serif;
+      font-family:
+        Georgia,
+        serif;
 
       font-size: 27px;
 
       font-weight: 400;
+
     }
+
+
+    /* =================================
+       FORM
+       ================================= */
+
+    .field {
+
+      margin-bottom: 18px;
+
+    }
+
+
+    label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+    }
+
+
+    input,
+    textarea,
+    select {
+
+      width: 100%;
+
+      border:
+        1px solid #dfd1c5;
+
+      background:
+        #fff;
+
+      color:
+        var(--brown);
+
+      border-radius: 10px;
+
+      padding:
+        13px 14px;
+
+      outline: none;
+
+    }
+
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+
+      border-color:
+        var(--brown);
+
+    }
+
+
+    textarea {
+
+      min-height: 110px;
+
+      resize: vertical;
+
+    }
+
+
+    .primary-button {
+
+      width: 100%;
+
+      border: 0;
+
+      border-radius: 10px;
+
+      padding:
+        14px 18px;
+
+      background:
+        var(--brown);
+
+      color:
+        white;
+
+      cursor: pointer;
+
+      font-weight: 700;
+
+    }
+
+
+    .primary-button:hover {
+
+      opacity: 0.9;
+
+    }
+
+
+    /* =================================
+       CAKE LIST
+       ================================= */
 
     .cake-list {
+
       display: grid;
+
       gap: 14px;
+
     }
+
 
     .cake-item {
+
       padding: 16px;
 
-      border: 1px solid #eaded4;
+      border:
+        1px solid #eaded4;
 
       border-radius: 12px;
+
     }
 
-    .cake-item h3 {
-      margin: 0 0 5px;
 
-      font-family: Georgia, serif;
+    .cake-item h3 {
+
+      margin:
+        0 0 5px;
+
+      font-family:
+        Georgia,
+        serif;
 
       font-size: 21px;
 
       font-weight: 400;
+
     }
+
 
     .cake-item p {
+
       margin: 5px 0;
 
-      color: var(--brown-soft);
+      color:
+        var(--brown-soft);
 
       font-size: 13px;
+
     }
 
+
     .cake-item-actions {
+
       display: flex;
 
       gap: 8px;
 
       margin-top: 12px;
+
     }
 
+
     .small-button {
-      border: 1px solid #d9cbc0;
 
-      background: white;
+      border:
+        1px solid #d9cbc0;
 
-      color: var(--brown);
+      background:
+        white;
 
-      padding: 8px 11px;
+      color:
+        var(--brown);
+
+      padding:
+        8px 11px;
 
       border-radius: 7px;
 
       cursor: pointer;
 
       font-size: 12px;
+
     }
+
 
     .delete-button {
-      color: var(--danger);
+
+      color:
+        var(--danger);
+
     }
 
+
     .empty-state {
-      padding: 30px 10px;
+
+      padding:
+        30px 10px;
 
       text-align: center;
 
-      color: var(--brown-soft);
+      color:
+        var(--brown-soft);
 
       font-size: 14px;
+
     }
 
+
     .status {
+
       margin-top: 15px;
 
       font-size: 13px;
 
-      color: var(--success);
+      color:
+        var(--success);
+
     }
 
 
-    /* =========================
+    /* =================================
        MOBILE
-       ========================= */
+       ================================= */
 
     @media (max-width: 850px) {
 
       .admin-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
+
 
       .admin-header {
-        padding: 18px 5%;
+
+        padding:
+          18px 5%;
+
       }
 
+
       .dashboard-heading h1 {
-        font-size: 34px;
+
+        font-size:
+          34px;
+
       }
 
     }
@@ -390,16 +477,18 @@
 
     @media (max-width: 500px) {
 
-      .login-card {
-        padding: 30px 22px;
+      .admin-title span {
+
+        display: none;
+
       }
 
-      .admin-title span {
-        display: none;
-      }
 
       .panel {
-        padding: 22px;
+
+        padding:
+          22px;
+
       }
 
     }
@@ -412,518 +501,342 @@
 <body>
 
 
-<!-- =========================
-     LOGIN
-     ========================= -->
+<!-- =================================
+     HEADER
+     ================================= -->
 
-<section
-  id="loginPage"
-  class="login-page"
->
+<header class="admin-header">
 
-  <div class="login-card">
+  <div class="admin-title">
 
-    <div class="login-brand">
+    Arpita's Oven
 
-      <small>
-        ARPITA'S OVEN
-      </small>
-
-      <h1>
-        <em>Admin</em>
-      </h1>
-
-    </div>
-
-
-    <form id="loginForm">
-
-      <div class="field">
-
-        <label for="username">
-          Username
-        </label>
-
-        <input
-          id="username"
-          type="text"
-          autocomplete="username"
-          required
-        >
-
-      </div>
-
-
-      <div class="field">
-
-        <label for="password">
-          Password
-        </label>
-
-        <input
-          id="password"
-          type="password"
-          autocomplete="current-password"
-          required
-        >
-
-      </div>
-
-
-      <button
-        class="primary-button"
-        type="submit"
-      >
-        Enter the Oven
-      </button>
-
-
-      <div
-        id="loginError"
-        class="login-error"
-      ></div>
-
-    </form>
+    <span>
+      Admin Kitchen
+    </span>
 
   </div>
 
-</section>
+</header>
 
 
 
-<!-- =========================
+<!-- =================================
      DASHBOARD
-     ========================= -->
+     ================================= -->
 
-<section
-  id="dashboard"
-  class="dashboard hidden"
->
+<main class="dashboard-content">
 
 
-  <header class="admin-header">
+  <div class="dashboard-heading">
 
-    <div class="admin-title">
+    <h1>
+      The Kitchen.
+    </h1>
 
-      Arpita's Oven
+    <p>
+      Manage what's baking at Arpita's Oven.
+    </p>
 
-      <span>
-        Admin Kitchen
-      </span>
-
-    </div>
-
-
-    <button
-      id="logoutButton"
-      class="logout-button"
-    >
-      Log out
-    </button>
-
-  </header>
+  </div>
 
 
 
-  <main class="dashboard-content">
+  <div class="admin-grid">
 
 
-    <div class="dashboard-heading">
+    <!-- =================================
+         ADD CAKE
+         ================================= -->
 
-      <h1>
-        The Kitchen.
-      </h1>
+    <section class="panel">
 
-      <p>
-        Manage what's baking at Arpita's Oven.
-      </p>
-
-    </div>
+      <h2>
+        Add a cake
+      </h2>
 
 
-
-    <div class="admin-grid">
-
-
-      <!-- =========================
-           ADD CAKE
-           ========================= -->
-
-      <section class="panel">
-
-        <h2>
-          Add a cake
-        </h2>
+      <form id="cakeForm">
 
 
-        <form id="cakeForm">
+        <div class="field">
 
+          <label for="cakeName">
+            Cake name
+          </label>
 
-          <div class="field">
-
-            <label for="cakeName">
-              Cake name
-            </label>
-
-            <input
-              id="cakeName"
-              required
-              placeholder="Chocolate Truffle"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="cakeCategory">
-              Category
-            </label>
-
-            <input
-              id="cakeCategory"
-              placeholder="The Classic"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="cakeDescription">
-              Description
-            </label>
-
-            <textarea
-              id="cakeDescription"
-              placeholder="A short description..."
-            ></textarea>
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="cakePrice">
-              Price
-            </label>
-
-            <input
-              id="cakePrice"
-              placeholder="From ₹850"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="cakeImage">
-              Image URL
-            </label>
-
-            <input
-              id="cakeImage"
-              type="url"
-              placeholder="We'll add photo uploads later"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label for="cakeOrder">
-              Display order
-            </label>
-
-            <input
-              id="cakeOrder"
-              type="number"
-              value="0"
-            >
-
-          </div>
-
-
-          <button
-            class="primary-button"
-            type="submit"
+          <input
+            id="cakeName"
+            required
+            placeholder="Chocolate Truffle"
           >
-            Add Cake
-          </button>
-
-
-          <div
-            id="cakeStatus"
-            class="status"
-          ></div>
-
-
-        </form>
-
-      </section>
-
-
-
-      <!-- =========================
-           CAKE LIST
-           ========================= -->
-
-      <section class="panel">
-
-        <h2>
-          Current batch
-        </h2>
-
-
-        <div
-          id="cakeList"
-          class="cake-list"
-        >
-
-          <div class="empty-state">
-            Loading cakes...
-          </div>
 
         </div>
 
-      </section>
 
 
-    </div>
+        <div class="field">
+
+          <label for="cakeCategory">
+            Category
+          </label>
+
+          <input
+            id="cakeCategory"
+            placeholder="The Classic"
+          >
+
+        </div>
 
 
-  </main>
 
-</section>
+        <div class="field">
+
+          <label for="cakeDescription">
+            Description
+          </label>
+
+          <textarea
+            id="cakeDescription"
+            placeholder="A short description..."
+          ></textarea>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="cakePrice">
+            Price
+          </label>
+
+          <input
+            id="cakePrice"
+            placeholder="From ₹850"
+          >
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="cakeImage">
+            Image URL
+          </label>
+
+          <input
+            id="cakeImage"
+            type="url"
+            placeholder="Photo URL for now"
+          >
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="cakeOrder">
+            Display order
+          </label>
+
+          <input
+            id="cakeOrder"
+            type="number"
+            value="0"
+          >
+
+        </div>
+
+
+
+        <button
+          class="primary-button"
+          type="submit"
+        >
+          Add Cake
+        </button>
+
+
+        <div
+          id="cakeStatus"
+          class="status"
+        ></div>
+
+
+      </form>
+
+    </section>
+
+
+
+    <!-- =================================
+         CURRENT BATCH
+         ================================= -->
+
+    <section class="panel">
+
+      <h2>
+        Current batch
+      </h2>
+
+
+      <div
+        id="cakeList"
+        class="cake-list"
+      >
+
+        <div class="empty-state">
+          Loading cakes...
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+
+</main>
 
 
 
 <script>
 
-  const loginPage =
-    document.getElementById("loginPage");
 
-  const dashboard =
-    document.getElementById("dashboard");
+/* =================================
+   ELEMENTS
+   ================================= */
 
-  const loginForm =
-    document.getElementById("loginForm");
-
-  const loginError =
-    document.getElementById("loginError");
-
-  const logoutButton =
-    document.getElementById("logoutButton");
-
-  const cakeForm =
-    document.getElementById("cakeForm");
-
-  const cakeList =
-    document.getElementById("cakeList");
-
-  const cakeStatus =
-    document.getElementById("cakeStatus");
+const cakeForm =
+  document.getElementById(
+    "cakeForm"
+  );
 
 
-  async function api(url, options = {}) {
-
-    const response = await fetch(url, {
-      ...options,
-      credentials: "same-origin"
-    });
-
-    let data;
-
-    try {
-
-      data = await response.json();
-
-    } catch {
-
-      data = {};
-
-    }
-
-    return {
-      response,
-      data
-    };
-
-  }
+const cakeList =
+  document.getElementById(
+    "cakeList"
+  );
 
 
-  async function checkLogin() {
-
-    const result =
-      await api("/api/me");
-
-    if (result.data.loggedIn) {
-
-      showDashboard();
-
-      loadCakes();
-
-    } else {
-
-      showLogin();
-
-    }
-
-  }
+const cakeStatus =
+  document.getElementById(
+    "cakeStatus"
+  );
 
 
-  function showLogin() {
 
-    loginPage.classList.remove("hidden");
+/* =================================
+   API HELPER
+   ================================= */
 
-    dashboard.classList.add("hidden");
+async function api(
+  url,
+  options = {}
+) {
 
-  }
-
-
-  function showDashboard() {
-
-    loginPage.classList.add("hidden");
-
-    dashboard.classList.remove("hidden");
-
-  }
-
-
-  loginForm.addEventListener(
-    "submit",
-    async (event) => {
-
-      event.preventDefault();
-
-      loginError.textContent = "";
-
-
-      const username =
-        document
-          .getElementById("username")
-          .value
-          .trim();
-
-
-      const password =
-        document
-          .getElementById("password")
-          .value;
-
-
-      const result =
-        await api(
-          "/api/login",
-          {
-
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-
-            body: JSON.stringify({
-              username,
-              password
-            })
-
-          }
-        );
-
-
-      if (!result.data.success) {
-
-        loginError.textContent =
-          result.data.message ||
-          "Login failed.";
-
-        return;
-
+  const response =
+    await fetch(
+      url,
+      {
+        ...options
       }
+    );
 
 
-      loginForm.reset();
-
-      showDashboard();
-
-      loadCakes();
-
-    }
-  );
+  let data;
 
 
-  logoutButton.addEventListener(
-    "click",
-    async () => {
+  try {
 
-      await api(
-        "/api/logout",
-        {
-          method: "POST"
-        }
-      );
+    data =
+      await response.json();
 
-      showLogin();
+  } catch {
 
-    }
-  );
+    data = {};
+
+  }
 
 
-  async function loadCakes() {
+  return {
+    response,
+    data
+  };
+
+}
+
+
+
+/* =================================
+   LOAD CAKES
+   ================================= */
+
+async function loadCakes() {
+
+  cakeList.innerHTML = `
+    <div class="empty-state">
+      Loading cakes...
+    </div>
+  `;
+
+
+  const result =
+    await api(
+      "/api/cakes"
+    );
+
+
+  if (
+    !result.data.success
+  ) {
 
     cakeList.innerHTML = `
       <div class="empty-state">
-        Loading cakes...
+        Could not load cakes.
       </div>
     `;
 
+    return;
 
-    const result =
-      await api("/api/cakes");
-
-
-    if (!result.data.success) {
-
-      cakeList.innerHTML = `
-        <div class="empty-state">
-          Could not load cakes.
-        </div>
-      `;
-
-      return;
-
-    }
+  }
 
 
-    const cakes =
-      result.data.cakes || [];
+  const cakes =
+    result.data.cakes || [];
 
 
-    if (cakes.length === 0) {
+  if (
+    cakes.length === 0
+  ) {
 
-      cakeList.innerHTML = `
-        <div class="empty-state">
-          The tray is empty.<br>
-          Add your first cake.
-        </div>
-      `;
+    cakeList.innerHTML = `
+      <div class="empty-state">
+        The tray is empty.<br>
+        Add your first cake.
+      </div>
+    `;
 
-      return;
+    return;
 
-    }
-
-
-    cakeList.innerHTML = "";
+  }
 
 
-    cakes.forEach((cake) => {
+  cakeList.innerHTML = "";
+
+
+  cakes.forEach(
+    (cake) => {
 
       const item =
-        document.createElement("article");
+        document.createElement(
+          "article"
+        );
+
 
       item.className =
         "cake-item";
@@ -932,7 +845,9 @@
       item.innerHTML = `
 
         <h3>
-          ${escapeHtml(cake.name)}
+          ${escapeHtml(
+            cake.name
+          )}
         </h3>
 
         <p>
@@ -956,11 +871,12 @@
           )}
         </p>
 
-        <div class="cake-item-actions">
+        <div
+          class="cake-item-actions"
+        >
 
           <button
             class="small-button delete-button"
-            data-id="${cake.id}"
           >
             Delete
           </button>
@@ -980,189 +896,251 @@
         "click",
         () => {
 
-          deleteCake(cake.id);
+          deleteCake(
+            cake.id
+          );
 
         }
       );
 
 
-      cakeList.appendChild(item);
-
-    });
-
-  }
-
-
-  async function deleteCake(id) {
-
-    const confirmed =
-      confirm(
-        "Remove this cake from the catalogue?"
+      cakeList.appendChild(
+        item
       );
-
-
-    if (!confirmed) {
-      return;
-    }
-
-
-    const result =
-      await api(
-        `/api/cakes/${id}`,
-        {
-          method: "DELETE"
-        }
-      );
-
-
-    if (result.data.success) {
-
-      loadCakes();
-
-    }
-
-  }
-
-
-  cakeForm.addEventListener(
-    "submit",
-    async (event) => {
-
-      event.preventDefault();
-
-      cakeStatus.textContent = "";
-
-
-      const cake = {
-
-        name:
-          document
-            .getElementById("cakeName")
-            .value
-            .trim(),
-
-        category:
-          document
-            .getElementById("cakeCategory")
-            .value
-            .trim(),
-
-        description:
-          document
-            .getElementById("cakeDescription")
-            .value
-            .trim(),
-
-        price:
-          document
-            .getElementById("cakePrice")
-            .value
-            .trim(),
-
-        image_url:
-          document
-            .getElementById("cakeImage")
-            .value
-            .trim(),
-
-        display_order:
-          Number(
-            document
-              .getElementById("cakeOrder")
-              .value || 0
-          ),
-
-        available: true
-
-      };
-
-
-      const result =
-        await api(
-          "/api/cakes",
-          {
-
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-
-            body:
-              JSON.stringify(cake)
-
-          }
-        );
-
-
-      if (!result.data.success) {
-
-        cakeStatus.textContent =
-          result.data.message ||
-          "Could not add cake.";
-
-        cakeStatus.style.color =
-          "#b94b4b";
-
-        return;
-
-      }
-
-
-      cakeForm.reset();
-
-      document
-        .getElementById("cakeOrder")
-        .value = "0";
-
-
-      cakeStatus.textContent =
-        "Cake added to the batch.";
-
-      cakeStatus.style.color =
-        "#47734d";
-
-
-      loadCakes();
 
     }
   );
 
+}
 
-  function escapeHtml(value) {
 
-    return String(value)
 
-      .replaceAll(
-        "&",
-        "&amp;"
-      )
+/* =================================
+   DELETE CAKE
+   ================================= */
 
-      .replaceAll(
-        "<",
-        "&lt;"
-      )
+async function deleteCake(
+  id
+) {
 
-      .replaceAll(
-        ">",
-        "&gt;"
-      )
+  const confirmed =
+    confirm(
+      "Remove this cake from the catalogue?"
+    );
 
-      .replaceAll(
-        '"',
-        "&quot;"
-      )
 
-      .replaceAll(
-        "'",
-        "&#039;"
-      );
+  if (!confirmed) {
+
+    return;
 
   }
 
 
-  checkLogin();
+  const result =
+    await api(
+      `/api/cakes/${id}`,
+      {
+        method:
+          "DELETE"
+      }
+    );
+
+
+  if (
+    result.data.success
+  ) {
+
+    loadCakes();
+
+  }
+
+}
+
+
+
+/* =================================
+   ADD CAKE
+   ================================= */
+
+cakeForm.addEventListener(
+  "submit",
+  async (event) => {
+
+    event.preventDefault();
+
+
+    cakeStatus.textContent =
+      "Adding cake...";
+
+
+    cakeStatus.style.color =
+      "#47734d";
+
+
+    const cake = {
+
+      name:
+        document
+          .getElementById(
+            "cakeName"
+          )
+          .value
+          .trim(),
+
+      category:
+        document
+          .getElementById(
+            "cakeCategory"
+          )
+          .value
+          .trim(),
+
+      description:
+        document
+          .getElementById(
+            "cakeDescription"
+          )
+          .value
+          .trim(),
+
+      price:
+        document
+          .getElementById(
+            "cakePrice"
+          )
+          .value
+          .trim(),
+
+      image_url:
+        document
+          .getElementById(
+            "cakeImage"
+          )
+          .value
+          .trim(),
+
+      display_order:
+        Number(
+          document
+            .getElementById(
+              "cakeOrder"
+            )
+            .value || 0
+        ),
+
+      available:
+        true
+
+    };
+
+
+    const result =
+      await api(
+        "/api/cakes",
+        {
+
+          method:
+            "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(
+              cake
+            )
+
+        }
+      );
+
+
+    if (
+      !result.data.success
+    ) {
+
+      cakeStatus.textContent =
+        result.data.message ||
+        "Could not add cake.";
+
+      cakeStatus.style.color =
+        "#b94b4b";
+
+      return;
+
+    }
+
+
+    cakeForm.reset();
+
+
+    document
+      .getElementById(
+        "cakeOrder"
+      )
+      .value = "0";
+
+
+    cakeStatus.textContent =
+      "Cake added to the batch.";
+
+
+    cakeStatus.style.color =
+      "#47734d";
+
+
+    loadCakes();
+
+  }
+);
+
+
+
+/* =================================
+   HTML ESCAPE
+   ================================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(value)
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+
+/* =================================
+   START
+   ================================= */
+
+loadCakes();
 
 </script>
 
