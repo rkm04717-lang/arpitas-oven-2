@@ -1,20 +1,32 @@
 const ADMIN_USERNAME = "arpitasovenadmin";
-
 const SESSION_COOKIE = "ao_admin_session";
-const SESSION_DAYS = 1;
+const SESSION_DURATION = 24 * 60 * 60 * 1000;
+
+
+/* =========================
+   RESPONSE HELPERS
+   ========================= */
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "no-store"
+      "Content-Type": "application/json; charset=utf-8"
     }
   });
 }
 
+
+/* =========================
+   COOKIE HELPERS
+   ========================= */
+
 function getCookie(request, name) {
-  const cookieHeader = request.headers.get("Cookie") || "";
+  const cookieHeader = request.headers.get("Cookie");
+
+  if (!cookieHeader) {
+    return null;
+  }
 
   const cookies = cookieHeader.split(";");
 
@@ -29,121 +41,144 @@ function getCookie(request, name) {
   return null;
 }
 
-function sessionCookie(sessionId) {
+
+function sessionCookie(id) {
   return [
-    `${SESSION_COOKIE}=${encodeURIComponent(sessionId)}`,
+    `${SESSION_COOKIE}=${encodeURIComponent(id)}`,
     "Path=/",
     "HttpOnly",
-    "Secure",
     "SameSite=Lax",
-    `Max-Age=${SESSION_DAYS * 24 * 60 * 60}`
+    "Secure",
+    `Max-Age=${Math.floor(SESSION_DURATION / 1000)}`
   ].join("; ");
 }
+
 
 function clearSessionCookie() {
   return [
     `${SESSION_COOKIE}=`,
     "Path=/",
     "HttpOnly",
-    "Secure",
     "SameSite=Lax",
+    "Secure",
     "Max-Age=0"
   ].join("; ");
 }
 
+
+/* =========================
+   SESSION
+   ========================= */
+
 async function createSession(env) {
+
   const id = crypto.randomUUID();
 
   const expiresAt = new Date(
-    Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000
+    Date.now() + SESSION_DURATION
   ).toISOString();
 
-  await env.DB.prepare(
-    `INSERT INTO admin_sessions (id, expires_at)
-     VALUES (?, ?)`
-  )
+  await env.DB.prepare(`
+    INSERT INTO admin_sessions
+    (id, expires_at)
+    VALUES (?, ?)
+  `)
     .bind(id, expiresAt)
     .run();
 
-  return id;
+  return {
+    id,
+    expiresAt
+  };
 }
 
-async function getSession(request, env) {
-  const sessionId = getCookie(request, SESSION_COOKIE);
+
+async function isLoggedIn(request, env) {
+
+  const sessionId =
+    getCookie(request, SESSION_COOKIE);
 
   if (!sessionId) {
-    return null;
-  }
-
-  const session = await env.DB.prepare(
-    `SELECT id, expires_at
-     FROM admin_sessions
-     WHERE id = ?
-     LIMIT 1`
-  )
-    .bind(sessionId)
-    .first();
-
-  if (!session) {
-    return null;
-  }
-
-  if (new Date(session.expires_at).getTime() <= Date.now()) {
-    await env.DB.prepare(
-      `DELETE FROM admin_sessions WHERE id = ?`
-    )
-      .bind(sessionId)
-      .run();
-
-    return null;
-  }
-
-  return session;
-}
-
-async function requireAdmin(request, env) {
-  const session = await getSession(request, env);
-
-  if (!session) {
     return false;
   }
 
-  return true;
+  const session =
+    await env.DB.prepare(`
+      SELECT id
+      FROM admin_sessions
+      WHERE id = ?
+      AND expires_at > datetime('now')
+      LIMIT 1
+    `)
+      .bind(sessionId)
+      .first();
+
+  return !!session;
 }
 
+
+async function requireLogin(request, env) {
+
+  return await isLoggedIn(request, env);
+
+}
+
+
+/* =========================
+   LOGIN
+   ========================= */
+
 async function handleLogin(request, env) {
+
   let body;
 
   try {
+
     body = await request.json();
+
   } catch {
-    return json(
-      {
-        success: false,
-        message: "Invalid request."
-      },
-      400
-    );
+
+    return json({
+      success: false,
+      message: "Invalid request."
+    }, 400);
+
   }
 
-  const username = String(body.username || "");
-  const password = String(body.password || "");
+
+  const username =
+    String(body.username || "").trim();
+
+  const password =
+    String(body.password || "");
+
+
+  /*
+   * IMPORTANT:
+   *
+   * Username comes from ADMIN_USERNAME above.
+   *
+   * Password comes from the Cloudflare Secret:
+   *
+   * ADMIN_PASSWORD
+   */
 
   if (
     username !== ADMIN_USERNAME ||
-    !env.ADMIN_PASSWORD ||
     password !== env.ADMIN_PASSWORD
   ) {
-    return json(
-      {
-        success: false,
-        message: "Invalid username or password."
-      },
-      401
-    );
+
+    return json({
+      success: false,
+      message: "Invalid username or password."
+    }, 401);
+
   }
 
-  const sessionId = await createSession(env);
+
+  const session =
+    await createSession(env);
+
 
   return new Response(
     JSON.stringify({
@@ -151,25 +186,41 @@ async function handleLogin(request, env) {
     }),
     {
       status: 200,
+
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        "Set-Cookie": sessionCookie(sessionId)
+        "Content-Type":
+          "application/json; charset=utf-8",
+
+        "Set-Cookie":
+          sessionCookie(session.id)
       }
     }
   );
+
 }
+
+
+/* =========================
+   LOGOUT
+   ========================= */
 
 async function handleLogout(request, env) {
-  const sessionId = getCookie(request, SESSION_COOKIE);
+
+  const sessionId =
+    getCookie(request, SESSION_COOKIE);
+
 
   if (sessionId) {
-    await env.DB.prepare(
-      `DELETE FROM admin_sessions WHERE id = ?`
-    )
+
+    await env.DB.prepare(`
+      DELETE FROM admin_sessions
+      WHERE id = ?
+    `)
       .bind(sessionId)
       .run();
+
   }
+
 
   return new Response(
     JSON.stringify({
@@ -177,190 +228,257 @@ async function handleLogout(request, env) {
     }),
     {
       status: 200,
+
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        "Set-Cookie": clearSessionCookie()
+        "Content-Type":
+          "application/json; charset=utf-8",
+
+        "Set-Cookie":
+          clearSessionCookie()
       }
     }
   );
+
 }
 
+
+/* =========================
+   CHECK LOGIN
+   ========================= */
+
 async function handleMe(request, env) {
-  const loggedIn = await requireAdmin(request, env);
+
+  const loggedIn =
+    await isLoggedIn(request, env);
+
 
   return json({
     loggedIn
   });
+
 }
 
-async function handleGetCakes(request, env) {
-  if (!(await requireAdmin(request, env))) {
-    return json(
-      {
-        success: false,
-        message: "Unauthorized."
-      },
-      401
-    );
+
+/* =========================
+   GET CAKES
+   ========================= */
+
+async function getCakes(request, env) {
+
+  if (!(await requireLogin(request, env))) {
+
+    return json({
+      success: false,
+      message: "Not authorized."
+    }, 401);
+
   }
 
-  const result = await env.DB.prepare(
-    `SELECT *
-     FROM cakes
-     ORDER BY display_order ASC, id DESC`
-  ).all();
+
+  const result =
+    await env.DB.prepare(`
+      SELECT
+        id,
+        name,
+        description,
+        price,
+        category,
+        image_url,
+        available,
+        display_order,
+        created_at
+      FROM cakes
+      ORDER BY display_order ASC, id ASC
+    `)
+      .all();
+
 
   return json({
     success: true,
     cakes: result.results || []
   });
+
 }
 
-async function handleCreateCake(request, env) {
-  if (!(await requireAdmin(request, env))) {
-    return json(
-      {
-        success: false,
-        message: "Unauthorized."
-      },
-      401
-    );
+
+/* =========================
+   ADD CAKE
+   ========================= */
+
+async function addCake(request, env) {
+
+  if (!(await requireLogin(request, env))) {
+
+    return json({
+      success: false,
+      message: "Not authorized."
+    }, 401);
+
   }
+
 
   let body;
 
   try {
+
     body = await request.json();
+
   } catch {
-    return json(
-      {
-        success: false,
-        message: "Invalid request."
-      },
-      400
-    );
+
+    return json({
+      success: false,
+      message: "Invalid request."
+    }, 400);
+
   }
 
-  const name = String(body.name || "").trim();
+
+  const name =
+    String(body.name || "").trim();
+
+  const description =
+    String(body.description || "").trim();
+
+  const price =
+    String(body.price || "").trim();
+
+  const category =
+    String(body.category || "").trim();
+
+  const imageUrl =
+    String(body.image_url || "").trim();
+
+  const displayOrder =
+    Number(body.display_order || 0);
+
+  const available =
+    body.available === false ? 0 : 1;
+
 
   if (!name) {
-    return json(
-      {
-        success: false,
-        message: "Cake name is required."
-      },
-      400
-    );
+
+    return json({
+      success: false,
+      message: "Cake name is required."
+    }, 400);
+
   }
 
-  const description = String(body.description || "").trim();
-  const price = String(body.price || "").trim();
-  const category = String(body.category || "").trim();
-  const imageUrl = String(body.image_url || "").trim();
-  const displayOrder = Number(body.display_order || 0);
-  const available = body.available === false ? 0 : 1;
 
-  const result = await env.DB.prepare(
-    `INSERT INTO cakes
-      (name, description, price, category, image_url, available, display_order)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`
-  )
-    .bind(
-      name,
-      description,
-      price,
-      category,
-      imageUrl,
-      available,
-      displayOrder
-    )
-    .run();
+  const result =
+    await env.DB.prepare(`
+      INSERT INTO cakes
+      (
+        name,
+        description,
+        price,
+        category,
+        image_url,
+        available,
+        display_order
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `)
+      .bind(
+        name,
+        description,
+        price,
+        category,
+        imageUrl,
+        available,
+        displayOrder
+      )
+      .run();
+
 
   return json({
     success: true,
     id: result.meta?.last_row_id || null
   });
+
 }
 
-async function handleDeleteCake(request, env, id) {
-  if (!(await requireAdmin(request, env))) {
-    return json(
-      {
-        success: false,
-        message: "Unauthorized."
-      },
-      401
-    );
+
+/* =========================
+   UPDATE CAKE
+   ========================= */
+
+async function updateCake(
+  request,
+  env,
+  id
+) {
+
+  if (!(await requireLogin(request, env))) {
+
+    return json({
+      success: false,
+      message: "Not authorized."
+    }, 401);
+
   }
 
-  await env.DB.prepare(
-    `DELETE FROM cakes WHERE id = ?`
-  )
-    .bind(id)
-    .run();
-
-  return json({
-    success: true
-  });
-}
-
-async function handleUpdateCake(request, env, id) {
-  if (!(await requireAdmin(request, env))) {
-    return json(
-      {
-        success: false,
-        message: "Unauthorized."
-      },
-      401
-    );
-  }
 
   let body;
 
   try {
+
     body = await request.json();
+
   } catch {
-    return json(
-      {
-        success: false,
-        message: "Invalid request."
-      },
-      400
-    );
+
+    return json({
+      success: false,
+      message: "Invalid request."
+    }, 400);
+
   }
 
-  const name = String(body.name || "").trim();
+
+  const name =
+    String(body.name || "").trim();
+
+  const description =
+    String(body.description || "").trim();
+
+  const price =
+    String(body.price || "").trim();
+
+  const category =
+    String(body.category || "").trim();
+
+  const imageUrl =
+    String(body.image_url || "").trim();
+
+  const displayOrder =
+    Number(body.display_order || 0);
+
+  const available =
+    body.available === false ? 0 : 1;
+
 
   if (!name) {
-    return json(
-      {
-        success: false,
-        message: "Cake name is required."
-      },
-      400
-    );
+
+    return json({
+      success: false,
+      message: "Cake name is required."
+    }, 400);
+
   }
 
-  const description = String(body.description || "").trim();
-  const price = String(body.price || "").trim();
-  const category = String(body.category || "").trim();
-  const imageUrl = String(body.image_url || "").trim();
-  const displayOrder = Number(body.display_order || 0);
-  const available = body.available === false ? 0 : 1;
 
-  await env.DB.prepare(
-    `UPDATE cakes
-     SET
-       name = ?,
-       description = ?,
-       price = ?,
-       category = ?,
-       image_url = ?,
-       available = ?,
-       display_order = ?
-     WHERE id = ?`
-  )
+  await env.DB.prepare(`
+    UPDATE cakes
+    SET
+      name = ?,
+      description = ?,
+      price = ?,
+      category = ?,
+      image_url = ?,
+      available = ?,
+      display_order = ?
+    WHERE id = ?
+  `)
     .bind(
       name,
       description,
@@ -373,77 +491,293 @@ async function handleUpdateCake(request, env, id) {
     )
     .run();
 
+
   return json({
     success: true
   });
+
 }
 
-async function handleApi(request, env) {
-  const url = new URL(request.url);
 
-  if (url.pathname === "/api/login" && request.method === "POST") {
-    return handleLogin(request, env);
+/* =========================
+   DELETE CAKE
+   ========================= */
+
+async function deleteCake(
+  request,
+  env,
+  id
+) {
+
+  if (!(await requireLogin(request, env))) {
+
+    return json({
+      success: false,
+      message: "Not authorized."
+    }, 401);
+
   }
 
-  if (url.pathname === "/api/logout" && request.method === "POST") {
-    return handleLogout(request, env);
+
+  await env.DB.prepare(`
+    DELETE FROM cakes
+    WHERE id = ?
+  `)
+    .bind(id)
+    .run();
+
+
+  return json({
+    success: true
+  });
+
+}
+
+
+/* =========================
+   PUBLIC CAKES
+   ========================= */
+
+async function getPublicCakes(
+  request,
+  env
+) {
+
+  const result =
+    await env.DB.prepare(`
+      SELECT
+        id,
+        name,
+        description,
+        price,
+        category,
+        image_url,
+        display_order
+      FROM cakes
+      WHERE available = 1
+      ORDER BY display_order ASC, id ASC
+    `)
+      .all();
+
+
+  return json({
+    success: true,
+    cakes: result.results || []
+  });
+
+}
+
+
+/* =========================
+   API ROUTER
+   ========================= */
+
+async function handleApi(
+  request,
+  env
+) {
+
+  const url =
+    new URL(request.url);
+
+  const path =
+    url.pathname;
+
+
+  /* LOGIN */
+
+  if (
+    path === "/api/login" &&
+    request.method === "POST"
+  ) {
+
+    return handleLogin(
+      request,
+      env
+    );
+
   }
 
-  if (url.pathname === "/api/me" && request.method === "GET") {
-    return handleMe(request, env);
+
+  /* LOGOUT */
+
+  if (
+    path === "/api/logout" &&
+    request.method === "POST"
+  ) {
+
+    return handleLogout(
+      request,
+      env
+    );
+
   }
 
-  if (url.pathname === "/api/cakes" && request.method === "GET") {
-    return handleGetCakes(request, env);
+
+  /* CHECK LOGIN */
+
+  if (
+    path === "/api/me" &&
+    request.method === "GET"
+  ) {
+
+    return handleMe(
+      request,
+      env
+    );
+
   }
 
-  if (url.pathname === "/api/cakes" && request.method === "POST") {
-    return handleCreateCake(request, env);
+
+  /* PUBLIC CAKES */
+
+  if (
+    path === "/api/public/cakes" &&
+    request.method === "GET"
+  ) {
+
+    return getPublicCakes(
+      request,
+      env
+    );
+
   }
 
-  const cakeMatch = url.pathname.match(/^\/api\/cakes\/(\d+)$/);
+
+  /* GET ALL CAKES */
+
+  if (
+    path === "/api/cakes" &&
+    request.method === "GET"
+  ) {
+
+    return getCakes(
+      request,
+      env
+    );
+
+  }
+
+
+  /* ADD CAKE */
+
+  if (
+    path === "/api/cakes" &&
+    request.method === "POST"
+  ) {
+
+    return addCake(
+      request,
+      env
+    );
+
+  }
+
+
+  /* UPDATE / DELETE CAKE */
+
+  const cakeMatch =
+    path.match(
+      /^\/api\/cakes\/(\d+)$/
+    );
+
 
   if (cakeMatch) {
-    const id = Number(cakeMatch[1]);
 
-    if (request.method === "PUT") {
-      return handleUpdateCake(request, env, id);
+    const id =
+      Number(cakeMatch[1]);
+
+
+    if (
+      request.method === "PUT"
+    ) {
+
+      return updateCake(
+        request,
+        env,
+        id
+      );
+
     }
 
-    if (request.method === "DELETE") {
-      return handleDeleteCake(request, env, id);
+
+    if (
+      request.method === "DELETE"
+    ) {
+
+      return deleteCake(
+        request,
+        env,
+        id
+      );
+
     }
+
   }
 
-  return json(
-    {
-      success: false,
-      message: "API route not found."
-    },
-    404
-  );
+
+  return json({
+    success: false,
+    message: "API route not found."
+  }, 404);
+
 }
 
+
+/* =========================
+   MAIN WORKER
+   ========================= */
+
 export default {
+
   async fetch(request, env) {
-    const url = new URL(request.url);
 
-    if (url.pathname.startsWith("/api/")) {
+    const url =
+      new URL(request.url);
+
+
+    /*
+     * All /api/* requests go
+     * through our Worker.
+     */
+
+    if (
+      url.pathname.startsWith("/api/")
+    ) {
+
       try {
-        return await handleApi(request, env);
-      } catch (error) {
-        console.error(error);
 
-        return json(
-          {
-            success: false,
-            message: "Server error."
-          },
-          500
+        return await handleApi(
+          request,
+          env
         );
+
+      } catch (error) {
+
+        console.error(
+          "API error:",
+          error
+        );
+
+        return json({
+          success: false,
+          message: "Server error."
+        }, 500);
+
       }
+
     }
 
-    return env.ASSETS.fetch(request);
+
+    /*
+     * Everything else is served
+     * by the static assets system.
+     */
+
+    return env.ASSETS.fetch(
+      request
+    );
+
   }
+
 };
