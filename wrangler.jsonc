@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "arpitas-oven-2",
+  "main": "./worker.js",
+  "compatibility_date": "2026-09-29",
+
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS"
+  }
+}
