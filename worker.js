@@ -1,199 +1,24 @@
-// Arpita's Oven admin deployment test
-const ADMIN_USERNAME = "arpitasovenadmin";
-const SESSION_COOKIE = "ao_admin_session";
-const SESSION_DURATION = 24 * 60 * 60 * 1000;
+/* =========================================
+   ARPITA'S OVEN
+   SIMPLE ADMIN WORKER
+   No username / password
+   ========================================= */
 
 
-/* =========================
-   RESPONSE HELPERS
-   ========================= */
+/* =========================================
+   JSON RESPONSE
+   ========================================= */
 
 function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8"
-    }
-  });
-}
-
-
-/* =========================
-   COOKIE HELPERS
-   ========================= */
-
-function getCookie(request, name) {
-  const cookieHeader = request.headers.get("Cookie");
-
-  if (!cookieHeader) {
-    return null;
-  }
-
-  const cookies = cookieHeader.split(";");
-
-  for (const cookie of cookies) {
-    const [key, ...valueParts] = cookie.trim().split("=");
-
-    if (key === name) {
-      return decodeURIComponent(valueParts.join("="));
-    }
-  }
-
-  return null;
-}
-
-
-function sessionCookie(id) {
-  return [
-    `${SESSION_COOKIE}=${encodeURIComponent(id)}`,
-    "Path=/",
-    "HttpOnly",
-    "SameSite=Lax",
-    "Secure",
-    `Max-Age=${Math.floor(SESSION_DURATION / 1000)}`
-  ].join("; ");
-}
-
-
-function clearSessionCookie() {
-  return [
-    `${SESSION_COOKIE}=`,
-    "Path=/",
-    "HttpOnly",
-    "SameSite=Lax",
-    "Secure",
-    "Max-Age=0"
-  ].join("; ");
-}
-
-
-/* =========================
-   SESSION
-   ========================= */
-
-async function createSession(env) {
-
-  const id = crypto.randomUUID();
-
-  const expiresAt = new Date(
-    Date.now() + SESSION_DURATION
-  ).toISOString();
-
-  await env.DB.prepare(`
-    INSERT INTO admin_sessions
-    (id, expires_at)
-    VALUES (?, ?)
-  `)
-    .bind(id, expiresAt)
-    .run();
-
-  return {
-    id,
-    expiresAt
-  };
-}
-
-
-async function isLoggedIn(request, env) {
-
-  const sessionId =
-    getCookie(request, SESSION_COOKIE);
-
-  if (!sessionId) {
-    return false;
-  }
-
-  const session =
-    await env.DB.prepare(`
-      SELECT id
-      FROM admin_sessions
-      WHERE id = ?
-      AND expires_at > datetime('now')
-      LIMIT 1
-    `)
-      .bind(sessionId)
-      .first();
-
-  return !!session;
-}
-
-
-async function requireLogin(request, env) {
-
-  return await isLoggedIn(request, env);
-
-}
-
-
-/* =========================
-   LOGIN
-   ========================= */
-
-async function handleLogin(request, env) {
-
-  let body;
-
-  try {
-
-    body = await request.json();
-
-  } catch {
-
-    return json({
-      success: false,
-      message: "Invalid request."
-    }, 400);
-
-  }
-
-
-  const username =
-    String(body.username || "").trim();
-
-  const password =
-    String(body.password || "");
-
-
-  /*
-   * IMPORTANT:
-   *
-   * Username comes from ADMIN_USERNAME above.
-   *
-   * Password comes from the Cloudflare Secret:
-   *
-   * ADMIN_PASSWORD
-   */
-
-  if (
-    username !== ADMIN_USERNAME ||
-    password !== env.ADMIN_PASSWORD
-  ) {
-
-    return json({
-      success: false,
-      message: "Invalid username or password."
-    }, 401);
-
-  }
-
-
-  const session =
-    await createSession(env);
-
 
   return new Response(
-    JSON.stringify({
-      success: true
-    }),
+    JSON.stringify(data),
     {
-      status: 200,
+      status,
 
       headers: {
         "Content-Type":
-          "application/json; charset=utf-8",
-
-        "Set-Cookie":
-          sessionCookie(session.id)
+          "application/json; charset=utf-8"
       }
     }
   );
@@ -201,80 +26,12 @@ async function handleLogin(request, env) {
 }
 
 
-/* =========================
-   LOGOUT
-   ========================= */
+/* =========================================
+   GET ALL CAKES
+   Admin dashboard
+   ========================================= */
 
-async function handleLogout(request, env) {
-
-  const sessionId =
-    getCookie(request, SESSION_COOKIE);
-
-
-  if (sessionId) {
-
-    await env.DB.prepare(`
-      DELETE FROM admin_sessions
-      WHERE id = ?
-    `)
-      .bind(sessionId)
-      .run();
-
-  }
-
-
-  return new Response(
-    JSON.stringify({
-      success: true
-    }),
-    {
-      status: 200,
-
-      headers: {
-        "Content-Type":
-          "application/json; charset=utf-8",
-
-        "Set-Cookie":
-          clearSessionCookie()
-      }
-    }
-  );
-
-}
-
-
-/* =========================
-   CHECK LOGIN
-   ========================= */
-
-async function handleMe(request, env) {
-
-  const loggedIn =
-    await isLoggedIn(request, env);
-
-
-  return json({
-    loggedIn
-  });
-
-}
-
-
-/* =========================
-   GET CAKES
-   ========================= */
-
-async function getCakes(request, env) {
-
-  if (!(await requireLogin(request, env))) {
-
-    return json({
-      success: false,
-      message: "Not authorized."
-    }, 401);
-
-  }
-
+async function getCakes(env) {
 
   const result =
     await env.DB.prepare(`
@@ -302,21 +59,11 @@ async function getCakes(request, env) {
 }
 
 
-/* =========================
+/* =========================================
    ADD CAKE
-   ========================= */
+   ========================================= */
 
 async function addCake(request, env) {
-
-  if (!(await requireLogin(request, env))) {
-
-    return json({
-      success: false,
-      message: "Not authorized."
-    }, 401);
-
-  }
-
 
   let body;
 
@@ -400,25 +147,15 @@ async function addCake(request, env) {
 }
 
 
-/* =========================
+/* =========================================
    UPDATE CAKE
-   ========================= */
+   ========================================= */
 
 async function updateCake(
   request,
   env,
   id
 ) {
-
-  if (!(await requireLogin(request, env))) {
-
-    return json({
-      success: false,
-      message: "Not authorized."
-    }, 401);
-
-  }
-
 
   let body;
 
@@ -500,25 +237,14 @@ async function updateCake(
 }
 
 
-/* =========================
+/* =========================================
    DELETE CAKE
-   ========================= */
+   ========================================= */
 
 async function deleteCake(
-  request,
   env,
   id
 ) {
-
-  if (!(await requireLogin(request, env))) {
-
-    return json({
-      success: false,
-      message: "Not authorized."
-    }, 401);
-
-  }
-
 
   await env.DB.prepare(`
     DELETE FROM cakes
@@ -535,14 +261,12 @@ async function deleteCake(
 }
 
 
-/* =========================
+/* =========================================
    PUBLIC CAKES
-   ========================= */
+   Only available cakes
+   ========================================= */
 
-async function getPublicCakes(
-  request,
-  env
-) {
+async function getPublicCakes(env) {
 
   const result =
     await env.DB.prepare(`
@@ -569,9 +293,9 @@ async function getPublicCakes(
 }
 
 
-/* =========================
+/* =========================================
    API ROUTER
-   ========================= */
+   ========================================= */
 
 async function handleApi(
   request,
@@ -585,82 +309,37 @@ async function handleApi(
     url.pathname;
 
 
-  /* LOGIN */
-
-  if (
-    path === "/api/login" &&
-    request.method === "POST"
-  ) {
-
-    return handleLogin(
-      request,
-      env
-    );
-
-  }
-
-
-  /* LOGOUT */
-
-  if (
-    path === "/api/logout" &&
-    request.method === "POST"
-  ) {
-
-    return handleLogout(
-      request,
-      env
-    );
-
-  }
-
-
-  /* CHECK LOGIN */
-
-  if (
-    path === "/api/me" &&
-    request.method === "GET"
-  ) {
-
-    return handleMe(
-      request,
-      env
-    );
-
-  }
-
-
-  /* PUBLIC CAKES */
+  /* -----------------------------------------
+     PUBLIC CAKES
+     ----------------------------------------- */
 
   if (
     path === "/api/public/cakes" &&
     request.method === "GET"
   ) {
 
-    return getPublicCakes(
-      request,
-      env
-    );
+    return getPublicCakes(env);
 
   }
 
 
-  /* GET ALL CAKES */
+  /* -----------------------------------------
+     ADMIN: GET CAKES
+     ----------------------------------------- */
 
   if (
     path === "/api/cakes" &&
     request.method === "GET"
   ) {
 
-    return getCakes(
-      request,
-      env
-    );
+    return getCakes(env);
 
   }
 
 
-  /* ADD CAKE */
+  /* -----------------------------------------
+     ADMIN: ADD CAKE
+     ----------------------------------------- */
 
   if (
     path === "/api/cakes" &&
@@ -675,19 +354,23 @@ async function handleApi(
   }
 
 
-  /* UPDATE / DELETE CAKE */
+  /* -----------------------------------------
+     ADMIN: SPECIFIC CAKE
+     ----------------------------------------- */
 
-  const cakeMatch =
+  const match =
     path.match(
       /^\/api\/cakes\/(\d+)$/
     );
 
 
-  if (cakeMatch) {
+  if (match) {
 
     const id =
-      Number(cakeMatch[1]);
+      Number(match[1]);
 
+
+    /* UPDATE */
 
     if (
       request.method === "PUT"
@@ -702,12 +385,13 @@ async function handleApi(
     }
 
 
+    /* DELETE */
+
     if (
       request.method === "DELETE"
     ) {
 
       return deleteCake(
-        request,
         env,
         id
       );
@@ -725,22 +409,22 @@ async function handleApi(
 }
 
 
-/* =========================
+/* =========================================
    MAIN WORKER
-   ========================= */
+   ========================================= */
 
 export default {
 
-  async fetch(request, env) {
+  async fetch(
+    request,
+    env
+  ) {
 
     const url =
       new URL(request.url);
 
 
-    /*
-     * All /api/* requests go
-     * through our Worker.
-     */
+    /* API */
 
     if (
       url.pathname.startsWith("/api/")
@@ -760,6 +444,7 @@ export default {
           error
         );
 
+
         return json({
           success: false,
           message: "Server error."
@@ -770,10 +455,7 @@ export default {
     }
 
 
-    /*
-     * Everything else is served
-     * by the static assets system.
-     */
+    /* WEBSITE */
 
     return env.ASSETS.fetch(
       request
