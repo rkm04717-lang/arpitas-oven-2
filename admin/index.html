@@ -39,6 +39,8 @@
       --danger: #b94b4b;
       --success: #47734d;
 
+      --border: #dfd1c5;
+
     }
 
 
@@ -67,6 +69,13 @@
     }
 
 
+    button {
+
+      cursor: pointer;
+
+    }
+
+
     /* =================================
        HEADER
        ================================= */
@@ -78,8 +87,6 @@
       align-items: center;
 
       justify-content: space-between;
-
-      gap: 20px;
 
       padding: 22px 5%;
 
@@ -116,6 +123,7 @@
       margin-left: 8px;
 
     }
+
 
 
     /* =================================
@@ -169,6 +177,7 @@
     }
 
 
+
     /* =================================
        GRID
        ================================= */
@@ -185,6 +194,7 @@
       align-items: start;
 
     }
+
 
 
     /* =================================
@@ -222,6 +232,7 @@
     }
 
 
+
     /* =================================
        FORM
        ================================= */
@@ -253,7 +264,7 @@
       width: 100%;
 
       border:
-        1px solid #dfd1c5;
+        1px solid var(--border);
 
       background:
         #fff;
@@ -290,6 +301,211 @@
     }
 
 
+
+    /* =================================
+       IMAGE UPLOAD
+       ================================= */
+
+    .image-upload-box {
+
+      border:
+        2px dashed #d9c8bb;
+
+      border-radius: 14px;
+
+      padding: 22px;
+
+      text-align: center;
+
+      background:
+        #fffaf6;
+
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+
+    }
+
+
+    .image-upload-box:hover {
+
+      border-color:
+        var(--peach);
+
+      background:
+        #fff7f1;
+
+    }
+
+
+    .upload-icon {
+
+      font-size: 34px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .upload-title {
+
+      font-weight: 700;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .upload-subtitle {
+
+      color:
+        var(--brown-soft);
+
+      font-size: 12px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .file-input {
+
+      display: none;
+
+    }
+
+
+    .choose-image-button {
+
+      display: inline-block;
+
+      padding:
+        10px 16px;
+
+      border-radius: 9px;
+
+      background:
+        var(--brown);
+
+      color:
+        white;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+    }
+
+
+    .choose-image-button:hover {
+
+      opacity: 0.9;
+
+    }
+
+
+
+    /* =================================
+       IMAGE PREVIEW
+       ================================= */
+
+    .image-preview-wrapper {
+
+      display: none;
+
+      margin-top: 18px;
+
+    }
+
+
+    .image-preview-wrapper.visible {
+
+      display: block;
+
+    }
+
+
+    .image-preview {
+
+      display: block;
+
+      width: 100%;
+
+      max-height: 280px;
+
+      object-fit: cover;
+
+      border-radius: 12px;
+
+      border:
+        1px solid #eaded4;
+
+    }
+
+
+    .image-preview-info {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-top: 10px;
+
+    }
+
+
+    .image-file-name {
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+      color:
+        var(--brown-soft);
+
+      font-size: 12px;
+
+    }
+
+
+    .remove-image-button {
+
+      flex-shrink: 0;
+
+      border:
+        1px solid #e0c9c0;
+
+      background:
+        white;
+
+      color:
+        var(--danger);
+
+      padding:
+        7px 10px;
+
+      border-radius: 7px;
+
+      font-size: 12px;
+
+    }
+
+
+
+    /* =================================
+       PRIMARY BUTTON
+       ================================= */
+
     .primary-button {
 
       width: 100%;
@@ -311,6 +527,10 @@
 
       font-weight: 700;
 
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
     }
 
 
@@ -318,7 +538,22 @@
 
       opacity: 0.9;
 
+      transform:
+        translateY(-1px);
+
     }
+
+
+    .primary-button:disabled {
+
+      opacity: 0.55;
+
+      cursor: not-allowed;
+
+      transform: none;
+
+    }
+
 
 
     /* =================================
@@ -346,6 +581,44 @@
     }
 
 
+    .cake-item-inner {
+
+      display: flex;
+
+      gap: 15px;
+
+      align-items: flex-start;
+
+    }
+
+
+    .cake-thumbnail {
+
+      width: 90px;
+
+      height: 90px;
+
+      flex-shrink: 0;
+
+      object-fit: cover;
+
+      border-radius: 10px;
+
+      background:
+        var(--cream-dark);
+
+    }
+
+
+    .cake-item-content {
+
+      flex: 1;
+
+      min-width: 0;
+
+    }
+
+
     .cake-item h3 {
 
       margin:
@@ -364,7 +637,8 @@
 
     .cake-item p {
 
-      margin: 5px 0;
+      margin:
+        5px 0;
 
       color:
         var(--brown-soft);
@@ -440,7 +714,10 @@
       color:
         var(--success);
 
+      min-height: 18px;
+
     }
+
 
 
     /* =================================
@@ -488,6 +765,23 @@
 
         padding:
           22px;
+
+      }
+
+
+      .cake-item-inner {
+
+        flex-direction:
+          column;
+
+      }
+
+
+      .cake-thumbnail {
+
+        width: 100%;
+
+        height: 180px;
 
       }
 
@@ -559,6 +853,8 @@
       <form id="cakeForm">
 
 
+        <!-- CAKE NAME -->
+
         <div class="field">
 
           <label for="cakeName">
@@ -575,6 +871,8 @@
 
 
 
+        <!-- CATEGORY -->
+
         <div class="field">
 
           <label for="cakeCategory">
@@ -590,6 +888,8 @@
 
 
 
+        <!-- DESCRIPTION -->
+
         <div class="field">
 
           <label for="cakeDescription">
@@ -598,12 +898,14 @@
 
           <textarea
             id="cakeDescription"
-            placeholder="A short description..."
+            placeholder="A rich chocolate cake layered with creamy chocolate truffle..."
           ></textarea>
 
         </div>
 
 
+
+        <!-- PRICE -->
 
         <div class="field">
 
@@ -613,28 +915,99 @@
 
           <input
             id="cakePrice"
-            placeholder="From ₹850"
+            placeholder="Starting from ₹850"
           >
 
         </div>
 
 
+
+        <!-- IMAGE -->
 
         <div class="field">
 
-          <label for="cakeImage">
-            Image URL
+          <label>
+            Cake image
           </label>
 
-          <input
-            id="cakeImage"
-            type="url"
-            placeholder="Photo URL for now"
+
+          <div
+            class="image-upload-box"
+            id="imageUploadBox"
           >
+
+            <div class="upload-icon">
+              📸
+            </div>
+
+
+            <div class="upload-title">
+              Add your cake photo
+            </div>
+
+
+            <div class="upload-subtitle">
+              Choose an image directly from your computer
+            </div>
+
+
+            <label
+              for="cakeImageFile"
+              class="choose-image-button"
+            >
+              Choose Image
+            </label>
+
+
+            <input
+              id="cakeImageFile"
+              class="file-input"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+            >
+
+
+            <!-- PREVIEW -->
+
+            <div
+              id="imagePreviewWrapper"
+              class="image-preview-wrapper"
+            >
+
+              <img
+                id="imagePreview"
+                class="image-preview"
+                alt="Cake image preview"
+              >
+
+
+              <div class="image-preview-info">
+
+                <span
+                  id="imageFileName"
+                  class="image-file-name"
+                ></span>
+
+
+                <button
+                  type="button"
+                  id="removeImageButton"
+                  class="remove-image-button"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
 
+
+        <!-- DISPLAY ORDER -->
 
         <div class="field">
 
@@ -652,7 +1025,10 @@
 
 
 
+        <!-- ADD BUTTON -->
+
         <button
+          id="addCakeButton"
           class="primary-button"
           type="submit"
         >
@@ -729,6 +1105,48 @@ const cakeStatus =
   );
 
 
+const cakeImageFile =
+  document.getElementById(
+    "cakeImageFile"
+  );
+
+
+const imagePreview =
+  document.getElementById(
+    "imagePreview"
+  );
+
+
+const imagePreviewWrapper =
+  document.getElementById(
+    "imagePreviewWrapper"
+  );
+
+
+const imageFileName =
+  document.getElementById(
+    "imageFileName"
+  );
+
+
+const removeImageButton =
+  document.getElementById(
+    "removeImageButton"
+  );
+
+
+const addCakeButton =
+  document.getElementById(
+    "addCakeButton"
+  );
+
+
+/* =================================
+   SELECTED IMAGE DATA
+   ================================= */
+
+let selectedImageData = "";
+
 
 /* =================================
    API HELPER
@@ -739,36 +1157,189 @@ async function api(
   options = {}
 ) {
 
-  const response =
-    await fetch(
-      url,
-      {
-        ...options
-      }
-    );
-
-
-  let data;
-
-
   try {
 
-    data =
-      await response.json();
+    const response =
+      await fetch(
+        url,
+        {
+          ...options
+        }
+      );
 
-  } catch {
 
-    data = {};
+    let data = {};
+
+
+    try {
+
+      data =
+        await response.json();
+
+    } catch {
+
+      data = {};
+
+    }
+
+
+    return {
+      response,
+      data
+    };
+
+  } catch (error) {
+
+    return {
+
+      response: null,
+
+      data: {
+
+        success: false,
+
+        message:
+          "Could not connect to the server."
+
+      }
+
+    };
 
   }
 
-
-  return {
-    response,
-    data
-  };
-
 }
+
+
+
+/* =================================
+   IMAGE FILE → DATA URL
+   ================================= */
+
+cakeImageFile.addEventListener(
+  "change",
+  function () {
+
+    const file =
+      this.files[0];
+
+
+    if (!file) {
+
+      return;
+
+    }
+
+
+    /*
+      Maximum image size for the
+      browser-side conversion.
+    */
+
+    const maxSize =
+      8 * 1024 * 1024;
+
+
+    if (
+      file.size > maxSize
+    ) {
+
+      alert(
+        "Please choose an image smaller than 8 MB."
+      );
+
+
+      this.value = "";
+
+      return;
+
+    }
+
+
+    if (
+      !file.type.startsWith(
+        "image/"
+      )
+    ) {
+
+      alert(
+        "Please choose an image file."
+      );
+
+
+      this.value = "";
+
+      return;
+
+    }
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload = function (
+      event
+    ) {
+
+      selectedImageData =
+        event.target.result;
+
+
+      imagePreview.src =
+        selectedImageData;
+
+
+      imageFileName.textContent =
+        file.name;
+
+
+      imagePreviewWrapper.classList.add(
+        "visible"
+      );
+
+    };
+
+
+    reader.onerror = function () {
+
+      alert(
+        "Could not read this image."
+      );
+
+    };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+  }
+);
+
+
+
+/* =================================
+   REMOVE IMAGE
+   ================================= */
+
+removeImageButton.addEventListener(
+  "click",
+  function () {
+
+    selectedImageData = "";
+
+    cakeImageFile.value = "";
+
+    imagePreview.src = "";
+
+    imageFileName.textContent = "";
+
+    imagePreviewWrapper.classList.remove(
+      "visible"
+    );
+
+  }
+);
 
 
 
@@ -842,44 +1413,75 @@ async function loadCakes() {
         "cake-item";
 
 
+      const image =
+        cake.image_url
+          ? `
+            <img
+              class="cake-thumbnail"
+              src="${escapeHtml(
+                cake.image_url
+              )}"
+              alt="${escapeHtml(
+                cake.name
+              )}"
+            >
+          `
+          : `
+            <div
+              class="cake-thumbnail"
+            ></div>
+          `;
+
+
       item.innerHTML = `
 
-        <h3>
-          ${escapeHtml(
-            cake.name
-          )}
-        </h3>
+        <div class="cake-item-inner">
 
-        <p>
-          ${escapeHtml(
-            cake.category ||
-            "No category"
-          )}
-        </p>
+          ${image}
 
-        <p>
-          ${escapeHtml(
-            cake.price ||
-            "Price not set"
-          )}
-        </p>
+          <div class="cake-item-content">
 
-        <p>
-          ${escapeHtml(
-            cake.description ||
-            ""
-          )}
-        </p>
+            <h3>
+              ${escapeHtml(
+                cake.name
+              )}
+            </h3>
 
-        <div
-          class="cake-item-actions"
-        >
+            <p>
+              ${escapeHtml(
+                cake.category ||
+                "No category"
+              )}
+            </p>
 
-          <button
-            class="small-button delete-button"
-          >
-            Delete
-          </button>
+            <p>
+              ${escapeHtml(
+                cake.price ||
+                "Price not set"
+              )}
+            </p>
+
+            <p>
+              ${escapeHtml(
+                cake.description ||
+                ""
+              )}
+            </p>
+
+            <div
+              class="cake-item-actions"
+            >
+
+              <button
+                class="small-button delete-button"
+                type="button"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -952,6 +1554,13 @@ async function deleteCake(
 
     loadCakes();
 
+  } else {
+
+    alert(
+      result.data.message ||
+      "Could not delete the cake."
+    );
+
   }
 
 }
@@ -964,9 +1573,28 @@ async function deleteCake(
 
 cakeForm.addEventListener(
   "submit",
-  async (event) => {
+  async function (event) {
 
     event.preventDefault();
+
+
+    /*
+      Require an image.
+    */
+
+    if (
+      !selectedImageData
+    ) {
+
+      cakeStatus.textContent =
+        "Please choose a cake image first.";
+
+      cakeStatus.style.color =
+        "#b94b4b";
+
+      return;
+
+    }
 
 
     cakeStatus.textContent =
@@ -975,6 +1603,10 @@ cakeForm.addEventListener(
 
     cakeStatus.style.color =
       "#47734d";
+
+
+    addCakeButton.disabled =
+      true;
 
 
     const cake = {
@@ -1011,13 +1643,13 @@ cakeForm.addEventListener(
           .value
           .trim(),
 
+      /*
+        The selected PC image is
+        converted to a data URL.
+      */
+
       image_url:
-        document
-          .getElementById(
-            "cakeImage"
-          )
-          .value
-          .trim(),
+        selectedImageData,
 
       display_order:
         Number(
@@ -1043,8 +1675,10 @@ cakeForm.addEventListener(
             "POST",
 
           headers: {
+
             "Content-Type":
               "application/json"
+
           },
 
           body:
@@ -1054,6 +1688,10 @@ cakeForm.addEventListener(
 
         }
       );
+
+
+    addCakeButton.disabled =
+      false;
 
 
     if (
@@ -1082,9 +1720,22 @@ cakeForm.addEventListener(
       .value = "0";
 
 
+    selectedImageData =
+      "";
+
+    imagePreview.src =
+      "";
+
+    imageFileName.textContent =
+      "";
+
+    imagePreviewWrapper.classList.remove(
+      "visible"
+    );
+
+
     cakeStatus.textContent =
       "Cake added to the batch.";
-
 
     cakeStatus.style.color =
       "#47734d";
