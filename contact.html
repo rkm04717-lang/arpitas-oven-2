@@ -18,6 +18,7 @@
   >
 
   <!-- FAVICON -->
+
   <link
     rel="icon"
     type="image/png"
@@ -29,6 +30,39 @@
     href="css/style.css"
   >
 
+
+  <style>
+
+    /* HEADER LOGO */
+
+    .site-header .header-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .site-header .header-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+
+    @media (max-width: 600px) {
+
+      .site-header .header-logo {
+        width: 36px;
+        height: 36px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 
@@ -37,11 +71,19 @@
 
 <header class="site-header">
 
-  <a href="oven.html" class="brand">
 
-    <span class="brand-mark">
-      AO
-    </span>
+  <!-- LOGO -->
+
+  <a
+    href="oven.html"
+    class="header-brand"
+  >
+
+    <img
+      src="logo.png"
+      alt="Arpita's Oven Logo"
+      class="header-logo"
+    >
 
     <span>
       Arpita's Oven
@@ -49,6 +91,9 @@
 
   </a>
 
+
+
+  <!-- NAVIGATION -->
 
   <nav>
 
@@ -68,14 +113,20 @@
       The First Batch
     </a>
 
-    <a href="contact.html" class="active">
+    <a
+      href="contact.html"
+      class="active"
+    >
       Come Say Hi
     </a>
 
   </nav>
 
 
-  <a href="contact.html" class="nav-order">
+  <a
+    href="contact.html"
+    class="nav-order"
+  >
     Let's Bake →
   </a>
 
@@ -270,11 +321,25 @@
 
   <div class="footer-links">
 
-    <a href="oven.html">The Oven</a>
-    <a href="cakes.html">What's Baking?</a>
-    <a href="gallery.html">Fresh From the Oven</a>
-    <a href="story.html">The First Batch</a>
-    <a href="contact.html">Come Say Hi</a>
+    <a href="oven.html">
+      The Oven
+    </a>
+
+    <a href="cakes.html">
+      What's Baking?
+    </a>
+
+    <a href="gallery.html">
+      Fresh From the Oven
+    </a>
+
+    <a href="story.html">
+      The First Batch
+    </a>
+
+    <a href="contact.html">
+      Come Say Hi
+    </a>
 
   </div>
 
