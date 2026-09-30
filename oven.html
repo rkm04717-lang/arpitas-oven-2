@@ -39,7 +39,16 @@
 
 
     /* =========================================================
-       WHAT'S BAKING — MINIMAL SECTION
+       HERO TEXT POSITION
+    ========================================================= */
+
+    .hero .hero-inner {
+      transform: translateY(35px);
+    }
+
+
+    /* =========================================================
+       WHAT'S BAKING
     ========================================================= */
 
     .whats-baking-link {
@@ -105,6 +114,11 @@
     }
 
     @media (max-width: 600px) {
+
+      .hero .hero-inner {
+        transform: translateY(25px);
+      }
+
       .site-sparkles {
         z-index: 5;
       }
@@ -133,6 +147,7 @@
   <header class="site-header">
 
     <a href="oven.html" class="brand">
+
       <img
         src="logo.png"
         alt="Arpita's Oven Logo"
@@ -140,7 +155,9 @@
       >
 
       <span>Arpita's Oven</span>
+
     </a>
+
 
     <nav>
 
@@ -166,6 +183,7 @@
 
     </nav>
 
+
     <a href="contact.html" class="nav-order">
       Let's Bake →
     </a>
@@ -187,17 +205,23 @@
           WELCOME TO THE OVEN
         </p>
 
+
         <h1>
           Made with<br>
           <em>love.</em>
         </h1>
+
 
         <p class="hero-description">
           Homemade cakes, baked fresh and made especially
           for your sweetest moments.
         </p>
 
-        <a href="cakes.html" class="button button-light">
+
+        <a
+          href="cakes.html"
+          class="button button-light"
+        >
           What's Baking? →
         </a>
 
@@ -244,7 +268,7 @@
 
 
     <!-- =====================================================
-         CUSTOM CAKES CTA
+         CUSTOM CAKES
     ====================================================== -->
 
     <section class="custom-section">
@@ -255,10 +279,12 @@
           SOMETHING SPECIAL?
         </p>
 
+
         <h2>
           Tell us what<br>
           you're <em>imagining.</em>
         </h2>
+
 
         <p>
           From birthdays to celebrations and everything
@@ -266,7 +292,11 @@
           just for you.
         </p>
 
-        <a href="contact.html" class="button button-dark">
+
+        <a
+          href="contact.html"
+          class="button button-dark"
+        >
           Let's Bake Together →
         </a>
 
@@ -286,6 +316,7 @@
     <div class="footer-brand">
 
       <a href="oven.html" class="brand">
+
         <img
           src="logo.png"
           alt="Arpita's Oven Logo"
@@ -293,7 +324,9 @@
         >
 
         <span>Arpita's Oven</span>
+
       </a>
+
 
       <p>
         Homemade with love.
@@ -335,9 +368,7 @@
           SAY HELLO
         </p>
 
-        <a
-          href="contact.html"
-        >
+        <a href="contact.html">
           Come Say Hi
         </a>
 
@@ -378,24 +409,32 @@
   ======================================================== -->
 
   <script>
+
     (function () {
 
       if (document.querySelector(".site-sparkles")) {
         return;
       }
 
-      const container = document.createElement("div");
 
-      container.className = "site-sparkles";
+      const container =
+        document.createElement("div");
+
+      container.className =
+        "site-sparkles";
+
 
       const desktopCount = 7;
       const mobileCount = 5;
 
-      const isMobile = window.innerWidth <= 600;
+      const isMobile =
+        window.innerWidth <= 600;
 
-      const count = isMobile
-        ? mobileCount
-        : desktopCount;
+      const count =
+        isMobile
+          ? mobileCount
+          : desktopCount;
+
 
       const symbols = [
         "✦",
@@ -405,11 +444,15 @@
         "✧"
       ];
 
+
       for (let i = 0; i < count; i++) {
 
-        const sparkle = document.createElement("span");
+        const sparkle =
+          document.createElement("span");
 
-        sparkle.className = "site-sparkle";
+        sparkle.className =
+          "site-sparkle";
+
 
         sparkle.textContent =
           symbols[
@@ -418,31 +461,40 @@
             )
           ];
 
+
         sparkle.style.left =
           (8 + Math.random() * 84) + "%";
+
 
         sparkle.style.top =
           (10 + Math.random() * 78) + "%";
 
+
         sparkle.style.fontSize =
           (7 + Math.random() * 10) + "px";
+
 
         sparkle.style.animationDuration =
           (4 + Math.random() * 5) + "s";
 
+
         sparkle.style.animationDelay =
           (-Math.random() * 6) + "s";
 
+
         sparkle.style.opacity =
           (0.25 + Math.random() * 0.45);
+
 
         container.appendChild(sparkle);
 
       }
 
+
       document.body.appendChild(container);
 
     })();
+
   </script>
 
 </body>
