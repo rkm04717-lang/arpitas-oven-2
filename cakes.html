@@ -30,9 +30,9 @@
   >
 
 
-  <!-- PAGE-SPECIFIC SPACING -->
-
   <style>
+
+    /* PAGE-SPECIFIC SPACING */
 
     .cakes-page-hero {
       padding-left: 24px;
@@ -45,11 +45,36 @@
       margin-right: auto;
     }
 
+
+    /* HEADER LOGO */
+
+    .site-header .header-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .site-header .header-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+
     @media (max-width: 600px) {
 
       .cakes-page-hero {
         padding-left: 20px;
         padding-right: 20px;
+      }
+
+      .site-header .header-logo {
+        width: 36px;
+        height: 36px;
       }
 
     }
@@ -64,10 +89,29 @@
 
 <header class="site-header">
 
-  <a href="oven.html" class="site-logo">
-    Arpita's <span>Oven</span>
+
+  <!-- LOGO -->
+
+  <a
+    href="oven.html"
+    class="header-brand"
+  >
+
+    <img
+      src="logo.png"
+      alt="Arpita's Oven Logo"
+      class="header-logo"
+    >
+
+    <span>
+      Arpita's Oven
+    </span>
+
   </a>
 
+
+
+  <!-- NAVIGATION -->
 
   <nav class="site-nav">
 
@@ -75,7 +119,10 @@
       The Oven
     </a>
 
-    <a href="cakes.html" class="active">
+    <a
+      href="cakes.html"
+      class="active"
+    >
       What's Baking?
     </a>
 
