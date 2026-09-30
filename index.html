@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Arpita's Oven — Something Sweet Is Baking</title>
 
@@ -11,49 +15,127 @@
     content="Welcome to Arpita's Oven — home-baked cakes made with love for moments worth remembering."
   >
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <!-- MAIN STYLESHEET -->
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
 </head>
+
 
 <body class="entrance-page">
 
+  <!-- =========================================
+       QUICK ENTRY BUTTON
+       ========================================= -->
+
+  <a
+    href="oven.html"
+    class="quick-enter-oven"
+    aria-label="Enter the Oven"
+  >
+
+    <span>ENTER THE OVEN</span>
+
+    <span class="quick-enter-arrow">
+      →
+    </span>
+
+  </a>
+
+
+
+  <!-- =========================================
+       MAIN ENTRANCE
+       ========================================= -->
+
   <main class="entrance">
 
+    <!-- Background glow -->
     <div class="entrance-glow"></div>
+
+
+    <!-- =======================================
+         MAIN CONTENT
+         ======================================= -->
 
     <div class="entrance-content">
 
+
+      <!-- LOGO -->
+
       <img
         src="logo.png"
-        alt="Arpita's Oven Logo"
+        alt="Arpita's Oven"
         class="site-logo"
       >
+
+
+      <!-- SMALL LABEL -->
 
       <p class="tiny-label">
         HOME-BAKED SINCE 2021
       </p>
 
+
+      <!-- MAIN TITLE -->
+
       <h1>
-        Arpita's<br>
+        Arpita's
+        <br>
         <em>Oven</em>
       </h1>
 
+
+      <!-- DIVIDER -->
+
       <div class="divider"></div>
 
+
+      <!-- MAIN MESSAGE -->
+
       <p class="entrance-message">
-        Something sweet<br>
+        Something sweet
+        <br>
         is baking.
       </p>
+
+
+      <!-- SUBTITLE -->
 
       <p class="entrance-sub">
         Come in. There's always room for one more slice.
       </p>
 
-      <a href="oven.html" class="oven-button">
+
+      <!-- MAIN ENTER BUTTON -->
+
+      <a
+        href="oven.html"
+        class="oven-button"
+      >
+
         <span>🔥</span>
-        Enter the Oven
-        <span class="arrow">→</span>
+
+        <span>
+          Enter the Oven
+        </span>
+
+        <span class="arrow">
+          →
+        </span>
+
       </a>
+
+
+      <!-- SMALL NOTE -->
 
       <p class="entrance-note">
         Take your time. We saved you a seat.
@@ -61,21 +143,63 @@
 
     </div>
 
-    <!-- SCROLL INDICATOR -->
-    <a href="#explore" class="scroll-indicator" aria-label="Scroll down">
-      <span>SCROLL TO EXPLORE</span>
-      <span class="scroll-arrow">↓</span>
+
+
+    <!-- =========================================
+         SCROLL INDICATOR
+         ========================================= -->
+
+    <a
+      href="#explore"
+      class="scroll-indicator"
+      aria-label="Scroll down"
+    >
+
+      <span>
+        SCROLL TO EXPLORE
+      </span>
+
+      <span class="scroll-arrow">
+        ↓
+      </span>
+
     </a>
 
-    <div class="floating-crumb crumb-one">✦</div>
-    <div class="floating-crumb crumb-two">·</div>
-    <div class="floating-crumb crumb-three">✦</div>
+
+
+    <!-- =========================================
+         DECORATIVE ELEMENTS
+         ========================================= -->
+
+    <div class="floating-crumb crumb-one">
+      ✦
+    </div>
+
+    <div class="floating-crumb crumb-two">
+      ·
+    </div>
+
+    <div class="floating-crumb crumb-three">
+      ✦
+    </div>
 
   </main>
 
-  <!-- Scroll target -->
+
+
+  <!-- =========================================
+       SCROLL TARGET
+       ========================================= -->
+
   <div id="explore"></div>
 
+
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+
   <script src="js/main.js"></script>
+
 </body>
 </html>
