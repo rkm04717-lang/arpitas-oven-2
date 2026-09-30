@@ -1,43 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>The Oven — Arpita's Oven</title>
 
-  <meta
-    name="description"
-    content="Welcome to Arpita's Oven — home-baked cakes made with care for moments worth remembering."
-  >
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="css/style.css">
 
-  <!-- FAVICON -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <!-- MAIN CSS -->
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
-
-  <!-- HEADER LOGO SIZE -->
   <style>
+    /* =========================================================
+       HEADER LOGO
+    ========================================================= */
 
     .site-header .brand {
       display: inline-flex;
       align-items: center;
       gap: 11px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .site-header .header-logo {
@@ -48,631 +30,420 @@
       flex-shrink: 0;
     }
 
-  </style>
+    @media (max-width: 600px) {
+      .site-header .header-logo {
+        width: 36px;
+        height: 36px;
+      }
+    }
 
+
+    /* =========================================================
+       WHAT'S BAKING — MINIMAL SECTION
+    ========================================================= */
+
+    .whats-baking-link {
+      margin-top: 28px;
+    }
+
+    .whats-baking-link .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* =========================================================
+       SPARKLES
+    ========================================================= */
+
+    .site-sparkles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .site-sparkle {
+      position: absolute;
+      display: block;
+      font-family: Georgia, serif;
+      color: currentColor;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform, opacity;
+      animation: sparkleFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translate3d(0, 12px, 0) rotate(0deg) scale(.9);
+        opacity: .15;
+      }
+
+      25% {
+        transform: translate3d(4px, -5px, 0) rotate(8deg) scale(1);
+      }
+
+      50% {
+        transform: translate3d(-3px, -16px, 0) rotate(-6deg) scale(1.08);
+        opacity: .65;
+      }
+
+      75% {
+        transform: translate3d(3px, -6px, 0) rotate(5deg) scale(1);
+      }
+
+      100% {
+        transform: translate3d(0, 12px, 0) rotate(0deg) scale(.9);
+        opacity: .15;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-sparkles {
+        z-index: 5;
+      }
+
+      .site-sparkle {
+        animation-duration: 5s;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-sparkle {
+        animation: none;
+        opacity: .3;
+      }
+    }
+  </style>
 </head>
 
 
 <body>
 
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
 
-<header class="site-header">
+  <header class="site-header">
 
+    <a href="oven.html" class="brand">
+      <img
+        src="logo.png"
+        alt="Arpita's Oven Logo"
+        class="header-logo"
+      >
 
-  <!-- BRAND WITH REAL LOGO -->
-
-  <a
-    href="oven.html"
-    class="brand"
-  >
-
-    <img
-      src="logo.png"
-      alt="Arpita's Oven Logo"
-      class="header-logo"
-    >
-
-    <span>
-      Arpita's Oven
-    </span>
-
-  </a>
-
-
-
-  <!-- NAVIGATION -->
-
-  <nav>
-
-    <a
-      href="oven.html"
-      class="active"
-    >
-      The Oven
+      <span>Arpita's Oven</span>
     </a>
 
+    <nav>
 
-    <a href="cakes.html">
-      What's Baking?
+      <a href="oven.html" class="active">
+        The Oven
+      </a>
+
+      <a href="cakes.html">
+        What's Baking?
+      </a>
+
+      <a href="gallery.html">
+        Fresh From the Oven
+      </a>
+
+      <a href="story.html">
+        The First Batch
+      </a>
+
+      <a href="contact.html">
+        Come Say Hi
+      </a>
+
+    </nav>
+
+    <a href="contact.html" class="nav-order">
+      Let's Bake →
     </a>
 
-
-    <a href="gallery.html">
-      Fresh From the Oven
-    </a>
+  </header>
 
 
-    <a href="story.html">
-      The First Batch
-    </a>
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-inner">
+
+        <p class="eyebrow">
+          WELCOME TO THE OVEN
+        </p>
+
+        <h1>
+          Made with<br>
+          <em>love.</em>
+        </h1>
+
+        <p class="hero-description">
+          Homemade cakes, baked fresh and made especially
+          for your sweetest moments.
+        </p>
+
+        <a href="cakes.html" class="button button-light">
+          What's Baking? →
+        </a>
+
+      </div>
+
+    </section>
 
 
-    <a href="contact.html">
-      Come Say Hi
-    </a>
+    <!-- =====================================================
+         WHAT'S BAKING
+    ====================================================== -->
 
-  </nav>
+    <section class="featured-section">
 
+      <div class="section-heading">
 
+        <div>
 
-  <!-- ORDER BUTTON -->
+          <p class="eyebrow">
+            FROM THIS BATCH
+          </p>
 
-  <a
-    href="contact.html"
-    class="nav-order"
-  >
-    Let's Bake →
-  </a>
+          <h2>
+            What's baking?
+          </h2>
 
+        </div>
 
-</header>
-
-
-
-<main>
+      </div>
 
 
-  <!-- HERO -->
-
-  <section class="hero-section">
-
-
-    <div class="hero-copy">
-
-
-      <p class="eyebrow">
-        WELCOME TO THE OVEN
-      </p>
-
-
-      <h1>
-        Where little ideas<br>
-        become <em>sweet things.</em>
-      </h1>
-
-
-      <p class="hero-description">
-        Home-baked cakes, made with care
-        for birthdays, celebrations,
-        surprises and the moments
-        that deserve something sweet.
-      </p>
-
-
-      <div class="button-row">
-
+      <div class="whats-baking-link">
 
         <a
           href="cakes.html"
           class="button button-dark"
         >
-          See What's Baking →
+          See What's Baking? →
         </a>
-
-
-        <a
-          href="gallery.html"
-          class="button button-light"
-        >
-          Take a Peek
-        </a>
-
 
       </div>
 
-
-    </div>
-
+    </section>
 
 
-    <div class="hero-art">
+    <!-- =====================================================
+         CUSTOM CAKES CTA
+    ====================================================== -->
 
+    <section class="custom-section">
 
-      <div class="cake-placeholder">
+      <div class="custom-inner">
 
+        <p class="eyebrow">
+          SOMETHING SPECIAL?
+        </p>
 
-        <div class="cake-illustration">
-
-
-          <div class="cake-flame">
-            ✦
-          </div>
-
-
-          <div class="cake-top"></div>
-
-          <div class="cake-middle"></div>
-
-          <div class="cake-bottom"></div>
-
-          <div class="cake-plate"></div>
-
-
-        </div>
-
+        <h2>
+          Tell us what<br>
+          you're <em>imagining.</em>
+        </h2>
 
         <p>
-          Something delicious<br>
-          is on its way.
+          From birthdays to celebrations and everything
+          in between, we'd love to bake something made
+          just for you.
         </p>
 
+        <a href="contact.html" class="button button-dark">
+          Let's Bake Together →
+        </a>
 
       </div>
 
+    </section>
 
-    </div>
-
-
-  </section>
+  </main>
 
 
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
 
-  <!-- INTRO -->
+  <footer class="site-footer">
 
-  <section class="intro-section">
+    <div class="footer-brand">
 
+      <a href="oven.html" class="brand">
+        <img
+          src="logo.png"
+          alt="Arpita's Oven Logo"
+          class="header-logo"
+        >
 
-    <p class="eyebrow">
-      A LITTLE SOMETHING ABOUT US
-    </p>
-
-
-    <h2>
-      Not a factory.<br>
-      Just a kitchen full<br>
-      of good things.
-    </h2>
-
-
-    <p class="section-copy">
-      Arpita's Oven is about homemade cakes,
-      thoughtful details and making something
-      that feels right for the person it's meant for.
-    </p>
-
-
-    <a
-      href="story.html"
-      class="text-link"
-    >
-      Meet the story behind the Oven →
-    </a>
-
-
-  </section>
-
-
-
-  <!-- FEATURED BATCH -->
-
-  <section class="featured-section">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <p class="eyebrow">
-          FROM THIS BATCH
-        </p>
-
-        <h2>
-          What's baking?
-        </h2>
-
-      </div>
-
-
-      <a
-        href="cakes.html"
-        class="text-link"
-      >
-        See the whole batch →
+        <span>Arpita's Oven</span>
       </a>
-
-
-    </div>
-
-
-
-    <div class="cake-grid">
-
-
-      <!-- CHOCOLATE TRUFFLE -->
-
-      <article class="cake-card">
-
-
-        <div class="cake-photo-placeholder">
-
-          <span>
-            Photo coming soon
-          </span>
-
-        </div>
-
-
-        <div class="cake-card-content">
-
-
-          <p class="cake-number">
-            THE CLASSIC
-          </p>
-
-
-          <h3>
-            Chocolate Truffle
-          </h3>
-
-
-          <p>
-            Rich, chocolatey and made for
-            serious chocolate lovers.
-          </p>
-
-
-          <span class="cake-price">
-            Starting from ₹850
-          </span>
-
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- MANGO -->
-
-      <article class="cake-card">
-
-
-        <div class="cake-photo-placeholder">
-
-          <span>
-            Photo coming soon
-          </span>
-
-        </div>
-
-
-        <div class="cake-card-content">
-
-
-          <p class="cake-number">
-            THE FRUITY ONE
-          </p>
-
-
-          <h3>
-            Mango
-          </h3>
-
-
-          <p>
-            Soft, creamy and full of mango
-            goodness. When fresh mango isn't
-            in season, we use mango crush.
-          </p>
-
-
-          <span class="cake-price">
-            Ask for price
-          </span>
-
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- CUSTOM -->
-
-      <article class="cake-card">
-
-
-        <div class="cake-photo-placeholder">
-
-          <span>
-            Your idea<br>
-            goes here
-          </span>
-
-        </div>
-
-
-        <div class="cake-card-content">
-
-
-          <p class="cake-number">
-            MADE YOUR WAY
-          </p>
-
-
-          <h3>
-            Something Custom
-          </h3>
-
-
-          <p>
-            Have an idea? Bring us the theme,
-            colours or anything you've imagined.
-          </p>
-
-
-          <span class="cake-price">
-            Let's talk
-          </span>
-
-
-        </div>
-
-
-      </article>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- CUSTOM CAKES -->
-
-  <section class="custom-section">
-
-
-    <div class="custom-inner">
-
-
-      <p class="eyebrow">
-        YOUR IDEA. OUR KITCHEN.
-      </p>
-
-
-      <h2>
-        Bake your idea.
-      </h2>
-
 
       <p>
-        Birthday? Anniversary?
-        A cake you've imagined for months?
+        Homemade with love.
       </p>
-
-
-      <p>
-        Bring us the idea.
-        We'll bring out the mixing bowl.
-      </p>
-
-
-      <a
-        href="contact.html"
-        class="button button-cream"
-      >
-        Let's Bake Something →
-      </a>
-
 
     </div>
 
 
-  </section>
-
-
-
-  <!-- GALLERY PREVIEW -->
-
-  <section class="gallery-preview">
-
-
-    <div class="section-heading">
-
+    <div class="footer-links">
 
       <div>
 
-        <p class="eyebrow">
-          A PEEK INSIDE
+        <p class="footer-label">
+          EXPLORE
         </p>
 
+        <a href="oven.html">
+          The Oven
+        </a>
 
-        <h2>
-          Fresh from the Oven.
-        </h2>
+        <a href="cakes.html">
+          What's Baking?
+        </a>
+
+        <a href="gallery.html">
+          Fresh From the Oven
+        </a>
+
+        <a href="story.html">
+          The First Batch
+        </a>
 
       </div>
 
 
-      <a
-        href="gallery.html"
-        class="text-link"
-      >
-        See everything →
-      </a>
+      <div>
 
+        <p class="footer-label">
+          SAY HELLO
+        </p>
+
+        <a
+          href="contact.html"
+        >
+          Come Say Hi
+        </a>
+
+        <a
+          href="https://wa.me/qr/GP5HSJQTE42VI1"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="https://www.facebook.com/share/1BvQJvsmeo/"
+          target="_blank"
+          rel="noopener"
+        >
+          Facebook
+        </a>
+
+      </div>
 
     </div>
 
 
+    <div class="footer-bottom">
 
-    <div class="mini-gallery">
-
-
-      <div>
-        Fresh batch
-      </div>
-
-
-      <div>
-        Made with care
-      </div>
-
-
-      <div>
-        Something sweet
-      </div>
-
-
-      <div>
-        More coming soon
-      </div>
-
+      <p>
+        © 2026 Arpita's Oven. Made with love.
+      </p>
 
     </div>
 
-
-  </section>
-
+  </footer>
 
 
-  <!-- FINAL CTA -->
+  <!-- =======================================================
+       SPARKLES
+  ======================================================== -->
 
-  <section class="story-closing">
+  <script>
+    (function () {
 
+      if (document.querySelector(".site-sparkles")) {
+        return;
+      }
 
-    <p class="eyebrow">
-      READY FOR SOMETHING SWEET?
-    </p>
+      const container = document.createElement("div");
 
+      container.className = "site-sparkles";
 
-    <h2>
-      Let's bake something.
-    </h2>
+      const desktopCount = 7;
+      const mobileCount = 5;
 
+      const isMobile = window.innerWidth <= 600;
 
-    <p>
-      Your idea could be the next thing
-      coming out of the Oven.
-    </p>
+      const count = isMobile
+        ? mobileCount
+        : desktopCount;
 
+      const symbols = [
+        "✦",
+        "✧",
+        "✦",
+        "·",
+        "✧"
+      ];
 
-    <a
-      href="contact.html"
-      class="button button-dark"
-    >
-      Come Say Hi →
-    </a>
+      for (let i = 0; i < count; i++) {
 
+        const sparkle = document.createElement("span");
 
-  </section>
+        sparkle.className = "site-sparkle";
 
+        sparkle.textContent =
+          symbols[
+            Math.floor(
+              Math.random() * symbols.length
+            )
+          ];
 
-</main>
+        sparkle.style.left =
+          (8 + Math.random() * 84) + "%";
 
+        sparkle.style.top =
+          (10 + Math.random() * 78) + "%";
 
+        sparkle.style.fontSize =
+          (7 + Math.random() * 10) + "px";
 
-<!-- FOOTER -->
+        sparkle.style.animationDuration =
+          (4 + Math.random() * 5) + "s";
 
-<footer>
+        sparkle.style.animationDelay =
+          (-Math.random() * 6) + "s";
 
+        sparkle.style.opacity =
+          (0.25 + Math.random() * 0.45);
 
-  <div class="footer-brand">
-    Arpita's Oven
-  </div>
+        container.appendChild(sparkle);
 
+      }
 
-  <p>
-    That's all for this batch.
-  </p>
+      document.body.appendChild(container);
 
-
-  <div class="footer-links">
-
-
-    <a href="oven.html">
-      The Oven
-    </a>
-
-
-    <a href="cakes.html">
-      What's Baking?
-    </a>
-
-
-    <a href="gallery.html">
-      Fresh From the Oven
-    </a>
-
-
-    <a href="story.html">
-      The First Batch
-    </a>
-
-
-    <a href="contact.html">
-      Come Say Hi
-    </a>
-
-
-  </div>
-
-
-
-  <div class="footer-social">
-
-
-    <a
-      href="https://wa.me/qr/GP5HSJQTE42VI1"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      WhatsApp
-    </a>
-
-
-    <a
-      href="https://www.facebook.com/share/1BvQJvsmeo/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Facebook
-    </a>
-
-
-  </div>
-
-
-
-  <p class="copyright">
-    © 2026 Arpita's Oven
-  </p>
-
-
-</footer>
-
-
-
-<!-- MAIN JAVASCRIPT -->
-
-<script src="js/main.js"></script>
-
+    })();
+  </script>
 
 </body>
-
 </html>
