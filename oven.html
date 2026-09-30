@@ -24,10 +24,31 @@
     href="logo.png"
   >
 
+  <!-- MAIN CSS -->
   <link
     rel="stylesheet"
     href="css/style.css"
   >
+
+  <!-- HEADER LOGO SIZE -->
+  <style>
+
+    .site-header .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .site-header .header-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+  </style>
 
 </head>
 
@@ -37,11 +58,19 @@
 
 <header class="site-header">
 
-  <a href="oven.html" class="brand">
 
-    <span class="brand-mark">
-      AO
-    </span>
+  <!-- BRAND WITH REAL LOGO -->
+
+  <a
+    href="oven.html"
+    class="brand"
+  >
+
+    <img
+      src="logo.png"
+      alt="Arpita's Oven Logo"
+      class="header-logo"
+    >
 
     <span>
       Arpita's Oven
@@ -50,23 +79,33 @@
   </a>
 
 
+
+  <!-- NAVIGATION -->
+
   <nav>
 
-    <a href="oven.html" class="active">
+    <a
+      href="oven.html"
+      class="active"
+    >
       The Oven
     </a>
+
 
     <a href="cakes.html">
       What's Baking?
     </a>
 
+
     <a href="gallery.html">
       Fresh From the Oven
     </a>
 
+
     <a href="story.html">
       The First Batch
     </a>
+
 
     <a href="contact.html">
       Come Say Hi
@@ -75,9 +114,16 @@
   </nav>
 
 
-  <a href="contact.html" class="nav-order">
+
+  <!-- ORDER BUTTON -->
+
+  <a
+    href="contact.html"
+    class="nav-order"
+  >
     Let's Bake →
   </a>
+
 
 </header>
 
@@ -90,16 +136,20 @@
 
   <section class="hero-section">
 
+
     <div class="hero-copy">
+
 
       <p class="eyebrow">
         WELCOME TO THE OVEN
       </p>
 
+
       <h1>
         Where little ideas<br>
         become <em>sweet things.</em>
       </h1>
+
 
       <p class="hero-description">
         Home-baked cakes, made with care
@@ -108,7 +158,9 @@
         that deserve something sweet.
       </p>
 
+
       <div class="button-row">
+
 
         <a
           href="cakes.html"
@@ -117,6 +169,7 @@
           See What's Baking →
         </a>
 
+
         <a
           href="gallery.html"
           class="button button-light"
@@ -124,20 +177,27 @@
           Take a Peek
         </a>
 
+
       </div>
+
 
     </div>
 
 
+
     <div class="hero-art">
+
 
       <div class="cake-placeholder">
 
+
         <div class="cake-illustration">
+
 
           <div class="cake-flame">
             ✦
           </div>
+
 
           <div class="cake-top"></div>
 
@@ -147,16 +207,21 @@
 
           <div class="cake-plate"></div>
 
+
         </div>
+
 
         <p>
           Something delicious<br>
           is on its way.
         </p>
 
+
       </div>
 
+
     </div>
+
 
   </section>
 
@@ -166,9 +231,11 @@
 
   <section class="intro-section">
 
+
     <p class="eyebrow">
       A LITTLE SOMETHING ABOUT US
     </p>
+
 
     <h2>
       Not a factory.<br>
@@ -176,11 +243,13 @@
       of good things.
     </h2>
 
+
     <p class="section-copy">
       Arpita's Oven is about homemade cakes,
       thoughtful details and making something
       that feels right for the person it's meant for.
     </p>
+
 
     <a
       href="story.html"
@@ -188,6 +257,7 @@
     >
       Meet the story behind the Oven →
     </a>
+
 
   </section>
 
@@ -197,7 +267,9 @@
 
   <section class="featured-section">
 
+
     <div class="section-heading">
+
 
       <div>
 
@@ -211,6 +283,7 @@
 
       </div>
 
+
       <a
         href="cakes.html"
         class="text-link"
@@ -218,13 +291,18 @@
         See the whole batch →
       </a>
 
+
     </div>
+
 
 
     <div class="cake-grid">
 
 
+      <!-- CHOCOLATE TRUFFLE -->
+
       <article class="cake-card">
+
 
         <div class="cake-photo-placeholder">
 
@@ -234,31 +312,42 @@
 
         </div>
 
+
         <div class="cake-card-content">
+
 
           <p class="cake-number">
             THE CLASSIC
           </p>
 
+
           <h3>
             Chocolate Truffle
           </h3>
+
 
           <p>
             Rich, chocolatey and made for
             serious chocolate lovers.
           </p>
 
+
           <span class="cake-price">
             Starting from ₹850
           </span>
 
+
         </div>
+
 
       </article>
 
 
+
+      <!-- MANGO -->
+
       <article class="cake-card">
+
 
         <div class="cake-photo-placeholder">
 
@@ -268,15 +357,19 @@
 
         </div>
 
+
         <div class="cake-card-content">
+
 
           <p class="cake-number">
             THE FRUITY ONE
           </p>
 
+
           <h3>
             Mango
           </h3>
+
 
           <p>
             Soft, creamy and full of mango
@@ -284,16 +377,23 @@
             in season, we use mango crush.
           </p>
 
+
           <span class="cake-price">
             Ask for price
           </span>
 
+
         </div>
+
 
       </article>
 
 
+
+      <!-- CUSTOM -->
+
       <article class="cake-card">
+
 
         <div class="cake-photo-placeholder">
 
@@ -304,59 +404,73 @@
 
         </div>
 
+
         <div class="cake-card-content">
+
 
           <p class="cake-number">
             MADE YOUR WAY
           </p>
 
+
           <h3>
             Something Custom
           </h3>
+
 
           <p>
             Have an idea? Bring us the theme,
             colours or anything you've imagined.
           </p>
 
+
           <span class="cake-price">
             Let's talk
           </span>
 
+
         </div>
+
 
       </article>
 
 
     </div>
 
+
   </section>
 
 
 
-  <!-- CUSTOM -->
+  <!-- CUSTOM CAKES -->
 
   <section class="custom-section">
 
+
     <div class="custom-inner">
+
 
       <p class="eyebrow">
         YOUR IDEA. OUR KITCHEN.
       </p>
 
+
       <h2>
         Bake your idea.
       </h2>
+
 
       <p>
         Birthday? Anniversary?
         A cake you've imagined for months?
       </p>
 
+
       <p>
         Bring us the idea.
         We'll bring out the mixing bowl.
       </p>
+
 
       <a
         href="contact.html"
@@ -365,17 +479,21 @@
         Let's Bake Something →
       </a>
 
+
     </div>
+
 
   </section>
 
 
 
-  <!-- GALLERY -->
+  <!-- GALLERY PREVIEW -->
 
   <section class="gallery-preview">
 
+
     <div class="section-heading">
+
 
       <div>
 
@@ -383,11 +501,13 @@
           A PEEK INSIDE
         </p>
 
+
         <h2>
           Fresh from the Oven.
         </h2>
 
       </div>
+
 
       <a
         href="gallery.html"
@@ -396,28 +516,36 @@
         See everything →
       </a>
 
+
     </div>
 
 
+
     <div class="mini-gallery">
+
 
       <div>
         Fresh batch
       </div>
 
+
       <div>
         Made with care
       </div>
+
 
       <div>
         Something sweet
       </div>
 
+
       <div>
         More coming soon
       </div>
 
+
     </div>
+
 
   </section>
 
@@ -427,18 +555,22 @@
 
   <section class="story-closing">
 
+
     <p class="eyebrow">
       READY FOR SOMETHING SWEET?
     </p>
+
 
     <h2>
       Let's bake something.
     </h2>
 
+
     <p>
       Your idea could be the next thing
       coming out of the Oven.
     </p>
+
 
     <a
       href="contact.html"
@@ -447,6 +579,7 @@
       Come Say Hi →
     </a>
 
+
   </section>
 
 
@@ -454,28 +587,55 @@
 
 
 
+<!-- FOOTER -->
+
 <footer>
+
 
   <div class="footer-brand">
     Arpita's Oven
   </div>
 
+
   <p>
     That's all for this batch.
   </p>
 
+
   <div class="footer-links">
 
-    <a href="oven.html">The Oven</a>
-    <a href="cakes.html">What's Baking?</a>
-    <a href="gallery.html">Fresh From the Oven</a>
-    <a href="story.html">The First Batch</a>
-    <a href="contact.html">Come Say Hi</a>
+
+    <a href="oven.html">
+      The Oven
+    </a>
+
+
+    <a href="cakes.html">
+      What's Baking?
+    </a>
+
+
+    <a href="gallery.html">
+      Fresh From the Oven
+    </a>
+
+
+    <a href="story.html">
+      The First Batch
+    </a>
+
+
+    <a href="contact.html">
+      Come Say Hi
+    </a>
+
 
   </div>
 
 
+
   <div class="footer-social">
+
 
     <a
       href="https://wa.me/qr/GP5HSJQTE42VI1"
@@ -485,6 +645,7 @@
       WhatsApp
     </a>
 
+
     <a
       href="https://www.facebook.com/share/1BvQJvsmeo/"
       target="_blank"
@@ -493,17 +654,24 @@
       Facebook
     </a>
 
+
   </div>
+
 
 
   <p class="copyright">
     © 2026 Arpita's Oven
   </p>
 
+
 </footer>
 
 
+
+<!-- MAIN JAVASCRIPT -->
+
 <script src="js/main.js"></script>
+
 
 </body>
 
