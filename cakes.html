@@ -1,9 +1,8 @@
-<!-- Dynamic cake catalogue deployment test -->
-<!-- DYNAMIC CAKES VERSION 2 -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -18,59 +17,94 @@
     content="Discover what's baking at Arpita's Oven — home-baked cakes made with love."
   >
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <!-- PAGE-SPECIFIC SPACING -->
+
+  <style>
+
+    .cakes-page-hero {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .cakes-page-hero .page-hero-inner {
+      width: min(760px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 600px) {
+
+      .cakes-page-hero {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
+<header class="site-header">
 
-  <header class="site-header">
+  <a href="oven.html" class="site-logo">
+    Arpita's <span>Oven</span>
+  </a>
 
-    <a href="oven.html" class="site-logo">
-      Arpita's <span>Oven</span>
+
+  <nav class="site-nav">
+
+    <a href="oven.html">
+      The Oven
     </a>
 
+    <a href="cakes.html" class="active">
+      What's Baking?
+    </a>
 
-    <nav class="site-nav">
+    <a href="gallery.html">
+      Fresh From the Oven
+    </a>
 
-      <a href="oven.html">
-        The Oven
-      </a>
+    <a href="story.html">
+      The First Batch
+    </a>
 
-      <a href="cakes.html" class="active">
-        What's Baking?
-      </a>
+    <a href="contact.html">
+      Come Say Hi
+    </a>
 
-      <a href="gallery.html">
-        Fresh From the Oven
-      </a>
+  </nav>
 
-      <a href="story.html">
-        The First Batch
-      </a>
-
-      <a href="contact.html">
-        Come Say Hi
-      </a>
-
-    </nav>
-
-  </header>
+</header>
 
 
 
-  <!-- =========================================
-       PAGE HERO
-  ========================================== -->
+<main>
 
-  <main>
 
-    <section class="page-hero">
+  <!-- PAGE HERO -->
+
+  <section class="page-hero cakes-page-hero">
+
+    <div class="page-hero-inner">
 
       <p class="tiny-label">
         FRESH FROM OUR KITCHEN
@@ -84,404 +118,380 @@
         A little something for every sweet moment.
       </p>
 
-    </section>
+    </div>
+
+  </section>
 
 
 
-    <!-- =========================================
-         CAKE CATALOGUE
-    ========================================== -->
+  <!-- CAKE CATALOGUE -->
 
-    <section class="cakes-section">
+  <section class="cakes-section">
+
+    <div
+      id="cake-grid"
+      class="cake-grid"
+    >
 
       <div
-        id="cake-grid"
-        class="cake-grid"
+        id="cakes-loading"
+        class="cakes-message"
       >
 
-        <!-- Loading state -->
-
-        <div
-          id="cakes-loading"
-          class="cakes-message"
-        >
-          <p>
-            Preheating the oven...
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         CUSTOM CAKE
-    ========================================== -->
-
-    <section class="custom-section">
-
-      <div class="custom-content">
-
-        <p class="tiny-label">
-          SOMETHING IN MIND?
-        </p>
-
-        <h2>
-          Bake Your <em>Idea.</em>
-        </h2>
-
         <p>
-          Have something special in mind?
-          Tell us what you're dreaming of and
-          let's turn it into something delicious.
+          Preheating the oven...
         </p>
-
-        <a
-          href="contact.html"
-          class="oven-button"
-        >
-          Let's Bake Something
-          <span class="arrow">→</span>
-        </a>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
 
-    <!-- =========================================
-         FINAL CTA
-    ========================================== -->
+  <!-- CUSTOM -->
 
-    <section class="final-cta">
+  <section class="custom-section">
+
+    <div class="custom-content">
 
       <p class="tiny-label">
-        ONE MORE THING
+        SOMETHING IN MIND?
       </p>
 
       <h2>
-        There's always room<br>
-        for <em>one more slice.</em>
+        Bake Your <em>Idea.</em>
       </h2>
+
+      <p>
+        Have something special in mind?
+        Tell us what you're dreaming of and
+        let's turn it into something delicious.
+      </p>
 
       <a
         href="contact.html"
-        class="text-link"
+        class="oven-button"
       >
-        Come Say Hi →
-      </a>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
-
-  <footer class="site-footer">
-
-    <div class="footer-brand">
-      Arpita's <em>Oven</em>
-    </div>
-
-    <p>
-      Home-baked with love.
-    </p>
-
-    <div class="footer-links">
-
-      <a href="https://wa.me/919831919360">
-        WhatsApp
-      </a>
-
-      <a
-        href="https://www.facebook.com/"
-        target="_blank"
-        rel="noopener"
-      >
-        Facebook
+        Let's Bake Something
+        <span class="arrow">→</span>
       </a>
 
     </div>
 
-    <p class="footer-bottom">
-      That's all for this batch.
-      <a href="index.html">
-        Back to the Oven ↑
-      </a>
+  </section>
+
+
+
+  <!-- FINAL CTA -->
+
+  <section class="final-cta">
+
+    <p class="tiny-label">
+      ONE MORE THING
     </p>
 
-  </footer>
+    <h2>
+      There's always room<br>
+      for <em>one more slice.</em>
+    </h2>
+
+    <a
+      href="contact.html"
+      class="text-link"
+    >
+      Come Say Hi →
+    </a>
+
+  </section>
+
+</main>
 
 
 
-  <!-- =========================================
-       DYNAMIC CAKE LOADER
-  ========================================== -->
+<footer class="site-footer">
 
-  <script>
+  <div class="footer-brand">
+    Arpita's <em>Oven</em>
+  </div>
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      loadCakes
-    );
+  <p>
+    Home-baked with love.
+  </p>
 
+  <div class="footer-links">
 
-    async function loadCakes() {
+    <a href="https://wa.me/919831919360">
+      WhatsApp
+    </a>
 
-      const grid =
-        document.getElementById("cake-grid");
+    <a
+      href="https://www.facebook.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      Facebook
+    </a>
 
+  </div>
 
-      try {
+  <p class="footer-bottom">
 
-        const response =
-          await fetch("/api/public/cakes");
+    That's all for this batch.
 
+    <a href="index.html">
+      Back to the Oven ↑
+    </a>
 
-        if (!response.ok) {
+  </p>
 
-          throw new Error(
-            "Could not load cakes."
-          );
-
-        }
-
-
-        const data =
-          await response.json();
-
-
-        const cakes =
-          Array.isArray(data.cakes)
-            ? data.cakes
-            : [];
+</footer>
 
 
-        /*
-         * No cakes available
-         */
 
-        if (cakes.length === 0) {
+<script>
 
-          grid.innerHTML = `
-            <div class="cakes-message">
-              <p>
-                We're baking this batch.
-              </p>
-
-              <span>
-                Come back soon.
-              </span>
-            </div>
-          `;
-
-          return;
-
-        }
+document.addEventListener(
+  "DOMContentLoaded",
+  loadCakes
+);
 
 
-        /*
-         * Create cake cards
-         */
+async function loadCakes() {
 
-        grid.innerHTML =
-          cakes
-            .map(createCakeCard)
-            .join("");
+  const grid =
+    document.getElementById("cake-grid");
 
 
-      } catch (error) {
+  try {
 
-        console.error(
-          "Cake loading error:",
-          error
-        );
+    const response =
+      await fetch("/api/public/cakes");
 
 
-        grid.innerHTML = `
-          <div class="cakes-message">
-            <p>
-              The oven is taking a little longer.
-            </p>
+    if (!response.ok) {
 
-            <span>
-              Please come back in a moment.
-            </span>
-          </div>
-        `;
-
-      }
+      throw new Error(
+        "Could not load cakes."
+      );
 
     }
 
 
-
-    function createCakeCard(cake) {
-
-      /*
-       * Safely escape text
-       */
-
-      const name =
-        escapeHTML(
-          cake.name || "Untitled Cake"
-        );
+    const data =
+      await response.json();
 
 
-      const category =
-        escapeHTML(
-          cake.category || ""
-        );
+    const cakes =
+      Array.isArray(data.cakes)
+        ? data.cakes
+        : [];
 
 
-      const description =
-        escapeHTML(
-          cake.description || ""
-        );
+    if (cakes.length === 0) {
 
+      grid.innerHTML = `
 
-      const price =
-        escapeHTML(
-          cake.price || ""
-        );
+        <div class="cakes-message">
 
+          <p>
+            We're baking this batch.
+          </p>
 
-      /*
-       * Image
-       *
-       * If an image URL exists,
-       * display the real cake photo.
-       *
-       * Otherwise display a beautiful
-       * empty bakery placeholder.
-       */
+          <span>
+            Come back soon.
+          </span>
 
-      const imageHTML =
-        cake.image_url
-          ? `
-            <div class="cake-image">
-              <img
-                src="${escapeAttribute(cake.image_url)}"
-                alt="${escapeAttribute(cake.name || "Cake")}"
-                loading="lazy"
-              >
-            </div>
-          `
-          : `
-            <div class="cake-image cake-image-empty">
-
-              <div class="cake-placeholder">
-
-                <span>✦</span>
-
-                <p>
-                  Fresh from<br>
-                  the oven
-                </p>
-
-              </div>
-
-            </div>
-          `;
-
-
-      return `
-
-        <article
-          class="cake-card"
-          data-cake-id="${Number(cake.id) || 0}"
-        >
-
-          ${imageHTML}
-
-
-          <div class="cake-card-content">
-
-
-            ${
-              category
-                ? `
-                  <p class="cake-category">
-                    ${category}
-                  </p>
-                `
-                : ""
-            }
-
-
-            <h2>
-              ${name}
-            </h2>
-
-
-            ${
-              description
-                ? `
-                  <p class="cake-description">
-                    ${description}
-                  </p>
-                `
-                : ""
-            }
-
-
-            ${
-              price
-                ? `
-                  <p class="cake-price">
-                    ${price}
-                  </p>
-                `
-                : ""
-            }
-
-
-          </div>
-
-        </article>
+        </div>
 
       `;
 
-    }
-
-
-
-    /*
-     * Prevent HTML injection
-     */
-
-    function escapeHTML(value) {
-
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      return;
 
     }
 
 
-    function escapeAttribute(value) {
-
-      return escapeHTML(value);
-
-    }
-
-  </script>
+    grid.innerHTML =
+      cakes
+        .map(createCakeCard)
+        .join("");
 
 
+  } catch (error) {
 
-  <!-- Existing bakery loading experience -->
+    console.error(
+      "Cake loading error:",
+      error
+    );
 
-  <script src="js/main.js"></script>
+
+    grid.innerHTML = `
+
+      <div class="cakes-message">
+
+        <p>
+          The oven is taking a little longer.
+        </p>
+
+        <span>
+          Please come back in a moment.
+        </span>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+function createCakeCard(cake) {
+
+  const name =
+    escapeHTML(
+      cake.name || "Untitled Cake"
+    );
+
+
+  const category =
+    escapeHTML(
+      cake.category || ""
+    );
+
+
+  const description =
+    escapeHTML(
+      cake.description || ""
+    );
+
+
+  const price =
+    escapeHTML(
+      cake.price || ""
+    );
+
+
+  const imageHTML =
+    cake.image_url
+
+      ? `
+
+        <div class="cake-image">
+
+          <img
+            src="${escapeAttribute(cake.image_url)}"
+            alt="${escapeAttribute(
+              cake.name || "Cake"
+            )}"
+            loading="lazy"
+          >
+
+        </div>
+
+      `
+
+      : `
+
+        <div class="cake-image cake-image-empty">
+
+          <div class="cake-placeholder">
+
+            <span>
+              ✦
+            </span>
+
+            <p>
+              Fresh from<br>
+              the oven
+            </p>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+  return `
+
+    <article
+      class="cake-card"
+      data-cake-id="${Number(cake.id) || 0}"
+    >
+
+      ${imageHTML}
+
+      <div class="cake-card-content">
+
+        ${
+          category
+            ? `
+              <p class="cake-category">
+                ${category}
+              </p>
+            `
+            : ""
+        }
+
+        <h2>
+          ${name}
+        </h2>
+
+        ${
+          description
+            ? `
+              <p class="cake-description">
+                ${description}
+              </p>
+            `
+            : ""
+        }
+
+        ${
+          price
+            ? `
+              <p class="cake-price">
+                ${price}
+              </p>
+            `
+            : ""
+        }
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(value);
+
+}
+
+</script>
+
+
+<script src="js/main.js"></script>
 
 
 </body>
