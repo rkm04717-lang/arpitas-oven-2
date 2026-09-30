@@ -96,6 +96,56 @@ a {
 }
 
 
+/* =========================
+   ARPITA'S OVEN LOGO
+========================= */
+
+
+.site-logo {
+
+  display: block;
+
+  width: 150px;
+  height: auto;
+
+  margin: 0 auto 28px;
+
+  object-fit: contain;
+
+  animation: logoReveal 1s ease both;
+
+}
+
+
+/* Logo entrance animation */
+
+@keyframes logoReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* Keep logo elegant on smaller screens */
+
+@media (max-width: 600px) {
+
+  .site-logo {
+    width: 115px;
+    margin-bottom: 24px;
+  }
+
+}
+
+
 .tiny-label {
 
   font-size: 11px;
@@ -1095,7 +1145,12 @@ footer p {
   }
 
 }
-/* ===== CENTERED PAGE CONTENT ===== */
+
+
+/* =========================
+   CENTERED PAGE CONTENT
+========================= */
+
 
 .page-hero-inner,
 .section-heading,
@@ -1105,36 +1160,58 @@ footer p {
 .gallery-section,
 .gallery-note,
 .cakes-section {
+
   width: min(1120px, 90%);
+
   margin-left: auto;
   margin-right: auto;
+
 }
+
 
 /* Keep navigation comfortably spaced */
+
 .site-header {
+
   padding-left: 5%;
   padding-right: 5%;
+
 }
+
 
 /* Give page headings a little breathing room */
+
 .page-hero-inner {
+
   padding-top: 40px;
   padding-bottom: 40px;
+
 }
+
 
 /* Story content */
+
 .story-layout {
+
   display: grid;
+
   grid-template-columns: 0.8fr 1.2fr;
+
   gap: 80px;
+
 }
 
+
 /* Gallery and cake sections */
+
 .gallery-section,
 .cakes-section {
+
   padding-left: 0;
   padding-right: 0;
+
 }
+
 
 @media (max-width: 800px) {
 
@@ -1146,77 +1223,125 @@ footer p {
   .gallery-section,
   .gallery-note,
   .cakes-section {
+
     width: 90%;
+
   }
 
   .story-layout {
+
     grid-template-columns: 1fr;
+
     gap: 30px;
+
   }
 
 }
-/* ===== CONTACT PAGE CENTERING ===== */
+
+
+/* =========================
+   CONTACT PAGE CENTERING
+========================= */
+
 
 .contact-section {
+
   width: 100%;
+
   padding: 100px 0;
+
 }
 
+
 .contact-layout {
+
   width: min(1120px, 90%);
+
   margin-left: auto;
   margin-right: auto;
 
   display: grid;
+
   grid-template-columns: 0.9fr 1.1fr;
+
   gap: 80px;
+
   align-items: center;
+
 }
+
 
 .contact-copy {
+
   max-width: 520px;
+
 }
 
+
 .contact-card {
+
   width: 100%;
+
   max-width: 520px;
+
   margin-left: auto;
   margin-right: auto;
+
 }
+
 
 /* WhatsApp + Facebook buttons */
 
+
 .social-button {
+
   display: flex;
+
   align-items: center;
+
   gap: 16px;
 
   width: 100%;
+
   box-sizing: border-box;
 
   margin-top: 16px;
+
   padding: 18px 20px;
 
   text-decoration: none;
+
   border: 1px solid rgba(51, 35, 30, 0.12);
+
   border-radius: 14px;
 
   background: var(--white);
+
   color: var(--brown);
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
 }
+
 
 .social-button:hover {
+
   transform: translateY(-3px);
+
   box-shadow: 0 12px 30px rgba(51, 35, 30, 0.10);
+
 }
 
+
 .social-icon {
+
   width: 42px;
   height: 42px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -1225,72 +1350,112 @@ footer p {
   background: var(--cream-dark);
 
   font-size: 20px;
+
   font-weight: 700;
+
 }
+
 
 .social-button strong {
+
   display: block;
+
   font-size: 16px;
+
 }
 
+
 .social-button small {
+
   display: block;
+
   margin-top: 3px;
 
   color: var(--brown-soft);
+
   font-size: 12px;
+
 }
 
 
 /* Footer social links */
 
+
 .footer-social {
+
   display: flex;
+
   justify-content: center;
+
   gap: 20px;
+
   margin-top: 22px;
+
 }
+
 
 .footer-social a {
+
   color: inherit;
+
   text-decoration: none;
+
 }
 
+
 .footer-social a:hover {
+
   text-decoration: underline;
+
 }
 
 
 /* MOBILE */
 
+
 @media (max-width: 800px) {
 
   .contact-section {
+
     padding: 70px 0;
+
   }
 
   .contact-layout {
+
     width: 90%;
+
     grid-template-columns: 1fr;
+
     gap: 50px;
+
   }
 
   .contact-copy,
   .contact-card {
+
     max-width: 100%;
+
   }
 
 }
+
+
 /* =========================================
    ARPITA'S OVEN — LOADING EXPERIENCE
-   ========================================= */
+========================================= */
+
 
 .oven-loading {
+
   position: fixed;
+
   inset: 0;
+
   z-index: 99999;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -1302,45 +1467,65 @@ footer p {
   transition:
     opacity 0.7s ease,
     visibility 0.7s ease;
+
 }
 
+
 .oven-loading-inner {
+
   width: min(420px, 80%);
+
   text-align: center;
+
 }
 
 
 /* BRAND */
 
+
 .oven-brand {
+
   color: var(--brown);
 
   font-family: var(--sans);
+
   font-size: 15px;
+
   font-weight: 700;
+
   letter-spacing: 0.28em;
 
   line-height: 1.5;
 
   animation: ovenBrandIn 1s ease both;
+
 }
 
+
 .oven-brand span {
+
   display: block;
 
   font-family: var(--serif);
+
   font-size: 48px;
+
   font-weight: 400;
+
   letter-spacing: 0.02em;
 
   margin-top: -4px;
+
 }
 
 
 /* LOADER */
 
+
 .oven-loader {
+
   width: 100%;
+
   height: 3px;
 
   margin: 35px auto 18px;
@@ -1348,67 +1533,95 @@ footer p {
   overflow: hidden;
 
   background: var(--cream-dark);
+
   border-radius: 20px;
+
 }
 
+
 .oven-loader-fill {
+
   width: 0;
+
   height: 100%;
 
   background: var(--brown);
 
   animation: ovenHeat 2.2s ease forwards;
+
 }
 
 
 /* TEXT */
 
+
 .oven-loading-text {
+
   margin: 0;
 
   color: var(--brown-soft);
 
   font-family: var(--sans);
+
   font-size: 13px;
+
   letter-spacing: 0.04em;
 
   animation: ovenTextIn 1s ease 0.3s both;
+
 }
 
+
 .oven-ding {
+
   margin-top: 14px;
 
   color: var(--brown);
 
   font-family: var(--serif);
+
   font-size: 21px;
 
   opacity: 0;
+
 }
 
 
 /* READY */
 
+
 .oven-loading.oven-ready .oven-loading-text {
+
   opacity: 0;
+
   transition: opacity 0.35s ease;
+
 }
 
+
 .oven-loading.oven-ready .oven-ding {
+
   opacity: 1;
+
   animation: ovenDing 0.6s ease both;
+
 }
 
 
 /* HIDE */
 
+
 .oven-loading.oven-hide {
+
   opacity: 0;
+
   visibility: hidden;
+
 }
 
 
 /* ANIMATIONS */
+
 
 @keyframes ovenBrandIn {
 
@@ -1424,6 +1637,7 @@ footer p {
 
 }
 
+
 @keyframes ovenTextIn {
 
   from {
@@ -1438,6 +1652,7 @@ footer p {
 
 }
 
+
 @keyframes ovenHeat {
 
   from {
@@ -1449,6 +1664,7 @@ footer p {
   }
 
 }
+
 
 @keyframes ovenDing {
 
@@ -1467,6 +1683,7 @@ footer p {
 
 /* MOBILE */
 
+
 @media (max-width: 600px) {
 
   .oven-brand span {
@@ -1478,263 +1695,405 @@ footer p {
   }
 
 }
+
+
 /* =========================================
    ARPITA'S OVEN — SUBTLE BAKERY ANIMATIONS
-   ========================================= */
+========================================= */
+
 
 /* Smooth scrolling */
 
+
 html {
+
   scroll-behavior: smooth;
+
 }
 
 
 /* PAGE CONTENT — gentle entrance */
 
+
 main > section {
+
   animation: pageSectionIn 0.8s ease both;
+
 }
 
+
 @keyframes pageSectionIn {
+
   from {
+
     opacity: 0;
+
     transform: translateY(18px);
+
   }
 
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
 }
 
 
 /* HEADINGS — soft reveal */
 
+
 .page-hero h1,
 .hero-copy h1 {
+
   animation: headingReveal 0.9s ease 0.15s both;
+
 }
 
+
 @keyframes headingReveal {
+
   from {
+
     opacity: 0;
+
     transform: translateY(20px);
+
   }
 
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
 }
 
 
 /* CAKE CARDS */
 
+
 .cake-card {
+
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
+
 }
 
+
 .cake-card:hover {
+
   transform: translateY(-7px);
-  box-shadow: 0 18px 40px rgba(51, 35, 30, 0.10);
+
+  box-shadow:
+    0 18px 40px rgba(51, 35, 30, 0.10);
+
 }
 
 
 /* Cake image area */
 
+
 .cake-photo-placeholder,
 .gallery-placeholder {
+
   overflow: hidden;
+
   transition: transform 0.4s ease;
+
 }
 
+
 .cake-card:hover .cake-photo-placeholder {
+
   transform: scale(1.015);
+
 }
 
 
 /* GALLERY */
 
+
 .gallery-item {
+
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
+
 }
 
+
 .gallery-item:hover {
+
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(51, 35, 30, 0.10);
+
+  box-shadow:
+    0 15px 35px rgba(51, 35, 30, 0.10);
+
 }
 
 
 /* BUTTONS */
 
+
 .button,
 .oven-button,
 .nav-order {
+
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     background-color 0.25s ease;
+
 }
+
 
 .button:hover,
 .oven-button:hover,
 .nav-order:hover {
+
   transform: translateY(-2px);
+
 }
 
 
 /* TEXT LINKS */
 
+
 .text-link {
+
   transition:
     gap 0.25s ease,
     opacity 0.25s ease;
+
 }
 
+
 .text-link:hover {
+
   opacity: 0.7;
+
 }
 
 
 /* NAVIGATION */
 
+
 .site-header nav a {
+
   position: relative;
+
 }
 
+
 .site-header nav a::after {
+
   content: "";
 
   position: absolute;
+
   left: 0;
+
   bottom: -6px;
 
   width: 0;
+
   height: 1px;
 
   background: currentColor;
 
   transition: width 0.25s ease;
+
 }
+
 
 .site-header nav a:hover::after,
 .site-header nav a.active::after {
+
   width: 100%;
+
 }
 
 
 /* SOCIAL BUTTONS */
 
+
 .social-button {
+
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+
 }
 
+
 .social-button:hover {
+
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(51, 35, 30, 0.10);
+
+  box-shadow:
+    0 14px 30px rgba(51, 35, 30, 0.10);
+
 }
 
 
 /* CUSTOM SECTION */
 
+
 .custom-inner {
+
   animation: softFloat 5s ease-in-out infinite;
+
 }
 
+
 @keyframes softFloat {
+
   0%,
   100% {
+
     transform: translateY(0);
+
   }
 
   50% {
+
     transform: translateY(-4px);
+
   }
+
 }
 
 
 /* ENTRANCE PAGE */
 
+
 .entrance-content {
+
   animation: entranceReveal 1s ease both;
+
 }
 
+
 @keyframes entranceReveal {
+
   from {
+
     opacity: 0;
+
     transform: translateY(25px);
+
   }
 
   to {
+
     opacity: 1;
+
     transform: translateY(0);
+
   }
+
 }
 
 
 /* FLOATING BAKERY DETAILS */
 
+
 .floating-crumb {
+
   animation: crumbFloat 4s ease-in-out infinite;
+
 }
+
 
 .crumb-two {
+
   animation-delay: 1s;
+
 }
+
 
 .crumb-three {
+
   animation-delay: 2s;
+
 }
 
+
 @keyframes crumbFloat {
+
   0%,
   100% {
+
     transform: translateY(0);
+
     opacity: 0.5;
+
   }
 
   50% {
+
     transform: translateY(-10px);
+
     opacity: 1;
+
   }
+
 }
 
 
 /* CONTACT SOCIAL ICON */
 
+
 .social-icon {
+
   transition:
     transform 0.3s ease,
     background-color 0.3s ease;
+
 }
 
+
 .social-button:hover .social-icon {
+
   transform: scale(1.08) rotate(-3deg);
+
 }
 
 
 /* RESPECT REDUCED MOTION */
+
 
 @media (prefers-reduced-motion: reduce) {
 
   *,
   *::before,
   *::after {
+
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
+
     scroll-behavior: auto !important;
+
     transition-duration: 0.01ms !important;
+
   }
 
 }
+
+
 /* Hide story section numbers */
 
+
 .value-number {
+
   display: none;
+
 }
