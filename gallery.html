@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -11,11 +9,6 @@
   >
 
   <title>Gallery — Arpita's Oven</title>
-
-  <meta
-    name="description"
-    content="A little peek inside Arpita's Oven."
-  >
 
   <link
     rel="icon"
@@ -28,392 +21,1040 @@
     href="css/style.css"
   >
 
+  <style>
+
+    /* =========================================
+       GALLERY
+    ========================================= */
+
+    .gallery-page {
+      padding-bottom: 100px;
+    }
+
+    .gallery-intro {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px 20px 70px;
+    }
+
+    .gallery-intro p {
+      color: var(--muted, #75685f);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+
+    /* =========================================
+       GALLERY GRID
+    ========================================= */
+
+    .gallery-grid {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+
+      background: #eee7df;
+
+      aspect-ratio: 1 / 1;
+
+      cursor: pointer;
+
+      border-radius: 2px;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 18px 40px rgba(60, 40, 25, .12);
+    }
+
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform .6s ease;
+    }
+
+
+    .gallery-card:hover img {
+      transform: scale(1.045);
+    }
+
+
+    .gallery-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+
+      padding: 35px 20px 18px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(25, 18, 13, .72),
+          rgba(25, 18, 13, 0)
+        );
+
+      opacity: 0;
+
+      transition:
+        opacity .3s ease;
+    }
+
+
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+
+    .gallery-overlay small {
+      display: block;
+
+      font-size: 10px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 5px;
+    }
+
+
+    .gallery-overlay h3 {
+      margin: 0;
+
+      font-family: Georgia, serif;
+
+      font-size: 20px;
+
+      font-weight: 400;
+    }
+
+
+    /* =========================================
+       EMPTY STATE
+    ========================================= */
+
+    .gallery-empty {
+      display: none;
+
+      text-align: center;
+
+      padding: 70px 20px;
+
+      color: var(--muted, #75685f);
+    }
+
+
+    .gallery-empty h2 {
+      font-family: Georgia, serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+
+      margin-bottom: 12px;
+    }
+
+
+    .gallery-empty p {
+      margin: 0;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================
+       LOADING
+    ========================================= */
+
+    .gallery-loading {
+      text-align: center;
+
+      padding: 70px 20px;
+
+      color: var(--muted, #75685f);
+
+      letter-spacing: .08em;
+
+      font-size: 12px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================
+       LIGHTBOX
+    ========================================= */
+
+    .gallery-lightbox {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      background:
+        rgba(24, 18, 14, .94);
+    }
+
+
+    .gallery-lightbox.active {
+      display: flex;
+    }
+
+
+    .gallery-lightbox-image {
+      max-width: min(1100px, 94vw);
+
+      max-height: 86vh;
+
+      object-fit: contain;
+
+      border-radius: 2px;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+    }
+
+
+    .gallery-lightbox-close {
+      position: absolute;
+
+      top: 20px;
+      right: 25px;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+
+      background: rgba(255,255,255,.12);
+
+      color: white;
+
+      border-radius: 50%;
+
+      font-size: 25px;
+
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+
+    .gallery-lightbox-info {
+      position: absolute;
+
+      left: 30px;
+      bottom: 25px;
+
+      color: white;
+    }
+
+
+    .gallery-lightbox-info small {
+      display: block;
+
+      opacity: .7;
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 5px;
+    }
+
+
+    .gallery-lightbox-info h3 {
+      margin: 0;
+
+      font-family: Georgia, serif;
+
+      font-weight: 400;
+
+      font-size: 20px;
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 800px) {
+
+      .gallery-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+      }
+
+      .gallery-card {
+        border-radius: 1px;
+      }
+
+      .gallery-overlay {
+        opacity: 1;
+
+        padding:
+          30px 12px 12px;
+      }
+
+      .gallery-overlay h3 {
+        font-size: 16px;
+      }
+
+      .gallery-intro {
+        padding-bottom: 45px;
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .gallery-grid {
+        width:
+          calc(100% - 24px);
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+      }
+
+      .gallery-lightbox {
+        padding: 15px;
+      }
+
+      .gallery-lightbox-close {
+        top: 12px;
+        right: 12px;
+      }
+
+      .gallery-lightbox-info {
+        left: 15px;
+        bottom: 15px;
+      }
+
+    }
+
+  </style>
 </head>
 
 
 <body>
 
+  <!-- =========================================
+       HEADER
+  ========================================= -->
 
-<header class="site-header">
-
-  <a href="oven.html" class="brand">
-
-    <img
-      src="logo.png"
-      alt="Arpita's Oven Logo"
-      class="header-logo"
-    >
-
-    <span>
-      Arpita's Oven
-    </span>
-
-  </a>
-
-
-  <nav class="site-nav">
-
-    <a href="oven.html">
-      The Oven
-    </a>
-
-    <a href="cakes.html">
-      Cakes
-    </a>
-
-    <a href="bakery.html">
-      More Than Cake
-    </a>
+  <header class="site-header">
 
     <a
-      href="gallery.html"
-      class="active"
+      href="oven.html"
+      class="brand"
     >
-      Gallery
+
+      <img
+        src="logo.png"
+        alt="Arpita's Oven Logo"
+        class="header-logo"
+      >
+
+      <span>
+        Arpita's Oven
+      </span>
+
     </a>
 
-    <a href="story.html">
-      The First Batch
-    </a>
 
-    <a href="contact.html">
-      Come Say Hi
-    </a>
-
-  </nav>
-
-</header>
-
-
-<main>
-
-
-<section class="page-hero">
-
-  <div class="page-hero-inner">
-
-    <p class="eyebrow">
-      A LITTLE PEEK INSIDE
-    </p>
-
-    <h1>
-      Fresh From<br>
-      the <em>Oven.</em>
-    </h1>
-
-    <p>
-      Cakes we've made, moments we've baked,
-      and a few things we're rather proud of.
-    </p>
-
-  </div>
-
-</section>
-
-
-<section class="gallery-section">
-
-  <div class="gallery-grid">
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>01</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>02</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>03</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>04</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>05</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-      <div class="gallery-placeholder">
-
-        <span>06</span>
-
-        <p>
-          Cake photo
-        </p>
-
-        <small>
-          Coming soon
-        </small>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-  <div class="gallery-note">
-
-    <p>
-      More sweet memories are being baked.
-    </p>
-
-  </div>
-
-</section>
-
-
-<section class="custom-section">
-
-  <div class="custom-inner">
-
-    <p class="eyebrow">
-      YOUR IDEA COULD BE NEXT
-    </p>
-
-    <h2>
-      Let's make<br>
-      something <em>special.</em>
-    </h2>
-
-    <p>
-      Have a cake or dessert in mind?
-      We'd love to bring it to life.
-    </p>
-
-    <a
-      href="contact.html"
-      class="button button-dark"
-    >
-      Let's Bake Together →
-    </a>
-
-  </div>
-
-</section>
-
-
-</main>
-
-
-<footer class="site-footer">
-
-  <div class="footer-brand">
-    <p>Homemade with love.</p>
-  </div>
-
-
-  <div class="footer-links">
-
-    <div>
-
-      <p class="footer-label">
-        EXPLORE
-      </p>
+    <nav class="site-nav">
 
       <a href="oven.html">
         The Oven
       </a>
 
       <a href="cakes.html">
-        What's Baking?
+        Cakes
       </a>
 
       <a href="bakery.html">
         More Than Cake
       </a>
 
-      <a href="gallery.html">
-        Fresh From the Oven
+      <a
+        href="gallery.html"
+        class="active"
+      >
+        Gallery
       </a>
 
       <a href="story.html">
         The First Batch
       </a>
 
-    </div>
-
-
-    <div>
-
-      <p class="footer-label">
-        SAY HELLO
-      </p>
-
       <a href="contact.html">
         Come Say Hi
       </a>
 
-      <a
-        href="https://wa.me/qr/GP5HSJQTE42VI1"
-        target="_blank"
-        rel="noopener"
-      >
-        WhatsApp
-      </a>
+    </nav>
 
-      <a
-        href="https://www.facebook.com/share/1BvQJvsmeo/"
-        target="_blank"
-        rel="noopener"
+  </header>
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <main class="gallery-page">
+
+    <section class="page-hero">
+
+      <div class="page-hero-inner">
+
+        <p class="tiny-label">
+          A LITTLE PEEK INSIDE
+        </p>
+
+        <h1>
+          Fresh From<br>
+          the <em>Oven.</em>
+        </h1>
+
+        <p>
+          Cakes we've made, moments we've baked,
+          and a few things we're rather proud of.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         INTRO
+    ========================================= -->
+
+    <section class="gallery-intro">
+
+      <p>
+        Every bake has a little story behind it.
+        Here's a glimpse of what has come out
+        of our kitchen.
+      </p>
+
+    </section>
+
+
+    <!-- =========================================
+         GALLERY
+    ========================================= -->
+
+    <section>
+
+      <div
+        id="gallery-loading"
+        class="gallery-loading"
       >
-        Facebook
-      </a>
+        Loading our gallery...
+      </div>
+
+
+      <div
+        id="gallery-grid"
+        class="gallery-grid"
+      ></div>
+
+
+      <div
+        id="gallery-empty"
+        class="gallery-empty"
+      >
+
+        <h2>
+          Our gallery is growing.
+        </h2>
+
+        <p>
+          Beautiful bakes are coming soon.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CUSTOM CTA
+    ========================================= -->
+
+    <section class="custom-section">
+
+      <div class="custom-inner">
+
+        <p class="eyebrow">
+          SOMETHING SPECIAL?
+        </p>
+
+        <h2>
+          Tell us what<br>
+          you're <em>imagining.</em>
+        </h2>
+
+        <p>
+          From birthdays to celebrations and
+          everything in between, we'd love to
+          bake something made just for you.
+        </p>
+
+        <a
+          href="contact.html"
+          class="button button-dark"
+        >
+          Let's Bake Together →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       LIGHTBOX
+  ========================================= -->
+
+  <div
+    id="gallery-lightbox"
+    class="gallery-lightbox"
+    aria-hidden="true"
+  >
+
+    <button
+      id="gallery-lightbox-close"
+      class="gallery-lightbox-close"
+      aria-label="Close image"
+    >
+      ×
+    </button>
+
+
+    <img
+      id="gallery-lightbox-image"
+      class="gallery-lightbox-image"
+      src=""
+      alt=""
+    >
+
+
+    <div class="gallery-lightbox-info">
+
+      <small id="gallery-lightbox-category"></small>
+
+      <h3 id="gallery-lightbox-title"></h3>
 
     </div>
 
   </div>
 
-</footer>
 
+  <!-- =========================================
+       SPARKLES
+  ========================================= -->
 
-<script>
+  <script>
 
-(function () {
+    (function () {
 
-  if (document.querySelector(".site-sparkles")) return;
-
-  const container =
-    document.createElement("div");
-
-  container.className =
-    "site-sparkles";
-
-  const isMobile =
-    window.innerWidth <= 600;
-
-  const count =
-    isMobile ? 5 : 7;
-
-  const symbols =
-    ["✦", "✧", "✦", "·", "✧"];
-
-
-  for (let i = 0; i < count; i++) {
-
-    const sparkle =
-      document.createElement("span");
-
-    sparkle.className =
-      "site-sparkle";
-
-    sparkle.textContent =
-      symbols[
-        Math.floor(
-          Math.random() *
-          symbols.length
+      if (
+        document.querySelector(
+          ".site-sparkles"
         )
+      ) return;
+
+
+      const container =
+        document.createElement("div");
+
+      container.className =
+        "site-sparkles";
+
+
+      const desktopCount = 7;
+      const mobileCount = 5;
+
+      const isMobile =
+        window.innerWidth <= 600;
+
+      const count =
+        isMobile
+          ? mobileCount
+          : desktopCount;
+
+
+      const symbols = [
+        "✦",
+        "✧",
+        "✦",
+        "·",
+        "✧"
       ];
 
-    sparkle.style.left =
-      (8 + Math.random() * 84) + "%";
 
-    sparkle.style.top =
-      (10 + Math.random() * 78) + "%";
+      for (
+        let i = 0;
+        i < count;
+        i++
+      ) {
 
-    sparkle.style.fontSize =
-      (7 + Math.random() * 10) + "px";
+        const sparkle =
+          document.createElement("span");
 
-    sparkle.style.animationDuration =
-      (4 + Math.random() * 5) + "s";
+        sparkle.className =
+          "site-sparkle";
 
-    sparkle.style.animationDelay =
-      (-Math.random() * 6) + "s";
+        sparkle.textContent =
+          symbols[
+            Math.floor(
+              Math.random() *
+              symbols.length
+            )
+          ];
 
-    sparkle.style.opacity =
-      (0.25 + Math.random() * 0.45);
 
-    container.appendChild(sparkle);
+        sparkle.style.left =
+          (8 + Math.random() * 84) + "%";
 
-  }
+        sparkle.style.top =
+          (10 + Math.random() * 78) + "%";
 
-  document.body.appendChild(container);
+        sparkle.style.fontSize =
+          (7 + Math.random() * 10) + "px";
 
-})();
+        sparkle.style.animationDuration =
+          (4 + Math.random() * 5) + "s";
 
-</script>
+        sparkle.style.animationDelay =
+          (-Math.random() * 6) + "s";
 
+        sparkle.style.opacity =
+          (0.25 + Math.random() * 0.45);
+
+
+        container.appendChild(
+          sparkle
+        );
+
+      }
+
+
+      document.body.appendChild(
+        container
+      );
+
+    })();
+
+  </script>
+
+
+  <!-- =========================================
+       GALLERY JAVASCRIPT
+  ========================================= -->
+
+  <script>
+
+    const galleryGrid =
+      document.getElementById(
+        "gallery-grid"
+      );
+
+    const galleryLoading =
+      document.getElementById(
+        "gallery-loading"
+      );
+
+    const galleryEmpty =
+      document.getElementById(
+        "gallery-empty"
+      );
+
+
+    const lightbox =
+      document.getElementById(
+        "gallery-lightbox"
+      );
+
+    const lightboxImage =
+      document.getElementById(
+        "gallery-lightbox-image"
+      );
+
+    const lightboxTitle =
+      document.getElementById(
+        "gallery-lightbox-title"
+      );
+
+    const lightboxCategory =
+      document.getElementById(
+        "gallery-lightbox-category"
+      );
+
+    const lightboxClose =
+      document.getElementById(
+        "gallery-lightbox-close"
+      );
+
+
+    /* =========================================
+       ESCAPE HTML
+    ========================================= */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =========================================
+       LOAD GALLERY
+    ========================================= */
+
+    async function loadGallery() {
+
+      try {
+
+        const response =
+          await fetch(
+            "/api/public/gallery"
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Could not load gallery."
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        /*
+          Supports both:
+
+          [
+            {...}
+          ]
+
+          and:
+
+          {
+            gallery: [...]
+          }
+        */
+
+        const items =
+          Array.isArray(data)
+            ? data
+            : Array.isArray(data.gallery)
+              ? data.gallery
+              : [];
+
+
+        galleryLoading.style.display =
+          "none";
+
+
+        galleryGrid.innerHTML =
+          "";
+
+
+        if (
+          items.length === 0
+        ) {
+
+          galleryEmpty.style.display =
+            "block";
+
+          return;
+
+        }
+
+
+        galleryEmpty.style.display =
+          "none";
+
+
+        items.forEach(
+          function (item) {
+
+            const card =
+              createGalleryCard(item);
+
+            galleryGrid.appendChild(
+              card
+            );
+
+          }
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Gallery error:",
+          error
+        );
+
+
+        galleryLoading.style.display =
+          "none";
+
+        galleryGrid.innerHTML =
+          "";
+
+        galleryEmpty.style.display =
+          "block";
+
+      }
+
+    }
+
+
+    /* =========================================
+       CREATE CARD
+    ========================================= */
+
+    function createGalleryCard(item) {
+
+      const card =
+        document.createElement("article");
+
+      card.className =
+        "gallery-card";
+
+
+      const image =
+        document.createElement("img");
+
+      image.src =
+        item.image_url || "";
+
+      image.alt =
+        item.title ||
+        "Arpita's Oven";
+
+
+      const overlay =
+        document.createElement("div");
+
+      overlay.className =
+        "gallery-overlay";
+
+
+      const category =
+        document.createElement("small");
+
+      category.textContent =
+        item.category ||
+        "From the Oven";
+
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        item.title ||
+        "A little something we baked";
+
+
+      overlay.appendChild(
+        category
+      );
+
+      overlay.appendChild(
+        title
+      );
+
+
+      card.appendChild(
+        image
+      );
+
+      card.appendChild(
+        overlay
+      );
+
+
+      card.addEventListener(
+        "click",
+        function () {
+
+          openLightbox(item);
+
+        }
+      );
+
+
+      return card;
+
+    }
+
+
+    /* =========================================
+       OPEN LIGHTBOX
+    ========================================= */
+
+    function openLightbox(item) {
+
+      lightboxImage.src =
+        item.image_url || "";
+
+      lightboxImage.alt =
+        item.title ||
+        "Arpita's Oven";
+
+
+      lightboxTitle.textContent =
+        item.title ||
+        "Arpita's Oven";
+
+
+      lightboxCategory.textContent =
+        item.category ||
+        "From the Oven";
+
+
+      lightbox.classList.add(
+        "active"
+      );
+
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    /* =========================================
+       CLOSE LIGHTBOX
+    ========================================= */
+
+    function closeLightbox() {
+
+      lightbox.classList.remove(
+        "active"
+      );
+
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      lightboxImage.src =
+        "";
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target === lightbox
+        ) {
+
+          closeLightbox();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeLightbox();
+
+        }
+
+      }
+    );
+
+
+    loadGallery();
+
+  </script>
 
 </body>
 </html>
