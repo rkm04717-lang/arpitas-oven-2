@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>The Oven — Arpita's Oven</title>
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
 
   <style>
 
@@ -16,102 +30,188 @@
     ========================================================= */
 
     .site-header .brand {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 11px;
+
       text-decoration: none;
+
       flex-shrink: 0;
+
     }
+
 
     .site-header .header-logo {
+
       width: 42px;
+
       height: 42px;
+
       object-fit: contain;
+
       display: block;
+
       flex-shrink: 0;
+
     }
 
+
     @media (max-width: 600px) {
+
       .site-header .header-logo {
+
         width: 36px;
+
         height: 36px;
+
       }
+
     }
+
 
 
     /* =========================================================
-       HERO — CENTER EVERYTHING
+       HERO
     ========================================================= */
 
     .hero {
+
       position: relative;
+
       min-height: 720px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       text-align: center;
+
       overflow: hidden;
+
     }
 
 
     .hero .hero-inner {
-      width: min(760px, calc(100% - 40px));
+
+      width: min(
+        760px,
+        calc(100% - 40px)
+      );
+
       margin: 0 auto;
+
       padding: 80px 20px 100px;
+
       text-align: center;
+
       position: relative;
+
       z-index: 10;
-      transform: none;
+
     }
 
 
     .hero .eyebrow {
+
       text-align: center;
+
       margin-left: auto;
+
       margin-right: auto;
+
     }
 
 
     .hero h1 {
+
       text-align: center;
+
       margin-left: auto;
+
       margin-right: auto;
+
     }
 
 
     .hero .hero-description {
+
       max-width: 600px;
+
       margin-left: auto;
+
       margin-right: auto;
+
       text-align: center;
+
     }
 
 
     .hero .button {
+
       margin-top: 28px;
+
       position: relative;
+
       z-index: 20;
+
     }
+
 
 
     /* =========================================================
-       WHAT'S BAKING SECTION
+       WHAT'S BAKING
     ========================================================= */
 
     .featured-section {
+
       position: relative;
+
       z-index: 10;
+
     }
+
 
     .whats-baking-link {
+
       margin-top: 28px;
+
     }
 
+
     .whats-baking-link .button {
+
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
     }
+
+
+
+    /* =========================================================
+       FOOTER BRAND — NO LOGO / NO NAME
+    ========================================================= */
+
+    .footer-brand {
+
+      display: block;
+
+    }
+
+
+    .footer-brand p {
+
+      margin-top: 0;
+
+    }
+
 
 
     /* =========================================================
@@ -119,70 +219,132 @@
     ========================================================= */
 
     .site-sparkles {
+
       position: fixed;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       pointer-events: none;
+
       overflow: hidden;
+
       z-index: 5;
+
     }
 
+
     .site-sparkle {
+
       position: absolute;
+
       display: block;
+
       font-family: Georgia, serif;
+
       color: currentColor;
+
       line-height: 1;
+
       pointer-events: none;
+
       user-select: none;
-      will-change: transform, opacity;
-      animation: sparkleFloat 6s ease-in-out infinite;
+
+      will-change:
+        transform,
+        opacity;
+
+      animation:
+        sparkleFloat
+        6s
+        ease-in-out
+        infinite;
+
     }
+
 
     @keyframes sparkleFloat {
 
       0% {
+
         transform:
-          translate3d(0, 12px, 0)
+          translate3d(
+            0,
+            12px,
+            0
+          )
           rotate(0deg)
           scale(.9);
 
         opacity: .15;
+
       }
+
 
       25% {
+
         transform:
-          translate3d(4px, -5px, 0)
+          translate3d(
+            4px,
+            -5px,
+            0
+          )
           rotate(8deg)
           scale(1);
+
       }
 
+
       50% {
+
         transform:
-          translate3d(-3px, -16px, 0)
+          translate3d(
+            -3px,
+            -16px,
+            0
+          )
           rotate(-6deg)
           scale(1.08);
 
         opacity: .65;
+
       }
+
 
       75% {
+
         transform:
-          translate3d(3px, -6px, 0)
+          translate3d(
+            3px,
+            -6px,
+            0
+          )
           rotate(5deg)
           scale(1);
+
       }
 
+
       100% {
+
         transform:
-          translate3d(0, 12px, 0)
+          translate3d(
+            0,
+            12px,
+            0
+          )
           rotate(0deg)
           scale(.9);
 
         opacity: .15;
+
       }
+
     }
+
 
 
     /* =========================================================
@@ -192,30 +354,47 @@
     @media (max-width: 600px) {
 
       .hero {
+
         min-height: 650px;
+
       }
+
 
       .hero .hero-inner {
-        width: calc(100% - 32px);
-        padding: 70px 16px 90px;
+
+        width:
+          calc(100% - 32px);
+
+        padding:
+          70px
+          16px
+          90px;
+
       }
+
 
       .hero .hero-description {
+
         max-width: 340px;
+
       }
+
 
       .hero .button {
+
         margin-top: 24px;
+
       }
 
-      .site-sparkles {
-        z-index: 5;
-      }
 
       .site-sparkle {
+
         animation-duration: 5s;
+
       }
+
     }
+
 
 
     /* =========================================================
@@ -225,13 +404,17 @@
     @media (prefers-reduced-motion: reduce) {
 
       .site-sparkle {
+
         animation: none;
+
         opacity: .3;
+
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -244,7 +427,11 @@
 
   <header class="site-header">
 
-    <a href="oven.html" class="brand">
+
+    <a
+      href="oven.html"
+      class="brand"
+    >
 
       <img
         src="logo.png"
@@ -252,34 +439,47 @@
         class="header-logo"
       >
 
-      <span>Arpita's Oven</span>
+      <span>
+        Arpita's Oven
+      </span>
 
     </a>
 
 
+
     <nav>
 
-      <a href="oven.html" class="active">
+
+      <a
+        href="oven.html"
+        class="active"
+      >
         The Oven
       </a>
+
 
       <a href="cakes.html">
         What's Baking?
       </a>
 
+
       <a href="gallery.html">
         Fresh From the Oven
       </a>
+
 
       <a href="story.html">
         The First Batch
       </a>
 
+
       <a href="contact.html">
         Come Say Hi
       </a>
 
+
     </nav>
+
 
 
     <a
@@ -288,6 +488,7 @@
     >
       Let's Bake →
     </a>
+
 
   </header>
 
@@ -306,6 +507,7 @@
 
     <section class="hero">
 
+
       <div class="hero-inner">
 
 
@@ -321,8 +523,10 @@
 
 
         <p class="hero-description">
+
           Homemade cakes, baked fresh and made especially
           for your sweetest moments.
+
         </p>
 
 
@@ -335,6 +539,7 @@
 
 
       </div>
+
 
     </section>
 
@@ -349,22 +554,29 @@
 
       <div class="section-heading">
 
+
         <div>
+
 
           <p class="eyebrow">
             FROM THIS BATCH
           </p>
 
+
           <h2>
             What's baking?
           </h2>
 
+
         </div>
+
 
       </div>
 
 
+
       <div class="whats-baking-link">
+
 
         <a
           href="cakes.html"
@@ -372,6 +584,7 @@
         >
           See What's Baking? →
         </a>
+
 
       </div>
 
@@ -402,9 +615,11 @@
 
 
         <p>
+
           From birthdays to celebrations and everything
           in between, we'd love to bake something made
           just for you.
+
         </p>
 
 
@@ -417,6 +632,7 @@
 
 
       </div>
+
 
     </section>
 
@@ -432,31 +648,13 @@
   <footer class="site-footer">
 
 
+    <!-- NO LOGO / NO ARPITA'S OVEN HERE -->
+
     <div class="footer-brand">
-
-
-      <a
-        href="oven.html"
-        class="brand"
-      >
-
-        <img
-          src="logo.png"
-          alt="Arpita's Oven Logo"
-          class="header-logo"
-        >
-
-        <span>
-          Arpita's Oven
-        </span>
-
-      </a>
-
 
       <p>
         Homemade with love.
       </p>
-
 
     </div>
 
@@ -465,41 +663,54 @@
     <div class="footer-links">
 
 
+      <!-- EXPLORE -->
+
       <div>
+
 
         <p class="footer-label">
           EXPLORE
         </p>
 
+
         <a href="oven.html">
           The Oven
         </a>
+
 
         <a href="cakes.html">
           What's Baking?
         </a>
 
+
         <a href="gallery.html">
           Fresh From the Oven
         </a>
+
 
         <a href="story.html">
           The First Batch
         </a>
 
+
       </div>
 
 
 
+      <!-- SAY HELLO -->
+
       <div>
+
 
         <p class="footer-label">
           SAY HELLO
         </p>
 
+
         <a href="contact.html">
           Come Say Hi
         </a>
+
 
         <a
           href="https://wa.me/qr/GP5HSJQTE42VI1"
@@ -509,6 +720,7 @@
           WhatsApp
         </a>
 
+
         <a
           href="https://www.facebook.com/share/1BvQJvsmeo/"
           target="_blank"
@@ -516,6 +728,7 @@
         >
           Facebook
         </a>
+
 
       </div>
 
@@ -526,9 +739,11 @@
 
     <div class="footer-bottom">
 
+
       <p>
         © 2026 Arpita's Oven. Made with love.
       </p>
+
 
     </div>
 
@@ -543,37 +758,49 @@
 
   <script>
 
+
     (function () {
+
 
       if (
         document.querySelector(
           ".site-sparkles"
         )
       ) {
+
         return;
+
       }
 
 
+
       const container =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       container.className =
         "site-sparkles";
 
 
+
       const desktopCount = 7;
+
       const mobileCount = 5;
+
 
 
       const isMobile =
         window.innerWidth <= 600;
 
 
+
       const count =
         isMobile
           ? mobileCount
           : desktopCount;
+
 
 
       const symbols = [
@@ -583,6 +810,7 @@
         "·",
         "✧"
       ];
+
 
 
       for (
@@ -612,51 +840,62 @@
 
 
         sparkle.style.left =
-          (8 +
-            Math.random() * 84) +
-          "%";
+          (
+            8 +
+            Math.random() * 84
+          ) + "%";
 
 
         sparkle.style.top =
-          (10 +
-            Math.random() * 78) +
-          "%";
+          (
+            10 +
+            Math.random() * 78
+          ) + "%";
 
 
         sparkle.style.fontSize =
-          (7 +
-            Math.random() * 10) +
-          "px";
+          (
+            7 +
+            Math.random() * 10
+          ) + "px";
 
 
         sparkle.style.animationDuration =
-          (4 +
-            Math.random() * 5) +
-          "s";
+          (
+            4 +
+            Math.random() * 5
+          ) + "s";
 
 
         sparkle.style.animationDelay =
-          (-Math.random() * 6) +
-          "s";
+          (
+            -Math.random() * 6
+          ) + "s";
 
 
         sparkle.style.opacity =
-          (0.25 +
-            Math.random() * 0.45);
+          (
+            0.25 +
+            Math.random() * 0.45
+          );
 
 
         container.appendChild(
           sparkle
         );
 
+
       }
+
 
 
       document.body.appendChild(
         container
       );
 
+
     })();
+
 
   </script>
 
