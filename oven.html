@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+
     /* =========================================================
        HEADER LOGO
     ========================================================= */
@@ -39,17 +40,68 @@
 
 
     /* =========================================================
-       HERO TEXT POSITION
+       HERO — CENTER EVERYTHING
     ========================================================= */
 
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+
     .hero .hero-inner {
-      transform: translateY(35px);
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 80px 20px 100px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      transform: none;
+    }
+
+
+    .hero .eyebrow {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .hero h1 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .hero .hero-description {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+
+    .hero .button {
+      margin-top: 28px;
+      position: relative;
+      z-index: 20;
     }
 
 
     /* =========================================================
-       WHAT'S BAKING
+       WHAT'S BAKING SECTION
     ========================================================= */
+
+    .featured-section {
+      position: relative;
+      z-index: 10;
+    }
 
     .whats-baking-link {
       margin-top: 28px;
@@ -89,34 +141,71 @@
     }
 
     @keyframes sparkleFloat {
+
       0% {
-        transform: translate3d(0, 12px, 0) rotate(0deg) scale(.9);
+        transform:
+          translate3d(0, 12px, 0)
+          rotate(0deg)
+          scale(.9);
+
         opacity: .15;
       }
 
       25% {
-        transform: translate3d(4px, -5px, 0) rotate(8deg) scale(1);
+        transform:
+          translate3d(4px, -5px, 0)
+          rotate(8deg)
+          scale(1);
       }
 
       50% {
-        transform: translate3d(-3px, -16px, 0) rotate(-6deg) scale(1.08);
+        transform:
+          translate3d(-3px, -16px, 0)
+          rotate(-6deg)
+          scale(1.08);
+
         opacity: .65;
       }
 
       75% {
-        transform: translate3d(3px, -6px, 0) rotate(5deg) scale(1);
+        transform:
+          translate3d(3px, -6px, 0)
+          rotate(5deg)
+          scale(1);
       }
 
       100% {
-        transform: translate3d(0, 12px, 0) rotate(0deg) scale(.9);
+        transform:
+          translate3d(0, 12px, 0)
+          rotate(0deg)
+          scale(.9);
+
         opacity: .15;
       }
     }
 
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
     @media (max-width: 600px) {
 
+      .hero {
+        min-height: 650px;
+      }
+
       .hero .hero-inner {
-        transform: translateY(25px);
+        width: calc(100% - 32px);
+        padding: 70px 16px 90px;
+      }
+
+      .hero .hero-description {
+        max-width: 340px;
+      }
+
+      .hero .button {
+        margin-top: 24px;
       }
 
       .site-sparkles {
@@ -128,17 +217,26 @@
       }
     }
 
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
     @media (prefers-reduced-motion: reduce) {
+
       .site-sparkle {
         animation: none;
         opacity: .3;
       }
+
     }
+
   </style>
 </head>
 
 
 <body>
+
 
   <!-- =======================================================
        HEADER
@@ -184,22 +282,32 @@
     </nav>
 
 
-    <a href="contact.html" class="nav-order">
+    <a
+      href="contact.html"
+      class="nav-order"
+    >
       Let's Bake →
     </a>
 
   </header>
 
 
+
   <!-- =======================================================
-       HERO
+       MAIN
   ======================================================== -->
 
   <main>
 
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
     <section class="hero">
 
       <div class="hero-inner">
+
 
         <p class="eyebrow">
           WELCOME TO THE OVEN
@@ -225,9 +333,11 @@
           What's Baking? →
         </a>
 
+
       </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -235,6 +345,7 @@
     ====================================================== -->
 
     <section class="featured-section">
+
 
       <div class="section-heading">
 
@@ -264,7 +375,9 @@
 
       </div>
 
+
     </section>
+
 
 
     <!-- =====================================================
@@ -273,7 +386,9 @@
 
     <section class="custom-section">
 
+
       <div class="custom-inner">
+
 
         <p class="eyebrow">
           SOMETHING SPECIAL?
@@ -300,11 +415,14 @@
           Let's Bake Together →
         </a>
 
+
       </div>
 
     </section>
 
+
   </main>
+
 
 
   <!-- =======================================================
@@ -313,9 +431,14 @@
 
   <footer class="site-footer">
 
+
     <div class="footer-brand">
 
-      <a href="oven.html" class="brand">
+
+      <a
+        href="oven.html"
+        class="brand"
+      >
 
         <img
           src="logo.png"
@@ -323,7 +446,9 @@
           class="header-logo"
         >
 
-        <span>Arpita's Oven</span>
+        <span>
+          Arpita's Oven
+        </span>
 
       </a>
 
@@ -332,10 +457,13 @@
         Homemade with love.
       </p>
 
+
     </div>
 
 
+
     <div class="footer-links">
+
 
       <div>
 
@@ -360,6 +488,7 @@
         </a>
 
       </div>
+
 
 
       <div>
@@ -390,7 +519,9 @@
 
       </div>
 
+
     </div>
+
 
 
     <div class="footer-bottom">
@@ -401,7 +532,9 @@
 
     </div>
 
+
   </footer>
+
 
 
   <!-- =======================================================
@@ -412,13 +545,18 @@
 
     (function () {
 
-      if (document.querySelector(".site-sparkles")) {
+      if (
+        document.querySelector(
+          ".site-sparkles"
+        )
+      ) {
         return;
       }
 
 
       const container =
         document.createElement("div");
+
 
       container.className =
         "site-sparkles";
@@ -427,8 +565,10 @@
       const desktopCount = 7;
       const mobileCount = 5;
 
+
       const isMobile =
         window.innerWidth <= 600;
+
 
       const count =
         isMobile
@@ -445,10 +585,18 @@
       ];
 
 
-      for (let i = 0; i < count; i++) {
+      for (
+        let i = 0;
+        i < count;
+        i++
+      ) {
+
 
         const sparkle =
-          document.createElement("span");
+          document.createElement(
+            "span"
+          );
+
 
         sparkle.className =
           "site-sparkle";
@@ -457,45 +605,61 @@
         sparkle.textContent =
           symbols[
             Math.floor(
-              Math.random() * symbols.length
+              Math.random() *
+              symbols.length
             )
           ];
 
 
         sparkle.style.left =
-          (8 + Math.random() * 84) + "%";
+          (8 +
+            Math.random() * 84) +
+          "%";
 
 
         sparkle.style.top =
-          (10 + Math.random() * 78) + "%";
+          (10 +
+            Math.random() * 78) +
+          "%";
 
 
         sparkle.style.fontSize =
-          (7 + Math.random() * 10) + "px";
+          (7 +
+            Math.random() * 10) +
+          "px";
 
 
         sparkle.style.animationDuration =
-          (4 + Math.random() * 5) + "s";
+          (4 +
+            Math.random() * 5) +
+          "s";
 
 
         sparkle.style.animationDelay =
-          (-Math.random() * 6) + "s";
+          (-Math.random() * 6) +
+          "s";
 
 
         sparkle.style.opacity =
-          (0.25 + Math.random() * 0.45);
+          (0.25 +
+            Math.random() * 0.45);
 
 
-        container.appendChild(sparkle);
+        container.appendChild(
+          sparkle
+        );
 
       }
 
 
-      document.body.appendChild(container);
+      document.body.appendChild(
+        container
+      );
 
     })();
 
   </script>
+
 
 </body>
 </html>
