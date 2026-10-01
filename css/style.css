@@ -2877,3 +2877,39 @@ main > section {
   }
 
 }
+/* =========================================================
+   OVEN HERO — CENTER ALIGNMENT FIX
+========================================================= */
+
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner {
+  width: min(900px, 90%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-inner .eyebrow,
+.hero-inner h1,
+.hero-inner p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-inner h1 {
+  max-width: 850px;
+}
+
+.hero-inner p {
+  max-width: 650px;
+}
+
+.hero-inner .button {
+  display: inline-flex;
+}
