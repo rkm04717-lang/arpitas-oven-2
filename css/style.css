@@ -1,5 +1,833 @@
 /* =========================================================
-   ARPITA'S OVEN — SOUND TOGGLE
+   ARPITA'S OVEN
+   COMPLETE WEBSITE STYLESHEET
+========================================================= */
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #fbf5ee;
+  color: #33231e;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================================================
+   GLOBAL COLORS
+========================================================= */
+
+:root {
+  --cream: #fbf5ee;
+  --cream-dark: #f4e8dc;
+  --paper: #fffaf5;
+  --brown: #33231e;
+  --brown-soft: #654b40;
+  --peach: #e7a98d;
+  --peach-light: #f4cdbb;
+  --line: rgba(51, 35, 30, 0.14);
+  --shadow: rgba(51, 35, 30, 0.1);
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  position: relative;
+  width: 100%;
+  padding: 22px 5%;
+  background: rgba(251, 245, 238, 0.96);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+}
+
+.site-header-inner {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* =========================================================
+   BRAND / LOGO
+========================================================= */
+
+.brand,
+.site-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
+  color: var(--brown);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brand .header-logo,
+.site-logo img {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
+  flex: 0 0 38px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  position: relative;
+  color: var(--brown-soft);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--brown);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--brown);
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after {
+  transform: scaleX(1);
+}
+
+.site-nav a.active {
+  color: var(--brown);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  width: 100%;
+  min-height: 620px;
+  padding: 100px 5% 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero .eyebrow,
+.hero-inner .eyebrow {
+  text-align: center;
+}
+
+.hero h1,
+.hero-inner h1 {
+  max-width: 900px;
+  margin: 12px auto 25px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(58px, 9vw, 112px);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  color: var(--brown);
+}
+
+.hero h1 em,
+.hero-inner h1 em {
+  font-style: italic;
+  color: var(--peach);
+}
+
+.hero p,
+.hero-inner p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  text-align: center;
+  color: var(--brown-soft);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+  color: var(--brown-soft);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 25px;
+  border: 1px solid var(--brown);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-dark {
+  background: var(--brown);
+  color: #fffaf5;
+  box-shadow: 0 8px 25px rgba(51, 35, 30, 0.12);
+}
+
+.button-dark:hover {
+  background: #4a342c;
+  box-shadow: 0 12px 30px rgba(51, 35, 30, 0.18);
+}
+
+.button-light {
+  background: transparent;
+  color: var(--brown);
+}
+
+.button-light:hover {
+  background: var(--brown);
+  color: #fffaf5;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+  position: relative;
+}
+
+.featured-section {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 95px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  margin-top: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.section-heading h2 em {
+  color: var(--peach);
+  font-style: italic;
+}
+
+.whats-baking-link {
+  text-align: center;
+}
+
+/* =========================================================
+   CUSTOM SECTION
+========================================================= */
+
+.custom-section {
+  width: 100%;
+  padding: 110px 5%;
+  background: var(--brown);
+  color: #fffaf5;
+}
+
+.custom-inner {
+  width: min(850px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.custom-inner .eyebrow {
+  color: var(--peach-light);
+}
+
+.custom-inner h2 {
+  margin: 14px 0 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+
+.custom-inner h2 em {
+  color: var(--peach);
+  font-style: italic;
+}
+
+.custom-inner p {
+  max-width: 580px;
+  margin: 0 auto 30px;
+  color: rgba(255, 250, 245, 0.76);
+  line-height: 1.8;
+}
+
+.custom-inner .button-dark {
+  background: #fffaf5;
+  color: var(--brown);
+  border-color: #fffaf5;
+}
+
+.custom-inner .button-dark:hover {
+  background: var(--peach-light);
+  border-color: var(--peach-light);
+}
+
+/* =========================================================
+   CAKE GRID
+========================================================= */
+
+.cake-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.cake-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cake-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px var(--shadow);
+}
+
+.cake-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--cream-dark);
+  overflow: hidden;
+}
+
+.cake-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cake-card:hover .cake-image img {
+  transform: scale(1.04);
+}
+
+.cake-card-content {
+  padding: 25px;
+}
+
+.cake-category {
+  margin-bottom: 8px;
+  color: var(--brown-soft);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.cake-card h3 {
+  margin-bottom: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.cake-card p {
+  margin-bottom: 16px;
+  color: var(--brown-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.cake-price {
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
+
+.empty-state,
+#cake-empty {
+  width: 100%;
+  padding: 55px 25px;
+  border: 1px dashed var(--line);
+  text-align: center;
+  color: var(--brown-soft);
+  background: rgba(255, 250, 245, 0.5);
+}
+
+/* =========================================================
+   BAKERY PAGE
+========================================================= */
+
+.bakery-intro {
+  width: min(900px, 90%);
+  margin: 0 auto;
+  padding: 90px 0 55px;
+  text-align: center;
+}
+
+.bakery-intro h2 {
+  margin: 12px 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(45px, 6vw, 75px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.bakery-intro p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--brown-soft);
+  line-height: 1.8;
+}
+
+.bakery-grid {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 30px 0 100px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.bakery-card {
+  min-height: 300px;
+  padding: 40px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.bakery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.bakery-card h3 {
+  margin-bottom: 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.bakery-card p {
+  color: var(--brown-soft);
+  font-size: 14px;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 30px 0 100px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream-dark);
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px 20px 18px;
+  color: #fff;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.6)
+  );
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(25, 17, 14, 0.88);
+}
+
+.lightbox img {
+  max-width: min(1000px, 92vw);
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 32px;
+}
+
+/* =========================================================
+   STORY PAGE
+========================================================= */
+
+.story-content {
+  width: min(900px, 90%);
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+.story-content h2 {
+  margin: 12px 0 25px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(45px, 6vw, 72px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+
+.story-content p {
+  max-width: 720px;
+  margin-bottom: 22px;
+  color: var(--brown-soft);
+  line-height: 1.9;
+}
+
+.values {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+  padding: 0 0 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.value-card {
+  padding: 35px;
+  border-top: 1px solid var(--brown);
+}
+
+.value-card h3 {
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.value-card p {
+  color: var(--brown-soft);
+  font-size: 14px;
+}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+.contact-content {
+  width: min(950px, 90%);
+  margin: 0 auto;
+  padding: 85px 0 110px;
+  text-align: center;
+}
+
+.contact-content h2 {
+  margin: 12px 0 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 85px);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+
+.contact-content h2 em {
+  color: var(--peach);
+}
+
+.contact-content > p {
+  max-width: 600px;
+  margin: 0 auto 35px;
+  color: var(--brown-soft);
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  padding: 70px 5% 35px;
+  background: #eaded3;
+  color: var(--brown);
+}
+
+.footer-inner {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+}
+
+.footer-tagline {
+  margin-top: 8px;
+  color: var(--brown-soft);
+  font-size: 14px;
+}
+
+.site-footer h4 {
+  margin-bottom: 15px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.site-footer a {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brown-soft);
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--brown);
+}
+
+.footer-bottom {
+  width: min(1200px, 100%);
+  margin: 55px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(51, 35, 30, 0.15);
+  color: var(--brown-soft);
+  font-size: 11px;
+}
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.site-sparkles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.site-sparkle {
+  position: absolute;
+  display: block;
+  font-family: Georgia, serif;
+  color: currentColor;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: sparkleFloat 6s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translate3d(0, 12px, 0)
+      rotate(0deg)
+      scale(0.9);
+    opacity: 0.15;
+  }
+
+  25% {
+    transform: translate3d(4px, -5px, 0)
+      rotate(8deg)
+      scale(1);
+  }
+
+  50% {
+    transform: translate3d(-3px, -16px, 0)
+      rotate(-6deg)
+      scale(1.08);
+    opacity: 0.65;
+  }
+
+  75% {
+    transform: translate3d(3px, -6px, 0)
+      rotate(5deg)
+      scale(1);
+  }
+
+  100% {
+    transform: translate3d(0, 12px, 0)
+      rotate(0deg)
+      scale(0.9);
+    opacity: 0.15;
+  }
+}
+
+/* =========================================================
+   SOUND TOGGLE
 ========================================================= */
 
 .sound-toggle {
@@ -47,16 +875,207 @@
   transform: scale(0.94);
 }
 
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  color: var(--brown-soft);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .site-header-inner {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .site-nav {
+    justify-content: center;
+    gap: 15px 20px;
+  }
+
+  .cake-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-inner > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 600px) {
+
+  .site-header {
+    padding: 16px 5%;
+  }
+
+  .brand,
+  .site-logo {
+    font-size: 18px;
+  }
+
+  .brand .header-logo,
+  .site-logo img {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    flex: 0 0 32px !important;
+  }
+
+  .site-nav {
+    width: 100%;
+    gap: 11px 15px;
+  }
+
+  .site-nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 570px;
+    padding: 75px 7% 80px;
+  }
+
+  .hero h1,
+  .hero-inner h1 {
+    font-size: clamp(52px, 16vw, 80px);
+  }
+
+  .hero p,
+  .hero-inner p {
+    font-size: 14px;
+  }
+
+  .featured-section {
+    width: 88%;
+    padding: 70px 0;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .section-heading h2 {
+    font-size: 45px;
+  }
+
+  .custom-section {
+    padding: 80px 7%;
+  }
+
+  .custom-inner h2 {
+    font-size: 50px;
+  }
+
+  .cake-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .bakery-grid {
+    width: 88%;
+    grid-template-columns: 1fr;
+    padding-bottom: 70px;
+  }
+
+  .bakery-card {
+    min-height: 240px;
+    padding: 30px;
+  }
+
+  .bakery-card h3 {
+    font-size: 32px;
+  }
+
+  .gallery-grid {
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-bottom: 70px;
+  }
+
+  .story-content {
+    padding: 70px 0;
+  }
+
+  .values {
+    grid-template-columns: 1fr;
+    padding-bottom: 70px;
+  }
+
+  .contact-content {
+    padding: 65px 0 80px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-inner > :first-child {
+    grid-column: auto;
+  }
+
+  .site-footer {
+    padding: 55px 7% 30px;
+  }
 
   .sound-toggle {
     right: 16px;
     bottom: 16px;
-
     width: 38px;
     height: 38px;
-
     font-size: 15px;
   }
 
+  .scroll-indicator {
+    bottom: 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .site-sparkle {
+    animation: none;
+    opacity: 0.3;
+  }
 }
