@@ -2786,3 +2786,46 @@ main > section {
   }
 
 }
+/* =========================================================
+   ARPITA'S OVEN — FOOTER LINK SPACING
+========================================================= */
+
+.site-footer .footer-links {
+  display: flex;
+  gap: 70px;
+}
+
+.site-footer .footer-links > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.site-footer .footer-links a {
+  display: block;
+  margin: 0 0 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.site-footer .footer-links a:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MOBILE FOOTER
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .site-footer .footer-links {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .site-footer .footer-links a {
+    margin-bottom: 12px;
+  }
+
+}
