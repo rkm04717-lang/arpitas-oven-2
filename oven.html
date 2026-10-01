@@ -1,107 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>The Oven — Arpita's Oven</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
+  <meta
+    name="description"
+    content="Arpita's Oven — homemade cakes and bakery treats, freshly baked with love."
   >
 
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
+  <link rel="icon" type="image/png" href="logo.png">
 
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
-
     /* =========================================================
-       HEADER LOGO
+       ARPITA'S OVEN — OVEN PAGE
     ========================================================= */
+
+    /* ---------------------------------------------------------
+       HEADER LOGO
+    --------------------------------------------------------- */
 
     .site-header .brand {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 11px;
-
       text-decoration: none;
-
       flex-shrink: 0;
-
     }
-
 
     .site-header .header-logo {
-
       width: 42px;
-
       height: 42px;
-
       object-fit: contain;
-
       display: block;
-
       flex-shrink: 0;
-
     }
 
 
-    @media (max-width: 600px) {
-
-      .site-header .header-logo {
-
-        width: 36px;
-
-        height: 36px;
-
-      }
-
-    }
-
-
-
-    /* =========================================================
+    /* ---------------------------------------------------------
        HERO
-    ========================================================= */
+    --------------------------------------------------------- */
 
     .hero {
-
       position: relative;
-
       min-height: 720px;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       text-align: center;
 
       overflow: hidden;
-
     }
 
-
     .hero .hero-inner {
-
-      width: min(
-        760px,
-        calc(100% - 40px)
-      );
+      width: min(760px, calc(100% - 40px));
 
       margin: 0 auto;
 
@@ -110,122 +69,154 @@
       text-align: center;
 
       position: relative;
-
       z-index: 10;
-
     }
-
 
     .hero .eyebrow {
-
       text-align: center;
-
       margin-left: auto;
-
       margin-right: auto;
-
     }
-
 
     .hero h1 {
-
       text-align: center;
-
       margin-left: auto;
-
       margin-right: auto;
-
     }
 
-
     .hero .hero-description {
-
       max-width: 600px;
 
       margin-left: auto;
-
       margin-right: auto;
 
       text-align: center;
-
     }
-
 
     .hero .button {
-
       margin-top: 28px;
 
       position: relative;
-
       z-index: 20;
-
     }
 
 
-
-    /* =========================================================
+    /* ---------------------------------------------------------
        WHAT'S BAKING
-    ========================================================= */
+    --------------------------------------------------------- */
 
     .featured-section {
+      padding: 100px 6%;
 
       position: relative;
-
-      z-index: 10;
-
     }
 
+    .featured-section .section-heading {
+      width: min(760px, 100%);
+
+      margin: 0 auto;
+
+      text-align: center;
+    }
+
+    .featured-section .section-heading > div {
+      width: 100%;
+    }
+
+    .featured-section .section-heading .eyebrow {
+      text-align: center;
+    }
+
+    .featured-section .section-heading h2 {
+      text-align: center;
+    }
 
     .whats-baking-link {
-
-      margin-top: 28px;
-
-    }
-
-
-    .whats-baking-link .button {
-
-      display: inline-flex;
-
-      align-items: center;
-
+      display: flex;
       justify-content: center;
 
+      margin-top: 35px;
     }
 
 
+    /* ---------------------------------------------------------
+       CUSTOM SECTION
+    --------------------------------------------------------- */
 
-    /* =========================================================
-       FOOTER BRAND — NO LOGO / NO NAME
-    ========================================================= */
+    .custom-section {
+      padding: 115px 6%;
 
-    .footer-brand {
+      text-align: center;
+    }
 
+    .custom-inner {
+      width: min(720px, 100%);
+
+      margin: 0 auto;
+    }
+
+    .custom-inner .eyebrow {
+      text-align: center;
+    }
+
+    .custom-inner h2 {
+      text-align: center;
+
+      margin-bottom: 20px;
+    }
+
+    .custom-inner > p:not(.eyebrow) {
+      max-width: 580px;
+
+      margin: 0 auto 30px;
+
+      line-height: 1.8;
+    }
+
+
+    /* ---------------------------------------------------------
+       FOOTER
+    --------------------------------------------------------- */
+
+    .site-footer .footer-links {
+      display: flex;
+
+      gap: 70px;
+    }
+
+    .site-footer .footer-links > div {
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+
+    .site-footer .footer-links a {
       display: block;
 
+      margin: 0 0 14px;
+
+      line-height: 1.5;
+
+      text-decoration: none;
+    }
+
+    .site-footer .footer-links a:last-child {
+      margin-bottom: 0;
     }
 
 
-    .footer-brand p {
-
-      margin-top: 0;
-
-    }
-
-
-
-    /* =========================================================
+    /* ---------------------------------------------------------
        SPARKLES
-    ========================================================= */
+    --------------------------------------------------------- */
 
     .site-sparkles {
-
       position: fixed;
 
       inset: 0;
 
       width: 100%;
-
       height: 100%;
 
       pointer-events: none;
@@ -233,12 +224,9 @@
       overflow: hidden;
 
       z-index: 5;
-
     }
 
-
     .site-sparkle {
-
       position: absolute;
 
       display: block;
@@ -253,168 +241,128 @@
 
       user-select: none;
 
-      will-change:
-        transform,
-        opacity;
+      will-change: transform, opacity;
 
       animation:
         sparkleFloat
         6s
         ease-in-out
         infinite;
-
     }
-
 
     @keyframes sparkleFloat {
 
       0% {
-
         transform:
-          translate3d(
-            0,
-            12px,
-            0
-          )
+          translate3d(0, 12px, 0)
           rotate(0deg)
           scale(.9);
 
         opacity: .15;
-
       }
-
 
       25% {
-
         transform:
-          translate3d(
-            4px,
-            -5px,
-            0
-          )
+          translate3d(4px, -5px, 0)
           rotate(8deg)
           scale(1);
-
       }
 
-
       50% {
-
         transform:
-          translate3d(
-            -3px,
-            -16px,
-            0
-          )
+          translate3d(-3px, -16px, 0)
           rotate(-6deg)
           scale(1.08);
 
         opacity: .65;
-
       }
-
 
       75% {
-
         transform:
-          translate3d(
-            3px,
-            -6px,
-            0
-          )
+          translate3d(3px, -6px, 0)
           rotate(5deg)
           scale(1);
-
       }
 
-
       100% {
-
         transform:
-          translate3d(
-            0,
-            12px,
-            0
-          )
+          translate3d(0, 12px, 0)
           rotate(0deg)
           scale(.9);
 
         opacity: .15;
-
       }
-
     }
 
 
-
-    /* =========================================================
+    /* ---------------------------------------------------------
        MOBILE
-    ========================================================= */
+    --------------------------------------------------------- */
 
     @media (max-width: 600px) {
 
-      .hero {
-
-        min-height: 650px;
-
+      .site-header .header-logo {
+        width: 36px;
+        height: 36px;
       }
 
+      .hero {
+        min-height: 650px;
+      }
 
       .hero .hero-inner {
+        width: calc(100% - 32px);
 
-        width:
-          calc(100% - 32px);
-
-        padding:
-          70px
-          16px
-          90px;
-
+        padding: 70px 16px 90px;
       }
-
 
       .hero .hero-description {
-
         max-width: 340px;
-
       }
-
 
       .hero .button {
-
         margin-top: 24px;
-
       }
 
+      .featured-section {
+        padding: 75px 20px;
+      }
+
+      .custom-section {
+        padding: 85px 20px;
+      }
+
+      .site-footer .footer-links {
+        gap: 40px;
+
+        flex-wrap: wrap;
+      }
+
+      .site-footer .footer-links a {
+        margin-bottom: 12px;
+      }
+
+      .site-sparkles {
+        z-index: 5;
+      }
 
       .site-sparkle {
-
         animation-duration: 5s;
-
       }
-
     }
 
-
-
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
 
       .site-sparkle {
-
         animation: none;
 
         opacity: .3;
-
       }
 
     }
 
   </style>
-
 </head>
 
 
@@ -427,11 +375,7 @@
 
   <header class="site-header">
 
-
-    <a
-      href="oven.html"
-      class="brand"
-    >
+    <a href="oven.html" class="brand">
 
       <img
         src="logo.png"
@@ -439,16 +383,12 @@
         class="header-logo"
       >
 
-      <span>
-        Arpita's Oven
-      </span>
+      <span>Arpita's Oven</span>
 
     </a>
 
 
-
-    <nav>
-
+    <nav class="site-nav">
 
       <a
         href="oven.html"
@@ -457,41 +397,29 @@
         The Oven
       </a>
 
-
       <a href="cakes.html">
-        What's Baking?
+        Cakes
       </a>
 
+      <a href="bakery.html">
+        More Than Cake
+      </a>
 
       <a href="gallery.html">
-        Fresh From the Oven
+        Gallery
       </a>
-
 
       <a href="story.html">
         The First Batch
       </a>
 
-
       <a href="contact.html">
         Come Say Hi
       </a>
 
-
     </nav>
 
-
-
-    <a
-      href="contact.html"
-      class="nav-order"
-    >
-      Let's Bake →
-    </a>
-
-
   </header>
-
 
 
   <!-- =======================================================
@@ -507,42 +435,31 @@
 
     <section class="hero">
 
-
       <div class="hero-inner">
-
 
         <p class="eyebrow">
           WELCOME TO THE OVEN
         </p>
 
-
         <h1>
-          Made with<br>
-          <em>love.</em>
+          Made with <em>love.</em>
         </h1>
 
-
         <p class="hero-description">
-
           Homemade cakes, baked fresh and made especially
           for your sweetest moments.
-
         </p>
-
 
         <a
           href="cakes.html"
-          class="button button-light"
+          class="button button-dark"
         >
           What's Baking? →
         </a>
 
-
       </div>
 
-
     </section>
-
 
 
     <!-- =====================================================
@@ -551,32 +468,24 @@
 
     <section class="featured-section">
 
-
       <div class="section-heading">
 
-
         <div>
-
 
           <p class="eyebrow">
             FROM THIS BATCH
           </p>
 
-
           <h2>
             What's baking?
           </h2>
 
-
         </div>
-
 
       </div>
 
 
-
       <div class="whats-baking-link">
-
 
         <a
           href="cakes.html"
@@ -585,43 +494,33 @@
           See What's Baking? →
         </a>
 
-
       </div>
-
 
     </section>
 
 
-
     <!-- =====================================================
-         CUSTOM CAKES
+         CUSTOM
     ====================================================== -->
 
     <section class="custom-section">
 
-
       <div class="custom-inner">
-
 
         <p class="eyebrow">
           SOMETHING SPECIAL?
         </p>
-
 
         <h2>
           Tell us what<br>
           you're <em>imagining.</em>
         </h2>
 
-
         <p>
-
           From birthdays to celebrations and everything
           in between, we'd love to bake something made
           just for you.
-
         </p>
-
 
         <a
           href="contact.html"
@@ -630,9 +529,7 @@
           Let's Bake Together →
         </a>
 
-
       </div>
-
 
     </section>
 
@@ -640,15 +537,11 @@
   </main>
 
 
-
   <!-- =======================================================
        FOOTER
   ======================================================== -->
 
   <footer class="site-footer">
-
-
-    <!-- NO LOGO / NO ARPITA'S OVEN HERE -->
 
     <div class="footer-brand">
 
@@ -659,58 +552,47 @@
     </div>
 
 
-
     <div class="footer-links">
 
 
-      <!-- EXPLORE -->
-
       <div>
-
 
         <p class="footer-label">
           EXPLORE
         </p>
 
-
         <a href="oven.html">
           The Oven
         </a>
-
 
         <a href="cakes.html">
           What's Baking?
         </a>
 
+        <a href="bakery.html">
+          More Than Cake
+        </a>
 
         <a href="gallery.html">
           Fresh From the Oven
         </a>
 
-
         <a href="story.html">
           The First Batch
         </a>
 
-
       </div>
 
 
-
-      <!-- SAY HELLO -->
-
       <div>
-
 
         <p class="footer-label">
           SAY HELLO
         </p>
 
-
         <a href="contact.html">
           Come Say Hi
         </a>
-
 
         <a
           href="https://wa.me/qr/GP5HSJQTE42VI1"
@@ -720,7 +602,6 @@
           WhatsApp
         </a>
 
-
         <a
           href="https://www.facebook.com/share/1BvQJvsmeo/"
           target="_blank"
@@ -729,27 +610,12 @@
           Facebook
         </a>
 
-
       </div>
 
 
     </div>
 
-
-
-    <div class="footer-bottom">
-
-
-      <p>
-        © 2026 Arpita's Oven. Made with love.
-      </p>
-
-
-    </div>
-
-
   </footer>
-
 
 
   <!-- =======================================================
@@ -758,31 +624,23 @@
 
   <script>
 
-
     (function () {
-
 
       if (
         document.querySelector(
           ".site-sparkles"
         )
       ) {
-
         return;
-
       }
 
 
-
       const container =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
 
       container.className =
         "site-sparkles";
-
 
 
       const desktopCount = 7;
@@ -790,17 +648,14 @@
       const mobileCount = 5;
 
 
-
       const isMobile =
         window.innerWidth <= 600;
-
 
 
       const count =
         isMobile
           ? mobileCount
           : desktopCount;
-
 
 
       const symbols = [
@@ -812,13 +667,11 @@
       ];
 
 
-
       for (
         let i = 0;
         i < count;
         i++
       ) {
-
 
         const sparkle =
           document.createElement(
@@ -875,8 +728,8 @@
 
         sparkle.style.opacity =
           (
-            0.25 +
-            Math.random() * 0.45
+            .25 +
+            Math.random() * .45
           );
 
 
@@ -884,18 +737,14 @@
           sparkle
         );
 
-
       }
-
 
 
       document.body.appendChild(
         container
       );
 
-
     })();
-
 
   </script>
 
