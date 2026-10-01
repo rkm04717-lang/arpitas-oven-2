@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Bakery — Arpita's Oven</title>
+
+  <meta
+    name="description"
+    content="Brownies, cheesecakes, tea-time cakes and chicken loaf, freshly made at Arpita's Oven."
+  >
+
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* =========================================================
+       ARPITA'S OVEN — BAKERY PAGE
+    ========================================================= */
+
+    .bakery-page {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---------------------------------------------------------
+       HERO
+    --------------------------------------------------------- */
+
+    .bakery-hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bakery-hero-inner {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 100px 20px;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .bakery-hero .eyebrow {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .bakery-hero h1 {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .bakery-hero h1 em {
+      font-style: italic;
+    }
+
+    .bakery-hero-description {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ---------------------------------------------------------
+       CATEGORY SECTION
+    --------------------------------------------------------- */
+
+    .bakery-section {
+      padding: 100px 6%;
+      position: relative;
+    }
+
+    .bakery-section-heading {
+      max-width: 720px;
+      margin: 0 auto 65px;
+      text-align: center;
+    }
+
+    .bakery-section-heading h2 {
+      margin-bottom: 18px;
+    }
+
+    .bakery-section-heading p:last-child {
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---------------------------------------------------------
+       PRODUCT CATEGORY GRID
+    --------------------------------------------------------- */
+
+    .bakery-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .bakery-category {
+      min-height: 330px;
+      padding: 42px;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      text-decoration: none;
+
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(80, 50, 35, 0.12);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .bakery-category::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+
+      top: -80px;
+      right: -60px;
+
+      background: rgba(255, 255, 255, 0.35);
+      pointer-events: none;
+    }
+
+    .bakery-category:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(70, 45, 30, 0.12);
+      border-color: rgba(80, 50, 35, 0.22);
+    }
+
+    .bakery-category-number {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      opacity: 0.45;
+    }
+
+    .bakery-category-icon {
+      font-size: 34px;
+      margin-bottom: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bakery-category-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .bakery-category-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.65;
+    }
+
+    .bakery-category h3 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 10px;
+    }
+
+    .bakery-category p {
+      max-width: 420px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .bakery-category-arrow {
+      display: inline-block;
+      margin-top: 22px;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---------------------------------------------------------
+       INDIVIDUAL CATEGORY TONES
+       Kept subtle so they still match the existing site.
+    --------------------------------------------------------- */
+
+    .bakery-brownies {
+      background: #ead9cb;
+    }
+
+    .bakery-cheesecakes {
+      background: #f0e3d5;
+    }
+
+    .bakery-tea {
+      background: #e7dfce;
+    }
+
+    .bakery-chicken {
+      background: #ddd8ca;
+    }
+
+    /* ---------------------------------------------------------
+       SMALL INTRO / NOTE
+    --------------------------------------------------------- */
+
+    .bakery-note {
+      width: min(760px, calc(100% - 40px));
+      margin: 75px auto 0;
+      text-align: center;
+    }
+
+    .bakery-note p {
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ---------------------------------------------------------
+       CUSTOM CTA
+    --------------------------------------------------------- */
+
+    .bakery-custom {
+      padding: 110px 6%;
+      text-align: center;
+      position: relative;
+    }
+
+    .bakery-custom-inner {
+      width: min(720px, 100%);
+      margin: 0 auto;
+    }
+
+    .bakery-custom h2 {
+      margin-bottom: 20px;
+    }
+
+    .bakery-custom p {
+      max-width: 560px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+    }
+
+    /* ---------------------------------------------------------
+       MOBILE
+    --------------------------------------------------------- */
+
+    @media (max-width: 760px) {
+
+      .bakery-hero {
+        min-height: 560px;
+      }
+
+      .bakery-hero-inner {
+        width: calc(100% - 32px);
+        padding: 80px 16px;
+      }
+
+      .bakery-section {
+        padding: 75px 20px;
+      }
+
+      .bakery-section-heading {
+        margin-bottom: 45px;
+      }
+
+      .bakery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .bakery-category {
+        min-height: 290px;
+        padding: 32px;
+      }
+
+      .bakery-custom {
+        padding: 85px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .bakery-category {
+        min-height: 270px;
+        padding: 28px;
+        border-radius: 20px;
+      }
+
+      .bakery-category h3 {
+        font-size: 30px;
+      }
+
+      .bakery-category-icon {
+        font-size: 30px;
+      }
+
+      .bakery-note {
+        width: calc(100% - 32px);
+        margin-top: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body class="bakery-page">
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="site-header">
+
+    <a href="oven.html" class="brand">
+      <img
+        src="logo.png"
+        alt="Arpita's Oven Logo"
+        class="header-logo"
+      >
+
+      <span>Arpita's Oven</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="oven.html">The Oven</a>
+      <a href="cakes.html">Cakes</a>
+      <a href="bakery.html" class="active">Bakery</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="story.html">The First Batch</a>
+      <a href="contact.html">Come Say Hi</a>
+    </nav>
+
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="bakery-hero">
+
+      <div class="bakery-hero-inner">
+
+        <p class="eyebrow">
+          FROM OUR BAKERY
+        </p>
+
+        <h1>
+          More than<br>
+          <em>just cake.</em>
+        </h1>
+
+        <p class="bakery-hero-description">
+          Little things made for slow mornings, tea-time conversations,
+          chocolate cravings and everything in between.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BAKERY CATEGORIES
+    ====================================================== -->
+
+    <section class="bakery-section">
+
+      <div class="bakery-section-heading">
+
+        <p class="eyebrow">
+          SOMETHING FOR EVERY CRAVING
+        </p>
+
+        <h2>
+          From our kitchen.
+        </h2>
+
+        <p>
+          Alongside our cakes, we bake a small selection of
+          sweet and savoury favourites — made fresh with the
+          same care that goes into everything from our oven.
+        </p>
+
+      </div>
+
+
+      <div class="bakery-grid">
+
+        <!-- BROWNIES -->
+
+        <a
+          href="#brownies"
+          class="bakery-category bakery-brownies"
+        >
+
+          <span class="bakery-category-number">
+            01
+          </span>
+
+          <div class="bakery-category-icon">
+            🍫
+          </div>
+
+          <div class="bakery-category-content">
+
+            <p class="bakery-category-label">
+              Rich & Fudgy
+            </p>
+
+            <h3>
+              Brownies
+            </h3>
+
+            <p>
+              Deep chocolate flavour, soft centres and
+              plenty of indulgence in every bite.
+            </p>
+
+            <span class="bakery-category-arrow">
+              Explore Brownies →
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- CHEESECAKES -->
+
+        <a
+          href="#cheesecakes"
+          class="bakery-category bakery-cheesecakes"
+        >
+
+          <span class="bakery-category-number">
+            02
+          </span>
+
+          <div class="bakery-category-icon">
+            🍰
+          </div>
+
+          <div class="bakery-category-content">
+
+            <p class="bakery-category-label">
+              Creamy & Indulgent
+            </p>
+
+            <h3>
+              Cheesecakes
+            </h3>
+
+            <p>
+              Smooth, creamy and made for those moments
+              when only cheesecake will do.
+            </p>
+
+            <span class="bakery-category-arrow">
+              Explore Cheesecakes →
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- TEA-TIME CAKES -->
+
+        <a
+          href="#tea-time"
+          class="bakery-category bakery-tea"
+        >
+
+          <span class="bakery-category-number">
+            03
+          </span>
+
+          <div class="bakery-category-icon">
+            ☕
+          </div>
+
+          <div class="bakery-category-content">
+
+            <p class="bakery-category-label">
+              Simple & Comforting
+            </p>
+
+            <h3>
+              Tea-Time Cakes
+            </h3>
+
+            <p>
+              Everyday cakes made for a warm cup of tea,
+              quiet afternoons and good conversations.
+            </p>
+
+            <span class="bakery-category-arrow">
+              Explore Tea-Time Cakes →
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- CHICKEN LOAF -->
+
+        <a
+          href="#chicken-loaf"
+          class="bakery-category bakery-chicken"
+        >
+
+          <span class="bakery-category-number">
+            04
+          </span>
+
+          <div class="bakery-category-icon">
+            🍗
+          </div>
+
+          <div class="bakery-category-content">
+
+            <p class="bakery-category-label">
+              Savoury & Wholesome
+            </p>
+
+            <h3>
+              Chicken Loaf
+            </h3>
+
+            <p>
+              A savoury chicken bake made as a lighter,
+              wholesome option from our kitchen.
+            </p>
+
+            <span class="bakery-category-arrow">
+              Explore Chicken Loaf →
+            </span>
+
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- NOTE -->
+
+      <div class="bakery-note">
+
+        <p>
+          Our bakery selection may change from time to time
+          depending on what we're baking fresh in the kitchen.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CUSTOM CTA
+    ====================================================== -->
+
+    <section class="bakery-custom">
+
+      <div class="bakery-custom-inner">
+
+        <p class="eyebrow">
+          LOOKING FOR SOMETHING SPECIAL?
+        </p>
+
+        <h2>
+          Tell us what<br>
+          you're <em>imagining.</em>
+        </h2>
+
+        <p>
+          Have a special idea, celebration or something
+          you'd love us to bake? We'd love to hear from you.
+        </p>
+
+        <a
+          href="contact.html"
+          class="button button-dark"
+        >
+          Let's Bake Together →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="footer-brand">
+      <p>
+        Homemade with love.
+      </p>
+    </div>
+
+
+    <div class="footer-links">
+
+      <div>
+
+        <p class="footer-label">
+          EXPLORE
+        </p>
+
+        <a href="oven.html">
+          The Oven
+        </a>
+
+        <a href="cakes.html">
+          Cakes
+        </a>
+
+        <a href="bakery.html">
+          Bakery
+        </a>
+
+        <a href="gallery.html">
+          Fresh From the Oven
+        </a>
+
+        <a href="story.html">
+          The First Batch
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <p class="footer-label">
+          SAY HELLO
+        </p>
+
+        <a href="contact.html">
+          Come Say Hi
+        </a>
+
+        <a
+          href="https://wa.me/qr/GP5HSJQTE42VI1"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="https://www.facebook.com/share/1BvQJvsmeo/"
+          target="_blank"
+          rel="noopener"
+        >
+          Facebook
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       SPARKLES
+  ======================================================== -->
+
+  <script>
+    (function () {
+
+      if (document.querySelector(".site-sparkles")) return;
+
+      const container = document.createElement("div");
+
+      container.className = "site-sparkles";
+
+      const desktopCount = 7;
+      const mobileCount = 5;
+
+      const isMobile = window.innerWidth <= 600;
+
+      const count = isMobile
+        ? mobileCount
+        : desktopCount;
+
+      const symbols = [
+        "✦",
+        "✧",
+        "✦",
+        "·",
+        "✧"
+      ];
+
+      for (let i = 0; i < count; i++) {
+
+        const sparkle = document.createElement("span");
+
+        sparkle.className = "site-sparkle";
+
+        sparkle.textContent =
+          symbols[
+            Math.floor(
+              Math.random() * symbols.length
+            )
+          ];
+
+        sparkle.style.left =
+          (8 + Math.random() * 84) + "%";
+
+        sparkle.style.top =
+          (10 + Math.random() * 78) + "%";
+
+        sparkle.style.fontSize =
+          (7 + Math.random() * 10) + "px";
+
+        sparkle.style.animationDuration =
+          (4 + Math.random() * 5) + "s";
+
+        sparkle.style.animationDelay =
+          (-Math.random() * 6) + "s";
+
+        sparkle.style.opacity =
+          (0.25 + Math.random() * 0.45);
+
+        container.appendChild(sparkle);
+
+      }
+
+      document.body.appendChild(container);
+
+    })();
+  </script>
+
+</body>
+</html>
