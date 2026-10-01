@@ -28,732 +28,375 @@
     href="css/style.css"
   >
 
-  <style>
-
-    /* =====================================================
-       BAKERY PAGE
-    ===================================================== */
-
-    .bakery-hero {
-      min-height: 650px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 100px 20px;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bakery-hero-inner {
-      width: min(760px, 100%);
-
-      margin: 0 auto;
-
-      position: relative;
-
-      z-index: 10;
-    }
-
-    .bakery-hero .eyebrow {
-      text-align: center;
-    }
-
-    .bakery-hero h1 {
-      text-align: center;
-
-      margin: 12px auto 22px;
-    }
-
-    .bakery-hero-description {
-      max-width: 570px;
-
-      margin: 0 auto;
-
-      line-height: 1.8;
-
-      text-align: center;
-    }
-
-
-    /* =====================================================
-       INTRO
-    ===================================================== */
-
-    .bakery-intro {
-      padding: 100px 6%;
-
-      text-align: center;
-    }
-
-    .bakery-intro-inner {
-      width: min(760px, 100%);
-
-      margin: 0 auto;
-    }
-
-    .bakery-intro .eyebrow {
-      text-align: center;
-    }
-
-    .bakery-intro h2 {
-      margin: 12px auto 22px;
-
-      text-align: center;
-    }
-
-    .bakery-intro p:last-child {
-      max-width: 620px;
-
-      margin: 0 auto;
-
-      line-height: 1.8;
-    }
-
-
-    /* =====================================================
-       CATEGORY GRID
-    ===================================================== */
-
-    .bakery-categories {
-      padding: 30px 6% 110px;
-    }
-
-    .bakery-grid {
-      width: min(1100px, 100%);
-
-      margin: 0 auto;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 28px;
-    }
-
-    .bakery-card {
-      display: block;
-
-      text-decoration: none;
-
-      padding: 48px 42px;
-
-      min-height: 240px;
-
-      border: 1px solid rgba(0, 0, 0, 0.10);
-
-      background: rgba(255, 255, 255, 0.45);
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-    }
-
-    .bakery-card:hover {
-      transform: translateY(-5px);
-
-      box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.08);
-
-      background: rgba(255, 255, 255, 0.75);
-    }
-
-    .bakery-card-number {
-      display: block;
-
-      font-size: 12px;
-
-      letter-spacing: 0.18em;
-
-      opacity: 0.55;
-
-      margin-bottom: 25px;
-    }
-
-    .bakery-card h3 {
-      margin: 0 0 12px;
-
-      font-size: clamp(25px, 3vw, 38px);
-    }
-
-    .bakery-card-tagline {
-      margin: 0;
-
-      font-style: italic;
-
-      opacity: 0.7;
-
-      line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       CLOSING
-    ===================================================== */
-
-    .bakery-closing {
-      padding: 110px 6%;
-
-      text-align: center;
-    }
-
-    .bakery-closing-inner {
-      width: min(700px, 100%);
-
-      margin: 0 auto;
-    }
-
-    .bakery-closing h2 {
-      text-align: center;
-
-      margin: 10px auto 25px;
-    }
-
-    .bakery-closing p {
-      max-width: 550px;
-
-      margin: 0 auto 32px;
-
-      line-height: 1.8;
-    }
-
-
-    /* =====================================================
-       FOOTER SPACING
-    ===================================================== */
-
-    .site-footer .footer-links {
-      display: flex;
-
-      gap: 70px;
-    }
-
-    .site-footer .footer-links > div {
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: flex-start;
-    }
-
-    .site-footer .footer-links a {
-      display: block;
-
-      margin: 0 0 14px;
-
-      line-height: 1.5;
-
-      text-decoration: none;
-    }
-
-    .site-footer .footer-links a:last-child {
-      margin-bottom: 0;
-    }
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-      .bakery-hero {
-        min-height: 570px;
-
-        padding: 80px 20px;
-      }
-
-      .bakery-intro {
-        padding: 75px 20px;
-      }
-
-      .bakery-categories {
-        padding:
-          20px
-          20px
-          80px;
-      }
-
-      .bakery-grid {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-      }
-
-      .bakery-card {
-        min-height: auto;
-
-        padding: 35px 28px;
-      }
-
-      .bakery-closing {
-        padding: 80px 20px;
-      }
-
-      .site-footer .footer-links {
-        gap: 40px;
-
-        flex-wrap: wrap;
-      }
-
-      .site-footer .footer-links a {
-        margin-bottom: 12px;
-      }
-
-    }
-
-  </style>
-
 </head>
 
 
 <body>
 
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+<header class="site-header">
 
-  <header class="site-header">
+  <a href="oven.html" class="brand">
 
-    <a
-      href="oven.html"
-      class="brand"
+    <img
+      src="logo.png"
+      alt="Arpita's Oven Logo"
+      class="header-logo"
     >
 
-      <img
-        src="logo.png"
-        alt="Arpita's Oven Logo"
-        class="header-logo"
-      >
+    <span>
+      Arpita's Oven
+    </span>
 
-      <span>
-        Arpita's Oven
+  </a>
+
+
+  <nav class="site-nav">
+
+    <a href="oven.html">
+      The Oven
+    </a>
+
+    <a href="cakes.html">
+      Cakes
+    </a>
+
+    <a
+      href="bakery.html"
+      class="active"
+    >
+      More Than Cake
+    </a>
+
+    <a href="gallery.html">
+      Gallery
+    </a>
+
+    <a href="story.html">
+      The First Batch
+    </a>
+
+    <a href="contact.html">
+      Come Say Hi
+    </a>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+
+<section class="bakery-hero">
+
+  <div class="bakery-hero-inner">
+
+    <p class="eyebrow">
+      FROM OUR KITCHEN
+    </p>
+
+    <h1>
+      More Than<br>
+      <em>Cake.</em>
+    </h1>
+
+    <p class="bakery-hero-description">
+      Because sometimes you're craving something
+      chocolatey, creamy, comforting — or something
+      completely different.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="bakery-intro">
+
+  <div class="bakery-intro-inner">
+
+    <p class="eyebrow">
+      A LITTLE MORE TO LOVE
+    </p>
+
+    <h2>
+      Baked for every kind of moment.
+    </h2>
+
+    <p>
+      Alongside our cakes, we make a small collection
+      of sweet and savoury favourites — from rich
+      brownies and creamy cheesecakes to comforting
+      tea-time cakes and our wholesome chicken loaf.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="bakery-categories">
+
+  <div class="bakery-grid">
+
+
+    <a
+      href="#brownies"
+      class="bakery-card"
+    >
+
+      <span class="bakery-card-number">
+        01
       </span>
+
+      <h3>
+        Brownies
+      </h3>
+
+      <p class="bakery-card-tagline">
+        Rich &amp; fudgy
+      </p>
 
     </a>
 
 
-    <nav class="site-nav">
+    <a
+      href="#cheesecakes"
+      class="bakery-card"
+    >
+
+      <span class="bakery-card-number">
+        02
+      </span>
+
+      <h3>
+        Cheesecakes
+      </h3>
+
+      <p class="bakery-card-tagline">
+        Creamy &amp; indulgent
+      </p>
+
+    </a>
+
+
+    <a
+      href="#tea-time-cakes"
+      class="bakery-card"
+    >
+
+      <span class="bakery-card-number">
+        03
+      </span>
+
+      <h3>
+        Tea-Time Cakes
+      </h3>
+
+      <p class="bakery-card-tagline">
+        Simple &amp; comforting
+      </p>
+
+    </a>
+
+
+    <a
+      href="#chicken-loaf"
+      class="bakery-card"
+    >
+
+      <span class="bakery-card-number">
+        04
+      </span>
+
+      <h3>
+        Chicken Loaf
+      </h3>
+
+      <p class="bakery-card-tagline">
+        Savoury &amp; wholesome
+      </p>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<section class="bakery-closing">
+
+  <div class="bakery-closing-inner">
+
+    <p class="eyebrow">
+      SOMETHING FOR EVERY CRAVING
+    </p>
+
+    <h2>
+      Something sweet.<br>
+      Something savoury.<br>
+      Something you'll <em>love.</em>
+    </h2>
+
+    <p>
+      Have something specific in mind?
+      We'd love to hear what you're craving.
+    </p>
+
+    <a
+      href="contact.html"
+      class="button button-dark"
+    >
+      Come Say Hi →
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-brand">
+    <p>Homemade with love.</p>
+  </div>
+
+
+  <div class="footer-links">
+
+    <div>
+
+      <p class="footer-label">
+        EXPLORE
+      </p>
 
       <a href="oven.html">
         The Oven
       </a>
 
       <a href="cakes.html">
-        Cakes
+        What's Baking?
       </a>
 
-      <a
-        href="bakery.html"
-        class="active"
-      >
+      <a href="bakery.html">
         More Than Cake
       </a>
 
       <a href="gallery.html">
-        Gallery
+        Fresh From the Oven
       </a>
 
       <a href="story.html">
         The First Batch
       </a>
 
+    </div>
+
+
+    <div>
+
+      <p class="footer-label">
+        SAY HELLO
+      </p>
+
       <a href="contact.html">
         Come Say Hi
       </a>
 
-    </nav>
-
-  </header>
-
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
-
-  <main>
-
-
-    <!-- HERO -->
-
-    <section class="bakery-hero">
-
-      <div class="bakery-hero-inner">
-
-        <p class="eyebrow">
-          FROM OUR KITCHEN
-        </p>
-
-        <h1>
-          More Than<br>
-          <em>Cake.</em>
-        </h1>
-
-        <p class="bakery-hero-description">
-          Because sometimes you're craving something
-          chocolatey, creamy, comforting — or something
-          completely different.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- INTRO -->
-
-    <section class="bakery-intro">
-
-      <div class="bakery-intro-inner">
-
-        <p class="eyebrow">
-          A LITTLE MORE TO LOVE
-        </p>
-
-        <h2>
-          Baked for every kind of moment.
-        </h2>
-
-        <p>
-          Alongside our cakes, we make a small collection
-          of sweet and savoury favourites — from rich
-          brownies and creamy cheesecakes to comforting
-          tea-time cakes and our wholesome chicken loaf.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-
-    <section class="bakery-categories">
-
-      <div class="bakery-grid">
-
-
-        <!-- BROWNIES -->
-
-        <a
-          href="#brownies"
-          class="bakery-card"
-        >
-
-          <span class="bakery-card-number">
-            01
-          </span>
-
-          <h3>
-            Brownies
-          </h3>
-
-          <p class="bakery-card-tagline">
-            Rich &amp; fudgy
-          </p>
-
-        </a>
-
-
-        <!-- CHEESECAKES -->
-
-        <a
-          href="#cheesecakes"
-          class="bakery-card"
-        >
-
-          <span class="bakery-card-number">
-            02
-          </span>
-
-          <h3>
-            Cheesecakes
-          </h3>
-
-          <p class="bakery-card-tagline">
-            Creamy &amp; indulgent
-          </p>
-
-        </a>
-
-
-        <!-- TEA-TIME CAKES -->
-
-        <a
-          href="#tea-time-cakes"
-          class="bakery-card"
-        >
-
-          <span class="bakery-card-number">
-            03
-          </span>
-
-          <h3>
-            Tea-Time Cakes
-          </h3>
-
-          <p class="bakery-card-tagline">
-            Simple &amp; comforting
-          </p>
-
-        </a>
-
-
-        <!-- CHICKEN LOAF -->
-
-        <a
-          href="#chicken-loaf"
-          class="bakery-card"
-        >
-
-          <span class="bakery-card-number">
-            04
-          </span>
-
-          <h3>
-            Chicken Loaf
-          </h3>
-
-          <p class="bakery-card-tagline">
-            Savoury &amp; wholesome
-          </p>
-
-        </a>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- CLOSING -->
-
-    <section class="bakery-closing">
-
-      <div class="bakery-closing-inner">
-
-        <p class="eyebrow">
-          SOMETHING FOR EVERY CRAVING
-        </p>
-
-        <h2>
-          Something sweet.<br>
-          Something savoury.<br>
-          Something you'll <em>love.</em>
-        </h2>
-
-        <p>
-          Have something specific in mind?
-          We'd love to hear what you're craving.
-        </p>
-
-        <a
-          href="contact.html"
-          class="button button-dark"
-        >
-          Come Say Hi →
-        </a>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer class="site-footer">
-
-    <div class="footer-brand">
-
-      <p>
-        Homemade with love.
-      </p>
+      <a
+        href="https://wa.me/qr/GP5HSJQTE42VI1"
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp
+      </a>
+
+      <a
+        href="https://www.facebook.com/share/1BvQJvsmeo/"
+        target="_blank"
+        rel="noopener"
+      >
+        Facebook
+      </a>
 
     </div>
 
+  </div>
 
-    <div class="footer-links">
-
-
-      <div>
-
-        <p class="footer-label">
-          EXPLORE
-        </p>
-
-        <a href="oven.html">
-          The Oven
-        </a>
-
-        <a href="cakes.html">
-          What's Baking?
-        </a>
-
-        <a href="bakery.html">
-          More Than Cake
-        </a>
-
-        <a href="gallery.html">
-          Fresh From the Oven
-        </a>
-
-        <a href="story.html">
-          The First Batch
-        </a>
-
-      </div>
+</footer>
 
 
-      <div>
+<script>
 
-        <p class="footer-label">
-          SAY HELLO
-        </p>
+(function () {
 
-        <a href="contact.html">
-          Come Say Hi
-        </a>
+  if (document.querySelector(".site-sparkles")) return;
 
-        <a
-          href="https://wa.me/qr/GP5HSJQTE42VI1"
-          target="_blank"
-          rel="noopener"
-        >
-          WhatsApp
-        </a>
+  const container =
+    document.createElement("div");
 
-        <a
-          href="https://www.facebook.com/share/1BvQJvsmeo/"
-          target="_blank"
-          rel="noopener"
-        >
-          Facebook
-        </a>
+  container.className =
+    "site-sparkles";
 
-      </div>
+  const isMobile =
+    window.innerWidth <= 600;
+
+  const count =
+    isMobile ? 5 : 7;
+
+  const symbols =
+    ["✦", "✧", "✦", "·", "✧"];
 
 
-    </div>
+  for (let i = 0; i < count; i++) {
 
-  </footer>
+    const sparkle =
+      document.createElement("span");
 
+    sparkle.className =
+      "site-sparkle";
 
-  <!-- =====================================================
-       SPARKLES
-  ====================================================== -->
-
-  <script>
-
-    (function () {
-
-      if (
-        document.querySelector(".site-sparkles")
-      ) {
-        return;
-      }
-
-      const container =
-        document.createElement("div");
-
-      container.className =
-        "site-sparkles";
-
-      const isMobile =
-        window.innerWidth <= 600;
-
-      const count =
-        isMobile ? 5 : 7;
-
-      const symbols = [
-        "✦",
-        "✧",
-        "✦",
-        "·",
-        "✧"
+    sparkle.textContent =
+      symbols[
+        Math.floor(
+          Math.random() *
+          symbols.length
+        )
       ];
 
-      for (
-        let i = 0;
-        i < count;
-        i++
-      ) {
+    sparkle.style.left =
+      (8 + Math.random() * 84) + "%";
 
-        const sparkle =
-          document.createElement("span");
+    sparkle.style.top =
+      (10 + Math.random() * 78) + "%";
 
-        sparkle.className =
-          "site-sparkle";
+    sparkle.style.fontSize =
+      (7 + Math.random() * 10) + "px";
 
-        sparkle.textContent =
-          symbols[
-            Math.floor(
-              Math.random() *
-              symbols.length
-            )
-          ];
+    sparkle.style.animationDuration =
+      (4 + Math.random() * 5) + "s";
 
-        sparkle.style.left =
-          (
-            8 +
-            Math.random() * 84
-          ) + "%";
+    sparkle.style.animationDelay =
+      (-Math.random() * 6) + "s";
 
-        sparkle.style.top =
-          (
-            10 +
-            Math.random() * 78
-          ) + "%";
+    sparkle.style.opacity =
+      (0.25 + Math.random() * 0.45);
 
-        sparkle.style.fontSize =
-          (
-            7 +
-            Math.random() * 10
-          ) + "px";
+    container.appendChild(sparkle);
 
-        sparkle.style.animationDuration =
-          (
-            4 +
-            Math.random() * 5
-          ) + "s";
+  }
 
-        sparkle.style.animationDelay =
-          (
-            -Math.random() * 6
-          ) + "s";
+  document.body.appendChild(container);
 
-        sparkle.style.opacity =
-          (
-            0.25 +
-            Math.random() * 0.45
-          );
+})();
 
-        container.appendChild(
-          sparkle
-        );
-
-      }
-
-      document.body.appendChild(
-        container
-      );
-
-    })();
-
-  </script>
+</script>
 
 
 </body>
-
 </html>
