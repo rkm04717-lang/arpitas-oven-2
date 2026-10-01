@@ -285,10 +285,24 @@ async function getPublicCakes(env) {
       .all();
 
 
-  return json({
-    success: true,
-    cakes: result.results || []
-  });
+  /*
+    IMPORTANT:
+    The public cakes page expects the response
+    itself to be an array.
+
+    Before:
+      {
+        success: true,
+        cakes: [...]
+      }
+
+    Now:
+      [...]
+  */
+
+  return json(
+    result.results || []
+  );
 
 }
 
@@ -424,7 +438,9 @@ export default {
       new URL(request.url);
 
 
-    /* API */
+    /* -----------------------------------------
+       API
+       ----------------------------------------- */
 
     if (
       url.pathname.startsWith("/api/")
@@ -455,7 +471,9 @@ export default {
     }
 
 
-    /* WEBSITE */
+    /* -----------------------------------------
+       WEBSITE
+       ----------------------------------------- */
 
     return env.ASSETS.fetch(
       request
