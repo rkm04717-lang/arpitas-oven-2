@@ -8,11 +8,11 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Bakery — Arpita's Oven</title>
+  <title>More Than Cake — Arpita's Oven</title>
 
   <meta
     name="description"
-    content="Brownies, cheesecakes, tea-time cakes and chicken loaf, freshly made at Arpita's Oven."
+    content="More than cake — brownies, cheesecakes, tea-time cakes and chicken loaf from Arpita's Oven."
   >
 
   <link rel="icon" type="image/png" href="logo.png">
@@ -20,21 +20,13 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+
     /* =========================================================
-       ARPITA'S OVEN — BAKERY PAGE
+       MORE THAN CAKE — HERO
     ========================================================= */
 
-    .bakery-page {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* ---------------------------------------------------------
-       HERO
-    --------------------------------------------------------- */
-
-    .bakery-hero {
-      min-height: 620px;
+    .more-cake-hero {
+      min-height: 680px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -43,77 +35,85 @@
       overflow: hidden;
     }
 
-    .bakery-hero-inner {
-      width: min(760px, calc(100% - 40px));
+    .more-cake-hero-inner {
+      width: min(800px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 100px 20px;
+      padding: 90px 20px 100px;
       position: relative;
       z-index: 10;
       text-align: center;
     }
 
-    .bakery-hero .eyebrow {
+    .more-cake-hero .eyebrow {
       text-align: center;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .bakery-hero h1 {
+    .more-cake-hero h1 {
       text-align: center;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 20px auto 25px;
+      line-height: 0.98;
     }
 
-    .bakery-hero h1 em {
+    .more-cake-hero h1 em {
       font-style: italic;
     }
 
-    .bakery-hero-description {
-      max-width: 600px;
+    .more-cake-description {
+      max-width: 590px;
       margin: 0 auto;
+      line-height: 1.8;
       text-align: center;
     }
 
-    /* ---------------------------------------------------------
-       CATEGORY SECTION
-    --------------------------------------------------------- */
 
-    .bakery-section {
-      padding: 100px 6%;
-      position: relative;
-    }
+    /* =========================================================
+       INTRO
+    ========================================================= */
 
-    .bakery-section-heading {
-      max-width: 720px;
-      margin: 0 auto 65px;
+    .bakery-intro {
+      padding: 95px 6% 65px;
       text-align: center;
     }
 
-    .bakery-section-heading h2 {
-      margin-bottom: 18px;
+    .bakery-intro-inner {
+      width: min(720px, 100%);
+      margin: 0 auto;
     }
 
-    .bakery-section-heading p:last-child {
-      max-width: 580px;
-      margin-left: auto;
-      margin-right: auto;
+    .bakery-intro h2 {
+      margin: 15px 0 18px;
     }
 
-    /* ---------------------------------------------------------
-       PRODUCT CATEGORY GRID
-    --------------------------------------------------------- */
+    .bakery-intro p:last-child {
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
 
-    .bakery-grid {
+
+    /* =========================================================
+       CATEGORY GRID
+    ========================================================= */
+
+    .bakery-categories {
+      padding: 25px 6% 110px;
+    }
+
+    .bakery-category-grid {
       width: min(1120px, 100%);
       margin: 0 auto;
+
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
     }
 
     .bakery-category {
-      min-height: 330px;
+      min-height: 360px;
       padding: 42px;
+
       border-radius: 24px;
       position: relative;
       overflow: hidden;
@@ -124,8 +124,7 @@
 
       text-decoration: none;
 
-      background: rgba(255, 255, 255, 0.45);
-      border: 1px solid rgba(80, 50, 35, 0.12);
+      border: 1px solid rgba(70, 45, 30, 0.10);
 
       transition:
         transform 0.3s ease,
@@ -133,39 +132,46 @@
         border-color 0.3s ease;
     }
 
-    .bakery-category::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-
-      top: -80px;
-      right: -60px;
-
-      background: rgba(255, 255, 255, 0.35);
-      pointer-events: none;
-    }
-
     .bakery-category:hover {
       transform: translateY(-6px);
       box-shadow: 0 18px 45px rgba(70, 45, 30, 0.12);
-      border-color: rgba(80, 50, 35, 0.22);
+      border-color: rgba(70, 45, 30, 0.20);
     }
 
-    .bakery-category-number {
+    .bakery-category::before {
+      content: "";
+
       position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      right: -80px;
+      top: -90px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.30);
+
+      pointer-events: none;
+    }
+
+    .bakery-number {
+      position: absolute;
+
       top: 25px;
       right: 30px;
 
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.18em;
+
       opacity: 0.45;
     }
 
-    .bakery-category-icon {
-      font-size: 34px;
+    .bakery-icon {
+      font-size: 38px;
       margin-bottom: auto;
+
       position: relative;
       z-index: 2;
     }
@@ -176,127 +182,120 @@
     }
 
     .bakery-category-label {
+      margin: 0 0 9px;
+
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 10px;
-      opacity: 0.65;
+
+      opacity: 0.62;
     }
 
     .bakery-category h3 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin: 0 0 10px;
+      margin: 0 0 12px;
+
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1;
     }
 
-    .bakery-category p {
-      max-width: 420px;
+    .bakery-category-description {
+      max-width: 430px;
+
       margin: 0;
+
       line-height: 1.7;
     }
 
-    .bakery-category-arrow {
+    .bakery-arrow {
       display: inline-block;
+
       margin-top: 22px;
+
       font-size: 14px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
 
-    /* ---------------------------------------------------------
-       INDIVIDUAL CATEGORY TONES
-       Kept subtle so they still match the existing site.
-    --------------------------------------------------------- */
 
-    .bakery-brownies {
-      background: #ead9cb;
+    /* =========================================================
+       CATEGORY BACKGROUNDS
+    ========================================================= */
+
+    .brownies {
+      background: #ead8ca;
     }
 
-    .bakery-cheesecakes {
-      background: #f0e3d5;
+    .cheesecakes {
+      background: #f0e2d4;
     }
 
-    .bakery-tea {
-      background: #e7dfce;
+    .tea-cakes {
+      background: #e7dfcf;
     }
 
-    .bakery-chicken {
-      background: #ddd8ca;
+    .chicken-loaf {
+      background: #ddd9ca;
     }
 
-    /* ---------------------------------------------------------
-       SMALL INTRO / NOTE
-    --------------------------------------------------------- */
 
-    .bakery-note {
-      width: min(760px, calc(100% - 40px));
-      margin: 75px auto 0;
-      text-align: center;
-    }
+    /* =========================================================
+       CLOSING CTA
+    ========================================================= */
 
-    .bakery-note p {
-      max-width: 650px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    /* ---------------------------------------------------------
-       CUSTOM CTA
-    --------------------------------------------------------- */
-
-    .bakery-custom {
+    .bakery-closing {
       padding: 110px 6%;
       text-align: center;
-      position: relative;
     }
 
-    .bakery-custom-inner {
+    .bakery-closing-inner {
       width: min(720px, 100%);
       margin: 0 auto;
     }
 
-    .bakery-custom h2 {
-      margin-bottom: 20px;
+    .bakery-closing h2 {
+      margin: 15px 0 20px;
     }
 
-    .bakery-custom p {
+    .bakery-closing p {
       max-width: 560px;
       margin: 0 auto 30px;
       line-height: 1.8;
     }
 
-    /* ---------------------------------------------------------
+
+    /* =========================================================
        MOBILE
-    --------------------------------------------------------- */
+    ========================================================= */
 
     @media (max-width: 760px) {
 
-      .bakery-hero {
-        min-height: 560px;
+      .more-cake-hero {
+        min-height: 580px;
       }
 
-      .bakery-hero-inner {
+      .more-cake-hero-inner {
         width: calc(100% - 32px);
-        padding: 80px 16px;
+        padding: 75px 16px 90px;
       }
 
-      .bakery-section {
-        padding: 75px 20px;
+      .bakery-intro {
+        padding: 75px 20px 50px;
       }
 
-      .bakery-section-heading {
-        margin-bottom: 45px;
+      .bakery-categories {
+        padding: 20px 20px 80px;
       }
 
-      .bakery-grid {
+      .bakery-category-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
       .bakery-category {
-        min-height: 290px;
+        min-height: 310px;
         padding: 32px;
       }
 
-      .bakery-custom {
+      .bakery-closing {
         padding: 85px 20px;
       }
     }
@@ -304,28 +303,27 @@
     @media (max-width: 480px) {
 
       .bakery-category {
-        min-height: 270px;
+        min-height: 285px;
         padding: 28px;
         border-radius: 20px;
       }
 
+      .bakery-icon {
+        font-size: 32px;
+      }
+
       .bakery-category h3 {
-        font-size: 30px;
+        font-size: 31px;
       }
 
-      .bakery-category-icon {
-        font-size: 30px;
-      }
-
-      .bakery-note {
-        width: calc(100% - 32px);
-        margin-top: 55px;
-      }
     }
+
   </style>
 </head>
 
-<body class="bakery-page">
+
+<body>
+
 
   <!-- =======================================================
        HEADER
@@ -334,6 +332,7 @@
   <header class="site-header">
 
     <a href="oven.html" class="brand">
+
       <img
         src="logo.png"
         alt="Arpita's Oven Logo"
@@ -341,15 +340,36 @@
       >
 
       <span>Arpita's Oven</span>
+
     </a>
 
+
     <nav class="site-nav">
-      <a href="oven.html">The Oven</a>
-      <a href="cakes.html">Cakes</a>
-      <a href="bakery.html" class="active">Bakery</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="story.html">The First Batch</a>
-      <a href="contact.html">Come Say Hi</a>
+
+      <a href="oven.html">
+        The Oven
+      </a>
+
+      <a href="cakes.html">
+        Cakes
+      </a>
+
+      <a href="bakery.html" class="active">
+        More Than Cake
+      </a>
+
+      <a href="gallery.html">
+        Gallery
+      </a>
+
+      <a href="story.html">
+        The First Batch
+      </a>
+
+      <a href="contact.html">
+        Come Say Hi
+      </a>
+
     </nav>
 
   </header>
@@ -361,22 +381,23 @@
 
   <main>
 
-    <section class="bakery-hero">
+    <section class="more-cake-hero">
 
-      <div class="bakery-hero-inner">
+      <div class="more-cake-hero-inner">
 
         <p class="eyebrow">
-          FROM OUR BAKERY
+          FROM OUR KITCHEN
         </p>
 
         <h1>
-          More than<br>
-          <em>just cake.</em>
+          More Than<br>
+          <em>Cake.</em>
         </h1>
 
-        <p class="bakery-hero-description">
-          Little things made for slow mornings, tea-time conversations,
-          chocolate cravings and everything in between.
+        <p class="more-cake-description">
+          Because sometimes you're craving something
+          chocolatey, creamy, comforting — or something
+          completely different.
         </p>
 
       </div>
@@ -385,44 +406,54 @@
 
 
     <!-- =====================================================
-         BAKERY CATEGORIES
+         INTRO
     ====================================================== -->
 
-    <section class="bakery-section">
+    <section class="bakery-intro">
 
-      <div class="bakery-section-heading">
+      <div class="bakery-intro-inner">
 
         <p class="eyebrow">
-          SOMETHING FOR EVERY CRAVING
+          A LITTLE MORE TO LOVE
         </p>
 
         <h2>
-          From our kitchen.
+          Baked for every kind of moment.
         </h2>
 
         <p>
-          Alongside our cakes, we bake a small selection of
-          sweet and savoury favourites — made fresh with the
-          same care that goes into everything from our oven.
+          Alongside our cakes, we make a small collection
+          of sweet and savoury favourites — from rich
+          brownies and creamy cheesecakes to comforting
+          tea-time cakes and our wholesome chicken loaf.
         </p>
 
       </div>
 
+    </section>
 
-      <div class="bakery-grid">
+
+    <!-- =====================================================
+         CATEGORIES
+    ====================================================== -->
+
+    <section class="bakery-categories">
+
+      <div class="bakery-category-grid">
+
 
         <!-- BROWNIES -->
 
         <a
           href="#brownies"
-          class="bakery-category bakery-brownies"
+          class="bakery-category brownies"
         >
 
-          <span class="bakery-category-number">
+          <span class="bakery-number">
             01
           </span>
 
-          <div class="bakery-category-icon">
+          <div class="bakery-icon">
             🍫
           </div>
 
@@ -436,12 +467,12 @@
               Brownies
             </h3>
 
-            <p>
+            <p class="bakery-category-description">
               Deep chocolate flavour, soft centres and
-              plenty of indulgence in every bite.
+              that irresistible fudgy bite.
             </p>
 
-            <span class="bakery-category-arrow">
+            <span class="bakery-arrow">
               Explore Brownies →
             </span>
 
@@ -454,14 +485,14 @@
 
         <a
           href="#cheesecakes"
-          class="bakery-category bakery-cheesecakes"
+          class="bakery-category cheesecakes"
         >
 
-          <span class="bakery-category-number">
+          <span class="bakery-number">
             02
           </span>
 
-          <div class="bakery-category-icon">
+          <div class="bakery-icon">
             🍰
           </div>
 
@@ -475,12 +506,12 @@
               Cheesecakes
             </h3>
 
-            <p>
+            <p class="bakery-category-description">
               Smooth, creamy and made for those moments
-              when only cheesecake will do.
+              when cheesecake is exactly what you need.
             </p>
 
-            <span class="bakery-category-arrow">
+            <span class="bakery-arrow">
               Explore Cheesecakes →
             </span>
 
@@ -492,15 +523,15 @@
         <!-- TEA-TIME CAKES -->
 
         <a
-          href="#tea-time"
-          class="bakery-category bakery-tea"
+          href="#tea-time-cakes"
+          class="bakery-category tea-cakes"
         >
 
-          <span class="bakery-category-number">
+          <span class="bakery-number">
             03
           </span>
 
-          <div class="bakery-category-icon">
+          <div class="bakery-icon">
             ☕
           </div>
 
@@ -514,12 +545,12 @@
               Tea-Time Cakes
             </h3>
 
-            <p>
+            <p class="bakery-category-description">
               Everyday cakes made for a warm cup of tea,
               quiet afternoons and good conversations.
             </p>
 
-            <span class="bakery-category-arrow">
+            <span class="bakery-arrow">
               Explore Tea-Time Cakes →
             </span>
 
@@ -532,14 +563,14 @@
 
         <a
           href="#chicken-loaf"
-          class="bakery-category bakery-chicken"
+          class="bakery-category chicken-loaf"
         >
 
-          <span class="bakery-category-number">
+          <span class="bakery-number">
             04
           </span>
 
-          <div class="bakery-category-icon">
+          <div class="bakery-icon">
             🍗
           </div>
 
@@ -553,12 +584,12 @@
               Chicken Loaf
             </h3>
 
-            <p>
+            <p class="bakery-category-description">
               A savoury chicken bake made as a lighter,
               wholesome option from our kitchen.
             </p>
 
-            <span class="bakery-category-arrow">
+            <span class="bakery-arrow">
               Explore Chicken Loaf →
             </span>
 
@@ -566,17 +597,6 @@
 
         </a>
 
-      </div>
-
-
-      <!-- NOTE -->
-
-      <div class="bakery-note">
-
-        <p>
-          Our bakery selection may change from time to time
-          depending on what we're baking fresh in the kitchen.
-        </p>
 
       </div>
 
@@ -584,32 +604,34 @@
 
 
     <!-- =====================================================
-         CUSTOM CTA
+         CLOSING
     ====================================================== -->
 
-    <section class="bakery-custom">
+    <section class="bakery-closing">
 
-      <div class="bakery-custom-inner">
+      <div class="bakery-closing-inner">
 
         <p class="eyebrow">
-          LOOKING FOR SOMETHING SPECIAL?
+          MADE FROM OUR OVEN
         </p>
 
         <h2>
-          Tell us what<br>
-          you're <em>imagining.</em>
+          Something sweet.<br>
+          Something savoury.<br>
+          Something <em>you'll love.</em>
         </h2>
 
         <p>
-          Have a special idea, celebration or something
-          you'd love us to bake? We'd love to hear from you.
+          Our bakery selection is made in small batches,
+          with the same homemade care that goes into every
+          Arpita's Oven creation.
         </p>
 
         <a
           href="contact.html"
           class="button button-dark"
         >
-          Let's Bake Together →
+          Come Say Hi →
         </a>
 
       </div>
@@ -626,9 +648,11 @@
   <footer class="site-footer">
 
     <div class="footer-brand">
+
       <p>
         Homemade with love.
       </p>
+
     </div>
 
 
@@ -649,7 +673,7 @@
         </a>
 
         <a href="bakery.html">
-          Bakery
+          More Than Cake
         </a>
 
         <a href="gallery.html">
@@ -701,22 +725,27 @@
   ======================================================== -->
 
   <script>
+
     (function () {
 
       if (document.querySelector(".site-sparkles")) return;
 
-      const container = document.createElement("div");
+      const container =
+        document.createElement("div");
 
-      container.className = "site-sparkles";
+      container.className =
+        "site-sparkles";
 
       const desktopCount = 7;
       const mobileCount = 5;
 
-      const isMobile = window.innerWidth <= 600;
+      const isMobile =
+        window.innerWidth <= 600;
 
-      const count = isMobile
-        ? mobileCount
-        : desktopCount;
+      const count =
+        isMobile
+          ? mobileCount
+          : desktopCount;
 
       const symbols = [
         "✦",
@@ -728,14 +757,17 @@
 
       for (let i = 0; i < count; i++) {
 
-        const sparkle = document.createElement("span");
+        const sparkle =
+          document.createElement("span");
 
-        sparkle.className = "site-sparkle";
+        sparkle.className =
+          "site-sparkle";
 
         sparkle.textContent =
           symbols[
             Math.floor(
-              Math.random() * symbols.length
+              Math.random() *
+              symbols.length
             )
           ];
 
@@ -764,7 +796,9 @@
       document.body.appendChild(container);
 
     })();
+
   </script>
+
 
 </body>
 </html>
